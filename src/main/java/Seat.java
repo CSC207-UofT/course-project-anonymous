@@ -1,7 +1,9 @@
 public class Seat {
 
     private int id;
+    private double price;
     private boolean isOccupied;
+
     public Seat(int id) {
         this.id = id;
         this.isOccupied = false;
@@ -21,5 +23,13 @@ public class Seat {
 
     public void setOccupied(boolean occupied) {
         isOccupied = occupied;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }

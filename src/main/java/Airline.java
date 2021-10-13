@@ -1,9 +1,8 @@
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.ArrayList;
 
 public class Airline {
     String name;
-    private int currentFlightId;
     private ArrayList<Flight> flights;
 
     public Airline(String name) {
@@ -11,49 +10,20 @@ public class Airline {
         this.flights = new ArrayList<>();
     }
 
-    public void addFlight(LocalDateTime departureTime,
-                          LocalDateTime landingTime,
-                          String from, String to,
+    public void addFlight(LocalDateTime departureTime, LocalDateTime ArrivalTime, String origin, String destination,
                           double miles) {
-        Flight flight = new Flight(departureTime, landingTime, from, to, miles, this);
-
-        flight.setId(this.currentFlightId);
-        this.currentFlightId++;
+        Flight flight = new Flight(departureTime, ArrivalTime, origin, destination, miles, this);
 
         this.flights.add(flight);
     }
 
-    public boolean removeFlight(int id) {
-        int index = -1;
+    public void removeFlight(int flightno) {
 
-        for (int i = 0; i < this.flights.size(); i++) {
-            if (this.flights.get(i).getId() == id) {
-                index = i;
-                break;
-            }
-        }
-
-        if (index == -1) {
-            return false;
-        }
-        this.flights.remove(index);
-        return true;
+        this.flights.remove(flightno);
     }
 
-    public Flight getFlight(int id) {
-        int index = -1;
+    public Flight getFlight(int flightno) {
 
-        for (int i = 0; i < this.flights.size(); i++) {
-            if (this.flights.get(i).getId() == id) {
-                index = i;
-                break;
-            }
-        }
-
-        if (index == -1) {
-            return null;
-        }
-
-        return this.flights.get(index);
+        return this.flights.get(flightno);
     }
 }

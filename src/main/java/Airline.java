@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -55,5 +56,24 @@ public class Airline {
         }
 
         return this.flights.get(index);
+    }
+
+    public ArrayList<Flight> getFlightByFilter(String from, String to, LocalDate date) {
+        ArrayList<Integer> indices = new ArrayList<>();
+        ArrayList<Flight> flightsOnDate = new ArrayList<>();
+
+        for (int i = 0; i < this.flights.size(); i++) {
+            if (this.flights.get(i).departureTime.toLocalDate().equals(date)) {
+                if (this.flights.get(i).from == from && this.flights.get(i).to == to) {
+                    indices.add(i);
+                }
+            }
+        }
+
+        for (int index : indices) {
+            flightsOnDate.add(this.flights.get(index));
+        }
+
+        return flightsOnDate;
     }
 }

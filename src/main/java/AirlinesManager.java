@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class AirlinesManager {
@@ -43,4 +44,15 @@ public class AirlinesManager {
         this.airlines.remove(index);
         return false;
     }
+
+    public ArrayList<Flight> getFlightsByFilter(String from, String to, LocalDate date) {
+        ArrayList<Flight> flights = new ArrayList<>();
+
+        for (Airline a: this.airlines) {
+            flights.addAll(a.getFlightByFilter(from, to, date));
+        }
+
+        return flights;
+    }
+
 }

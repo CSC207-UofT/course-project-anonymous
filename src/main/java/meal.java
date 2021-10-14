@@ -1,4 +1,4 @@
-package main;
+package main.java;
 
 /** name represents what the selected meal is called. A string description
  * calories represents how many measured calories are in the meal

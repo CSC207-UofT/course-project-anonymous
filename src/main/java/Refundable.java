@@ -1,0 +1,5 @@
+interface Refundable {
+
+    double refund();
+
+}

@@ -1,4 +1,4 @@
-public class MembershipStatus implements discountable, LoungeAccess {
+public abstract class MembershipStatus implements discountable, LoungeAccess {
 
     @Override
     public double getFlightDiscount(double price) {

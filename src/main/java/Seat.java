@@ -1,4 +1,4 @@
-public class Seat implements BaggageAllowance{
+public abstract class Seat implements BaggageAllowance{
 
     private int id;
     private double price;

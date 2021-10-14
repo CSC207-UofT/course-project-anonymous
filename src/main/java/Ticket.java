@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 
 public class Ticket {
-
     Passenger passenger;
     Flight flight;
     Seat seat;

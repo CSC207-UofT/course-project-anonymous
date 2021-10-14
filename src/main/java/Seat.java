@@ -1,4 +1,4 @@
-public class Seat {
+public class Seat implements BaggageAllowance{
 
     private int id;
     private double price;
@@ -31,5 +31,15 @@ public class Seat {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    @Override
+    public int numberOfCabinBagsAllowed() {
+        return 0;
+    }
+
+    @Override
+    public int numberOfCheckInBagsAllowed() {
+        return 0;
     }
 }

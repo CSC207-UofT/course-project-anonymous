@@ -3,6 +3,9 @@ public abstract class Baggage {
     static final double cabinBagAllowance = 7;
     static final double checkInBagAllowance = 23;
 
+    static final double extraCabinBagPrice = 15;
+    static final double extraCheckInBagPrice = 25;
+
     static final double cabinBagCostOverweightPerKg = 10;
     static final double checkInBagCostOverweightPerKg = 15;
 

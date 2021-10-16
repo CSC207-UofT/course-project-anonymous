@@ -30,7 +30,7 @@ class EconomyClass extends Seat {
 
     @Override
     public double refund(LocalDateTime departureDateTime) {
-        return 1.0;
+        return this.seatPrice; // full refund
     }
 
 }

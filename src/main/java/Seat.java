@@ -32,7 +32,7 @@ public abstract class Seat implements BaggageAllowance, Refundable {
 
     @Override
     public double refund(LocalDateTime departureDateTime) {
-        return this.seatPrice;
+        return this.seatPrice; // full refund
     }
 
 

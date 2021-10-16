@@ -1,5 +1,7 @@
+import java.time.LocalDateTime;
+
 interface Refundable {
 
-    double refund();
+    double refund(LocalDateTime departureDateTime);
 
 }

@@ -1,6 +1,6 @@
 interface BaggageAllowance {
 
     int cabins();
-    int checkInBags();
+    int checkInBags(Seat seat);
 
 }

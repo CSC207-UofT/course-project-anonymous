@@ -8,12 +8,12 @@ class BusinessClass extends Seat {
 
     @Override
     public double getPrice() {
-        return this.seatPrice + 50.0;
+        return this.seatPrice;
     }
 
     @Override
-    public void setPrice(double seatPrice) {
-        this.seatPrice = seatPrice + 50.0;
+    public void setPrice(double additionalCharge) {
+        this.seatPrice = this.seatPrice + additionalCharge;
     }
 
     @Override

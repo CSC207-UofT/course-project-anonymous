@@ -13,8 +13,8 @@ class EconomyClass extends Seat {
     }
 
     @Override
-    public void setPrice(double seatPrice) {
-        this.seatPrice = seatPrice;
+    public void setPrice(double additionalCharge) {
+        this.seatPrice = this.seatPrice + additionalCharge;
     }
 
     @Override

@@ -9,12 +9,12 @@ class FirstClass extends Seat {
 
     @Override
     public double getPrice() {
-        return this.seatPrice + 100.0;
+        return this.seatPrice;
     }
 
     @Override
-    public void setPrice(double seatPrice) {
-        this.seatPrice = seatPrice + 100.0;
+    public void setPrice(double additionalCharge) {
+        this.seatPrice = this.seatPrice + additionalCharge;
     }
 
     @Override

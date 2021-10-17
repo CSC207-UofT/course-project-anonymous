@@ -1,39 +1,63 @@
-import java.time.LocalDateTime;
+public abstract class Seat implements BaggageAllowance{
 
-public abstract class Seat implements BaggageAllowance, Refundable {
-    int seatNumber;
-    double seatPrice;
-    boolean occupied;
+    private int id;
+    private double price;
+    private boolean isOccupied;
 
-    public Seat(int seatNumber, double seatPrice, boolean occupied) {
-        this.seatNumber = seatNumber;
-        this.seatPrice = seatPrice;
-        this.occupied = occupied;
+    public Seat(int id) {
+        this.id = id;
+        this.isOccupied = false;
     }
 
-    public abstract double getPrice();
-    public abstract void setPrice(double seatPrice);
-
-    @Override
-    public int cabins() {
-        return 1;
+    public int getId() {
+        return id;
     }
 
-    @Override
-    public int checkInBags(Seat seat) {
-        if (seat instanceof FirstClass) {
-            return 2;
-        } else if (seat instanceof BusinessClass) {
-            return 2;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public boolean isOccupied() {
+        return isOccupied;
+    }
+
+    public String getOccupiedSymbol() {
+        if (this.isOccupied) {
+            return "x";
         } else {
-            return 2;
+            return "o";
         }
     }
 
-    @Override
-    public double refund(LocalDateTime departureDateTime) {
-        return this.seatPrice; // full refund
+    public void setOccupied(boolean occupied) {
+        isOccupied = occupied;
     }
 
+    public double getPrice() {
+        return price;
+    }
 
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    @Override
+    public int numberOfCabinBagsAllowed() {
+        return 0;
+    }
+
+    @Override
+    public int numberOfCheckInBagsAllowed() {
+        return 0;
+    }
+
+    public String getSeatClass() {
+        if (this instanceof EconomySeat) {
+            return "Economy";
+        } else if (this instanceof BusinessClassSeat) {
+            return "Business";
+        } else {
+            return "First";
+        }
+    }
 }

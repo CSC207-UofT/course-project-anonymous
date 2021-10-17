@@ -1,44 +1,25 @@
-package main.java;
+public class Meal {
+    private String name; private boolean vegitarian;
+    private double calories; private double price;
 
-/** name represents what the selected meal is called. A string description
- * calories represents how many measured calories are in the meal
- * cost represents how much the meal is in dollars.
- * isVeg is true when the meal is vegetarian and false otherwise.
- */
-
-
-
-public class meal {
-
-    private String name;
-    private int calories;
-    private double cost;
-    private boolean isVeg;
-
-    public meal(String name, int calories, double cost, boolean isVeg) {
-    this.name =name;
-    this.calories =calories;
-    this.cost =cost;
-    this.isVeg =isVeg;
+    public Meal(String name, double calories, double price, boolean vegitarian) {
+        this.name = name; this.vegitarian = vegitarian;
+        this.calories = calories; this.price = price;
     }
 
-    public boolean getVeg() {
-        return this.isVeg;
+    public double getPrice() {
+        return price;
     }
 
+    public double getCalories() {
+        return calories;
+    }
 
     public String getName() {
-        return this.name;
+        return name;
     }
 
-    public int getCalories() {
-
-        return this.calories;
+    public boolean isVegitarian() {
+        return vegitarian;
     }
-
-    public double getCost() {
-
-        return this.cost;
-    }
-
 }

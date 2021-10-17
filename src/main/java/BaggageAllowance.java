@@ -1,6 +1,4 @@
-interface BaggageAllowance {
-
-    int cabins();
-    int checkInBags(Seat seat);
-
+public interface BaggageAllowance {
+        public int numberOfCabinBagsAllowed();
+        public int numberOfCheckInBagsAllowed();
 }

@@ -1,25 +1,14 @@
-public class CheckInBag extends Baggage{
-    private boolean complimentary;
-
-    public CheckInBag(double weight, double width, double height, boolean complimentary){
+public class CheckInBaggage extends Baggage {
+    public CheckInBaggage(double weight, double width, double height) {
         super(weight, width, height);
-        this.complimentary = complimentary;
     }
 
-    public boolean isComplimentary() {
-        return complimentary;
-    }
-    public void setComplimentary(boolean bool){
-        this.complimentary = bool;
+    public boolean isOverweight() {
+        return Baggage.checkInBagAllowance < Math.round(this.getWeight());
     }
 
-    public boolean isOverweight(double weight){
-        return this.getweight() > 23;
-    }
-    public double OverweightCost(double weight){
-        if (this.isOverweight(weight)){
-            return (weight-23)*5;
-        }
-        else return 0;
+    public double calcOverweightPrice() {
+        return Math.max((Math.round(this.getWeight()) - Baggage.checkInBagAllowance)
+                * Baggage.checkInBagCostOverweightPerKg, 0);
     }
 }

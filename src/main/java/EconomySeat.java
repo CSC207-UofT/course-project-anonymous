@@ -1,36 +1,36 @@
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+public class EconomySeat extends Seat implements Refundable, BaggageAllowance {
+    private double price;
 
-class EconomyClass extends Seat {
-
-    public EconomyClass(int seatNumber, double seatPrice, boolean occupied) {
-        super(seatNumber, seatPrice, occupied);
+    public EconomySeat(int id, double price) {
+        super(id);
+        this.price = price;
     }
 
-    @Override
     public double getPrice() {
-        return this.seatPrice;
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     @Override
-    public void setPrice(double additionalCharge) {
-        this.seatPrice = this.seatPrice + additionalCharge;
+    public double calculateRefundByDaysLeft(double price, int daysLeft) {
+        return 0;
     }
 
     @Override
-    public int cabins() {
+    public double calculateDateChangeChargeByDateLeft(double price, int daysLeft) {
+        return 0;
+    }
+
+    @Override
+    public int numberOfCabinBagsAllowed() {
         return 1;
     }
 
     @Override
-    public int checkInBags(Seat seat) {
-
-        return 1;
+    public int numberOfCheckInBagsAllowed() {
+        return 2;
     }
-
-    @Override
-    public double refund(LocalDateTime departureDateTime) {
-        return this.seatPrice; // full refund
-    }
-
 }

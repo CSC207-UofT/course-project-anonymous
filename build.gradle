@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'junit:junit:4.13.1'
+    implementation 'org.webjars.npm:is-arrayish:0.3.2'
+    implementation 'org.webjars.npm:atoa:1.0.0'
+    implementation 'com.github.klemek:betterlists:1.4'
+    implementation 'com.andyln:mixja:1.0.0'
+    implementation 'org.magicwerk:brownies-collections:0.9.14'
+    testImplementation('org.junit.jupiter:junit-jupiter:5.6.0')
+}
+
+test {
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}

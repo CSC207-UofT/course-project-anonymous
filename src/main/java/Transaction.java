@@ -36,6 +36,6 @@ public class Transaction {
         String totalBill = "Total : " + this.calculateTotal();
 
         return header + " \n" + billSoFar
-                + totalBillBeforeAfter + totalBill + totalBillBeforeAfter;
+                + totalBillBeforeAfter + totalBill + "\n" + totalBillBeforeAfter;
     }
 }

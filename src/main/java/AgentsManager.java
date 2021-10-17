@@ -8,7 +8,7 @@ public class AgentsManager {
         this.agents = new ArrayList<>();
     }
 
-    public void addPassenger(String name, String email, int number) {
+    public void addPassenger(String name, String email, String number) {
         this.agents.add(new Agent(this.currentIdCount, name, email, number));
         this.currentIdCount++;
     }

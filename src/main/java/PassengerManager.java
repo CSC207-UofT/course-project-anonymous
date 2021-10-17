@@ -8,9 +8,11 @@ public class PassengerManager {
         this.passengers = new ArrayList<>();
     }
 
-    public void addPassenger(String name, String email, int number) {
+    public int addPassenger(String name, String email, String number) {
         this.passengers.add(new Passenger(this.currentIdCount, name, email, number));
+        int idToReturn = this.currentIdCount;
         this.currentIdCount++;
+        return idToReturn;
     }
 
     public Passenger getPassengerWithId(int id) {

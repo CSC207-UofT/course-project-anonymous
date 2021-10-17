@@ -12,7 +12,7 @@ public class AirlinesManager {
         int index = -1;
 
         for (int i = 0; i < this.airlines.size(); i++) {
-            if (this.airlines.get(i).name == name) {
+            if (this.airlines.get(i).name.equals(name)) {
                 index = i;
                 break;
             }
@@ -53,6 +53,11 @@ public class AirlinesManager {
         }
 
         return flights;
+    }
+
+    public Flight getFlightByName(String name) {
+        String[] nameParts = name.split("-");
+        return this.getAirline(nameParts[0]).getFlight(Integer.parseInt(nameParts[1]));
     }
 
 }

@@ -4,7 +4,7 @@ public class Agent extends User {
 
     private ArrayList<User> customers;
 
-    public Agent(int id, String name, String email, int number) {
+    public Agent(int id, String name, String email, String number) {
         super(id, name, email, number);
         this.customers = new ArrayList<>();
     }

@@ -64,7 +64,7 @@ public class Airline {
 
         for (int i = 0; i < this.flights.size(); i++) {
             if (this.flights.get(i).departureTime.toLocalDate().equals(date)) {
-                if (this.flights.get(i).from == from && this.flights.get(i).to == to) {
+                if (this.flights.get(i).from.equals(from) && this.flights.get(i).to.equals(to)) {
                     indices.add(i);
                 }
             }

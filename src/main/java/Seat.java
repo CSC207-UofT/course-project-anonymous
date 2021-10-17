@@ -21,6 +21,14 @@ public abstract class Seat implements BaggageAllowance{
         return isOccupied;
     }
 
+    public String getOccupiedSymbol() {
+        if (this.isOccupied) {
+            return "x";
+        } else {
+            return "o";
+        }
+    }
+
     public void setOccupied(boolean occupied) {
         isOccupied = occupied;
     }
@@ -41,5 +49,15 @@ public abstract class Seat implements BaggageAllowance{
     @Override
     public int numberOfCheckInBagsAllowed() {
         return 0;
+    }
+
+    public String getSeatClass() {
+        if (this instanceof EconomySeat) {
+            return "Economy";
+        } else if (this instanceof BusinessClassSeat) {
+            return "Business";
+        } else {
+            return "First";
+        }
     }
 }

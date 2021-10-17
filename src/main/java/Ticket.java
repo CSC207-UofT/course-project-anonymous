@@ -59,4 +59,53 @@ public class Ticket {
         baggages.remove(index);
         return true;
     }
+
+    private int noOfCabinBags(ArrayList<Baggage> baggages) {
+        int count = 0;
+
+        for (Baggage b: baggages) {
+            if (b instanceof CabinBaggage) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    private int noOfCheckInBags(ArrayList<Baggage> baggages) {
+        int count = 0;
+
+        for (Baggage b: baggages) {
+            if (b instanceof CheckInBaggage) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    @Override
+    public String toString() {
+        String header = "******************************************Ticket******************************************\n";
+
+        String passengerInfo = this.passenger.getName();
+
+        String flightName = "Flight Name: " + flight.airline.name + "-" + flight.getId() + "\n";
+        String fromTo = "From: " + flight.from + "       To: " + flight.to + "\n";
+        String departureLanding = "Departure Date & Time: " + flight.departureTime.toString()
+                + "    Landing Date & Time: " + flight.landingTime.toString() + "\n";
+
+        String seatString = this.seat.getSeatClass() + " Seat     Seat No. " + flight.seats.indexOf(seat);
+
+        String bags = "No of Cabin Bags: " + this.noOfCabinBags(this.baggages) +
+                "   no of CheckIn Bags: " + noOfCheckInBags(this.baggages);
+
+        String mealSelected = "Meal selected: " + meal.getName();
+
+        String spacer = " \n";
+
+        return header + spacer + passengerInfo + spacer + spacer + flightName + spacer + fromTo + spacer +
+                departureLanding + spacer +spacer + seatString + spacer + spacer + bags + spacer + spacer +
+                mealSelected + spacer + spacer + header;
+    }
 }

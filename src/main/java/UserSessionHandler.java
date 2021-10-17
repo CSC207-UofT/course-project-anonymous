@@ -5,4 +5,8 @@ public abstract class UserSessionHandler {
     public UserSessionHandler() {
         this.bookingSystem = new BookingSystem();
     }
+
+    public boolean setSessionUserWithId(int id) {
+        return false;
+    }
 }

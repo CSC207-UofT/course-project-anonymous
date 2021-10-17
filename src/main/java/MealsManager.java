@@ -5,19 +5,25 @@ public class MealsManager {
 
     public MealsManager() {
         this.meals = new ArrayList<>();
-
-        this.addMeal("Sushi", 2.3, 3, false);
-        this.addMeal("Margarita", 5.2, 2, true);
-        // TODO: Add Meals or load them from a dataset
+        this.addMeal("No Meal", 0, 0, false);
     }
 
     public Meal getMeal(String name) {
         for (Meal m : this.meals) {
-            if (m.getName() == name) {
+            if (m.getName().equals(name)) {
                 return m;
             }
         }
         return null;
+    }
+
+    public boolean checkForMeal(String mealName) {
+        for (Meal m: this.meals) {
+            if (m.getName().equals(mealName)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void addMeal(String name, double calories, double price, boolean isVeg) {

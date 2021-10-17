@@ -27,6 +27,14 @@ public class TransactionManager {
         return transaction;
     }
 
+    public void remove(Transaction transaction) {
+        for(Transaction t : transactions) {
+            if (t == transaction) {
+                this.transactions.remove(t);
+            }
+        }
+    }
+
     public Transaction createTransactionRescheduleTicket() {
         Transaction transaction = new Transaction();
         // TODO: implement createTransactionRescheduleTicket in TransactionManager

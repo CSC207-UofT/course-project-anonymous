@@ -5,7 +5,7 @@ public class Passenger extends User {
     private int points;
     private MembershipStatus membership;
     
-    public Passenger(int id, String name, String email, int number) {
+    public Passenger(int id, String name, String email, String number) {
         super(id, name, email, number);
 
         this.membership = new Standard();

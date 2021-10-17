@@ -4,9 +4,9 @@ import java.util.ArrayList;
 public class Flight {
 
     // taking the number of seats in a typical plane
-    static int firstClassSeats = 20;
+    static int firstClassSeats = 18;
     static int businessClassSeats = 90;
-    static int economyClassSeats = 250;
+    static int economyClassSeats = 252;
 
     static int firstClassSeatPrice = 200;
     static int businessClassSeatPrice = 150;
@@ -47,6 +47,19 @@ public class Flight {
             } else {
                 this.seats.add(new FirstClassSeat(i, firstClassSeatPrice));
             }
+        }
+    }
+
+    public ArrayList<Seat> getSeatsOfClass(String classNameIndex) {
+
+        if (classNameIndex.equals("1")) {
+            return new ArrayList<Seat>(this.seats.subList(0, Flight.economyClassSeats));
+        } else if (classNameIndex.equals("2")) {
+            return new ArrayList<Seat>(this.seats.subList(Flight.economyClassSeats,
+                    Flight.economyClassSeats + Flight.businessClassSeats));
+        } else {
+            return new ArrayList<Seat>(this.seats.subList(Flight.economyClassSeats + Flight.businessClassSeats,
+                    Flight.economyClassSeats + Flight.businessClassSeats + Flight.firstClassSeats));
         }
     }
 

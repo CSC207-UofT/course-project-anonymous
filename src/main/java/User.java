@@ -1,8 +1,8 @@
 public abstract class User {
     private int id;  // id uniquely represents a user
-    private String name; private String email; private int number;  // name, email and number of the user
+    private String name; private String email; private String number;  // name, email and number of the user
 
-    public User(int id, String name, String email, int number) {
+    public User(int id, String name, String email, String number) {
         this.id = id; this.name = name; this.email = email; this.number = number;
     }
 
@@ -32,11 +32,11 @@ public abstract class User {
         this.email = email;
     }
 
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 }

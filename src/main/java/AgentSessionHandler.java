@@ -6,7 +6,8 @@ public class AgentSessionHandler extends UserSessionHandler {
         bookingSystem = new BookingSystem();
     }
 
-    public boolean setSessionPassengerWithId(int id) {
+    @Override
+    public boolean setSessionUserWithId(int id) {
         this.agent = this.bookingSystem.agentsManager.getAgentWithId(id);
         return !this.agent.equals(null);
     }

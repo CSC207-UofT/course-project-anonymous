@@ -13,6 +13,14 @@ public abstract class Baggage {
     private double weight; private double width; private double height; // Dims. of the bag
 
     public Baggage(double weight, double width, double height) {
+       /**
+        * Creates a new Baggage.
+        *
+        * @param weight: weight of this baggage.
+        * @param width: width of this baggage.
+        * @param height: height of this baggage.
+        */
+        
         this.weight = weight; this.width = width; this.height = height;
         this.id = -1;
     }

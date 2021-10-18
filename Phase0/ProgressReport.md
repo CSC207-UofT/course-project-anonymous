@@ -176,6 +176,6 @@ Has contributed to the entity level development of the program. Designed and imp
  
 
 ### Aryaman
-Worked on developing the flight and airline class. Plans on working on Airline handler and expanding the functionality of the flight and airline class.
+Helped develop the flight and airline class. Plans on working on Airline handler and expanding the functionality of the flight and airline class.
 
 

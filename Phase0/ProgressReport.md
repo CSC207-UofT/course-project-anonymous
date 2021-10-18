@@ -176,6 +176,6 @@ Has contributed to the entity level development of the program. Designed and imp
  
 
 ### Aryaman
-Contributed to the entity-level development of the program. Worked on developing the base structure for the Flight and Airline classes. Implemented getters and setters for private instance attributes of the Flight and Airline Classes.Further, plans to expand on the functionality of these classes with the SOLID principles in mind.
+Helped develop the Flight and Airline classes and plans to expand on the functionality of these classes.
 
 

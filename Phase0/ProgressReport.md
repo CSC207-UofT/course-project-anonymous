@@ -176,6 +176,6 @@ Has contributed to the entity level development of the program. Designed and imp
  
 
 ### Aryaman
-Helped develop the flight and airline class. Plans on working on Airline handler and expanding the functionality of the flight and airline class.
+Contributed to the efficiency of our CRC model. Contributed to the entity-level development of the program. Worked on developing the base structure for the Flight and Airline classes. Implemented getters and setters for private instance attributes of the Flight and Airline Classes.Further, plans to expand on the functionality of these classes with the SOLID principles in mind. Plans to implement methods to return the no. of occupied and vacant seats in a flight in Phase 1 of the project. In phase 1 also plans on working on the Airline Manager and the Ticket Manager. 
 
 

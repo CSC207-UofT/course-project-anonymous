@@ -3,6 +3,11 @@ import java.util.ArrayList;
 public class FlightsPresenter {
 
     public static String presentFlight(Flight flight) {
+        /*
+        Prints out info about a single flight, while search for flight
+
+        TODO: make this method non static
+         */
         String border = "*******************************************************************************************\n";
 
         String flightName = flight.airline.name + "-" + flight.getId() + "\n";
@@ -27,6 +32,11 @@ public class FlightsPresenter {
     }
 
     public static String presentFlights(ArrayList<Flight> flights) {
+        /*
+        Uses presentFlight and prints out all the flights
+
+        TODO: make this method non static
+         */
         String stringSoFar = "";
 
         for (Flight f: flights) {
@@ -37,6 +47,12 @@ public class FlightsPresenter {
     }
 
     public static String presentSeats(ArrayList<Seat> seats) {
+        /*
+        Prints out the seat map for the given seats array
+
+        TODO: should be shifted top seat map presenter
+         */
+
         String starting_string = "  0 1 2 3 4 5 6 7 8\n \n";
 
         for (int i = 0; i < seats.size(); i+=9) {

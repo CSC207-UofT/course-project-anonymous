@@ -1,7 +1,9 @@
+// TODO: implement observer-observable design pattern to implement points increase
 import java.util.*;
 
 public class PassengerManager {
     private int currentIdCount = 0;
+    // TODO: iterator design pattern
     ArrayList<Passenger> passengers;
 
     public PassengerManager() {

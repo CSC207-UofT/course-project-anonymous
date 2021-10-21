@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 public class MealsManager {
+    // TODO: implement iterator design pattern
     ArrayList<Meal> meals;
 
     public MealsManager() {

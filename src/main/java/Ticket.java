@@ -1,11 +1,12 @@
 import java.util.ArrayList;
 
 public class Ticket {
+    // TODO: make all the instance variables private
     Passenger passenger;
     Flight flight;
     Seat seat;
     Meal meal;
-    ArrayList<Baggage> baggages;
+    ArrayList<Baggage> baggages; // TODO: implement iterator design pattern
 
     private int currentBaggageId;
 
@@ -37,6 +38,7 @@ public class Ticket {
         this.meal = meal;
     }
 
+    // TODO: Managing bags should not be done in ticket, instead in baggage manager or ticket manager or other use case
     public void addBag(Baggage b) {
         b.setId(this.currentBaggageId);
         this.currentBaggageId++;
@@ -59,33 +61,35 @@ public class Ticket {
         baggages.remove(index);
         return true;
     }
-
     private int noOfCabinBags(ArrayList<Baggage> baggages) {
         int count = 0;
 
-        for (Baggage b: baggages) {
-            if (b instanceof CabinBaggage) {
-                count++;
-            }
-        }
-
-        return count;
-    }
-
-    private int noOfCheckInBags(ArrayList<Baggage> baggages) {
-        int count = 0;
-
-        for (Baggage b: baggages) {
-            if (b instanceof CheckInBaggage) {
-                count++;
-            }
-        }
+        for (Baggage b: baggages) {                                        //-|
+            if (b instanceof CabinBaggage) {                               // |
+                count++;                                                   // |
+            }                                                              // |
+        }                                                                  //-|
+                                                                           // |
+        return count;                                                      // |
+    }                                                                      // |
+                                                                           // |---- TODO: Same code could be extracted
+    private int noOfCheckInBags(ArrayList<Baggage> baggages) {             // |
+        int count = 0;                                                     // |
+                                                                           // |
+        for (Baggage b: baggages) {                                        //-|
+            if (b instanceof CheckInBaggage) {                             // |
+                count++;                                                   // |
+            }                                                              // |
+        }                                                                  //-|
 
         return count;
     }
 
     @Override
     public String toString() {
+        /*
+        TODO: could be extracted to a presenter
+         */
         String header = "******************************************Ticket******************************************\n";
 
         String passengerInfo = this.passenger.getName();

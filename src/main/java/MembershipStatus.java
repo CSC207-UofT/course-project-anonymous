@@ -1,3 +1,5 @@
+// TODO:  maybe make this an interface and combine discountable and LoungeAccess to it
+// This is because if we set to to an abs.class then we have to implement interfaces to it, which feels redundant.
 public abstract class MembershipStatus implements discountable, LoungeAccess {
 
     @Override

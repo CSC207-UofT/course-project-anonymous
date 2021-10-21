@@ -24,6 +24,8 @@ public class BookingSystem {
         this.addRandomData();
     }
 
+    // TODO: Add methods here to reduce dependence in the use case
+
     public void addRandomData() {
         this.airlinesManager.addAirline("Emirates");
         this.airlinesManager.addAirline("Air India");

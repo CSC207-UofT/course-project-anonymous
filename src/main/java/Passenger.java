@@ -12,6 +12,19 @@ public class Passenger extends User {
     }
 
     public void upgradeMembership(int[] pointsThreshold) {
+        /*
+        According to current points upgrade the membership.
+
+        @param pointsThreshold: list of point thresholds, for different memberships.
+
+        Ex. if pointsThreshold = [0, 100, 200, 300],  then:
+        - if you have 0 <= points < 100 then you have standard membership.
+        - if you have 100 <= points < 200 then you have Silver membership.
+        - if you have 200 <= points < 300 then you have Gold membership.
+        - if you have 300 <= points then you have Platinum membership.
+
+        TODO: This function should maybe be moved to a use case class, as this class should only store data
+         */
 
         MembershipStatus[] membershipArray = {new Standard(),
                                               new Silver(),

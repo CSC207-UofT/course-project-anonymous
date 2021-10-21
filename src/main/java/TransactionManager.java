@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 public class TransactionManager {
+    // TODO: iterator design pattern
     ArrayList<Transaction> transactions;
 
     public TransactionManager() {

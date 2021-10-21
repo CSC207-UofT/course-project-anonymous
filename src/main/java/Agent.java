@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 public class Agent extends User {
 
+    // TODO: implement the iteration design pattern
     private ArrayList<User> customers;
 
     public Agent(int id, String name, String email, String number) {

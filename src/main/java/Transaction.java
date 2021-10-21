@@ -24,6 +24,9 @@ public class Transaction {
 
     @Override
     public String toString() {
+        /*
+        TODO: create a transaction presenter, this method should not be here
+         */
         String header = "***********************Transaction***********************\n";
 
         String billSoFar = "";

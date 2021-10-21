@@ -2,6 +2,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class AirlinesManager {
+    // TODO: implement iterator design pattern
     ArrayList<Airline> airlines;
 
     public AirlinesManager() {
@@ -45,7 +46,16 @@ public class AirlinesManager {
         return false;
     }
 
+    // TODO: Maybe airline managers work is not to get filtered flights, so maybe we can use/make another use case to filter and search flights
+    // ^ just an idea, maybe this is fine here, i am confused 😭.
+
     public ArrayList<Flight> getFlightsByFilter(String from, String to, LocalDate date) {
+        /*
+        Collect flights with the specific parameters from all the airlines in the manager, and return a combined list.
+
+        - it uses Airline.getFlightByFilter function
+        - it uses addAll function of arraylist to combine all arraylists.
+         */
         ArrayList<Flight> flights = new ArrayList<>();
 
         for (Airline a: this.airlines) {

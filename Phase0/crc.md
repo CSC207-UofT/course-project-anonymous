@@ -1,0 +1,1 @@
+We have create our CRC model on a site called Whimsical, which helps make flow charts. [Here](https://whimsical.com/the-beginning-Ba4cHyRqbFPhUDJqxvaGpR) is the link to our model. You dont need to be signed in to view the model.

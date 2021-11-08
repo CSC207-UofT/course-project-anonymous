@@ -2,11 +2,13 @@ public abstract class Seat{
 
     private int id;
     private double price;
-    private boolean isOccupied;
+//    private boolean isOccupied;
+    // isOccupied takes values of "x" meaning occupied or "o" meaning available
+    private String isOccupied;
 
-    public Seat(int id) {
+    public Seat(int id, String isOccupied) {
         this.id = id;
-        this.isOccupied = false;
+        this.isOccupied = isOccupied;
     }
 
     public int getId() {
@@ -17,25 +19,24 @@ public abstract class Seat{
         this.id = id;
     }
 
-    public boolean isOccupied() {
-        return isOccupied;
-    }
+//    public boolean isOccupied() {
+//        return isOccupied;
+//    }
 
     public String getOccupiedSymbol() {
         /*
         Return the symbol of if it is ocupied or not
-
-        TODO: this function maybe should not be in this class, as it already stores data on isOccupied.
          */
-        if (this.isOccupied) {
-            return "x";
-        } else {
-            return "o";
-        }
+//        if (this.isOccupied) {
+//            return "x";
+//        } else {
+//            return "o";
+//        }
+        return (this.isOccupied);
     }
 
-    public void setOccupied(boolean occupied) {
-        isOccupied = occupied;
+    public void setOccupied(String occupied) {
+        this.isOccupied = occupied;
     }
 
     public double getPrice() {

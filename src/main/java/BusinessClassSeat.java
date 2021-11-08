@@ -1,4 +1,4 @@
-public class BusinessClassSeat extends Seat implements Refundable, BaggageAllowance {
+public class BusinessClassSeat extends Seat{
     private double price;
 
     public BusinessClassSeat(int id, double price) {

@@ -1,6 +1,4 @@
-// TODO:  maybe make this an interface and combine BaggageAllowance and Refundable to it
-// This is because if we set to to an abs.class then we have to implement interfaces to it, which feels redundant.
-public abstract class Seat implements BaggageAllowance{
+public abstract class Seat{
 
     private int id;
     private double price;
@@ -48,21 +46,17 @@ public abstract class Seat implements BaggageAllowance{
         this.price = price;
     }
 
-    @Override
-    public int numberOfCabinBagsAllowed() {
-        return 0;
-    }
+    public abstract int numberOfCabinBagsAllowed();
 
-    @Override
-    public int numberOfCheckInBagsAllowed() {
-        return 0;
-    }
+    public abstract int numberOfCheckInBagsAllowed();
+
+    public abstract double calculateRefundByDaysLeft(double price, int daysLeft);
+
+    public abstract double calculateDateChangeChargeByDateLeft(double price, int daysLeft);
 
     public String getSeatClass() {
         /*
         Return the class of the seat.
-
-        TODO: this function maybe should not be in this class, as it should only store data.
          */
         if (this instanceof EconomySeat) {
             return "Economy";

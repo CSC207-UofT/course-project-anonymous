@@ -1,4 +1,4 @@
-public class FirstClassSeat extends Seat implements Refundable, BaggageAllowance {
+public class FirstClassSeat extends Seat{
 
     private double price;
 

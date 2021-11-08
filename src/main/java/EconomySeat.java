@@ -1,4 +1,4 @@
-public class EconomySeat extends Seat implements Refundable, BaggageAllowance {
+public class EconomySeat extends Seat{
     private double price;
 
     public EconomySeat(int id, double price) {

@@ -1,3 +1,5 @@
+import MementoTicketStages.SeatOriginator;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -14,6 +16,9 @@ public class CmdUI {
     }
 
     public void start(Scanner scanner, boolean askingAgain) {
+        /*
+
+         */
         if (!askingAgain) {
             System.out.println("Hi Welcome to Anonymous Flight Reservation System \n ");
         }
@@ -24,7 +29,7 @@ public class CmdUI {
 
         if (userInp.equals("1")) {
             this.passengerSessionHandler = new PassengerSessionHandler();
-            this.signInUpPassenger(scanner, false);
+            this.signInUpPassenger(scanner, false); /* Takes the user to the passenger sign up page*/
         }
         else if (userInp.equals("2")) {
             this.agentSessionHandler = new AgentSessionHandler();
@@ -37,6 +42,9 @@ public class CmdUI {
     }
 
     public void signInUpPassenger(Scanner scanner, boolean askingAgain) {
+        /*
+        Asks the passenger for their personal details
+         */
         System.out.println("Hi there! are you new to our app? Sign up, If not Sign In. \n \n");
 
         System.out.println("1. Sing Up \n 2.Sign In \n \n Type 1 or 2 : ");
@@ -57,6 +65,9 @@ public class CmdUI {
 
 
     public void signUpPassenger(Scanner scanner, boolean askAgain) {
+        /*
+        Adds a new passenger to the PassengerManager class with the details they provided
+         */
         if (!askAgain) {
             System.out.print("Please fill out your personal details to create an account \n");
         }
@@ -89,6 +100,10 @@ public class CmdUI {
     }
 
     public void signInPassenger(Scanner scanner, boolean askAgain) {
+        /*
+        If the passenger has a pre-existing ID, it will allow the passenger to directly sign in.
+        The passenger will be retrieved from the array of passengers based on their unique ID
+         */
         if (!askAgain) {
             System.out.println("Please fill in your id to sign in \n");
         }
@@ -105,6 +120,9 @@ public class CmdUI {
     }
 
     public void menu(Scanner scanner) {
+        /*
+        Displays the possible options the passenger can choose to continue using the app.
+         */
         System.out.println("What would you like to do today "
                 + this.passengerSessionHandler.passenger.getName() +  "\n \n ");
 
@@ -129,6 +147,10 @@ public class CmdUI {
     }
 
     public void flightSearchFilter(Scanner scanner, boolean askAgain) {
+        /*
+        Takes in information regarding the To and From destinations along with the dates and uses it
+        to display available flights from the database
+         */
         System.out.println("Please fill in the filter form below : \n \n");
 
         System.out.println("From : ");
@@ -179,6 +201,7 @@ public class CmdUI {
 
         System.out.println("Select a Seat: \n");
         System.out.println(seatsMap + "\n \n");
+        new SeatOriginator(seatsMap).setSeatmap(seatsMap);
 
         Seat seat = this.selectSeatQuestion(scanner, seats);
         ArrayList<Baggage> baggages = this.addBaggageQuestion(scanner, new ArrayList<Baggage>());

@@ -22,7 +22,7 @@ public class Passenger extends User {
         - if you have 100 <= points < 200 then you have Silver membership.
         - if you have 200 <= points < 300 then you have Gold membership.
         - if you have 300 <= points then you have Platinum membership.
-
+        there definetely is a better way to assign membership based on points than this
         TODO: This function should maybe be moved to a use case class, as this class should only store data
          */
 

@@ -1,7 +1,7 @@
 public class Standard implements MembershipStatus{
 
     /**
-     * return the price of the flight after a discount
+     * return the price of the flight after a 10% discount
      * is applied
      *
      * @param price the flight's price
@@ -10,11 +10,11 @@ public class Standard implements MembershipStatus{
      **/
     @Override
     public double getFlightDiscount(double price) {
-        return 0;
+        return price - (price * 0.10);
     }
 
     /**
-     * return the price of the meal after a discount
+     * return the price of the meal after a 10% discount
      * is applied
      *
      * @param price the meal's price
@@ -23,11 +23,11 @@ public class Standard implements MembershipStatus{
      **/
     @Override
     public double getMealDiscount(double price) {
-        return 0;
+        return price - (price * 0.10);
     }
 
     /**
-     * return the price of extra baggage after a discount
+     * return the price of extra baggage after a 10% discount
      * is applied
      *
      * @param price the extra baggage price
@@ -36,7 +36,7 @@ public class Standard implements MembershipStatus{
      **/
     @Override
     public double getExtraBaggageDiscount(double price) {
-        return 0;
+        return price - (price * 0.10);
     }
 
     /**

@@ -22,7 +22,7 @@ public class SeatOriginator {
             this.seatmap = memento.getSeatmap();
         }
         else {
-            System.err.println("Can't restore without memento object!");
+            System.out.println("Can't restore without memento object!");
         }
     }
 }

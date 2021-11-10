@@ -1,4 +1,5 @@
 import MementoTicketStages.SeatOriginator;
+import MementoTicketStages.SeatPresenterMemento;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -201,7 +202,8 @@ public class CmdUI {
 
         System.out.println("Select a Seat: \n");
         System.out.println(seatsMap + "\n \n");
-        new SeatOriginator(seatsMap).setSeatmap(seatsMap);
+        SeatOriginator seatmap = new SeatOriginator(seatsMap).setSeatmap(seatsMap);
+        SeatPresenterMemento seatmemento = seatmap.createMemento();
 
         Seat seat = this.selectSeatQuestion(scanner, seats);
         ArrayList<Baggage> baggages = this.addBaggageQuestion(scanner, new ArrayList<Baggage>());

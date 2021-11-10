@@ -1,4 +1,4 @@
-public class Gold extends MembershipStatus {
+public class Gold implements MembershipStatus {
     @Override
     public double getFlightDiscount(double price) {
         return 0;

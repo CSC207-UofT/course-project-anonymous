@@ -1,4 +1,4 @@
-public class Standard extends MembershipStatus{
+public class Standard implements MembershipStatus{
     @Override
     public double getFlightDiscount(double price) {
         return 0;

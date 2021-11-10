@@ -1,4 +1,4 @@
-public class Silver extends MembershipStatus {
+public class Silver implements MembershipStatus {
     @Override
     public double getFlightDiscount(double price) {
         return 0;

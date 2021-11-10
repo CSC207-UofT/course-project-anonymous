@@ -1,4 +1,5 @@
-public abstract class Seat{
+public abstract class Seat {
+    // TODO delete baggageallowance and refundable since they're redundant
     private int id;
     private double price;
     // private boolean isOccupied;

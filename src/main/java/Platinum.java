@@ -1,4 +1,4 @@
-public class Platinum extends MembershipStatus {
+public class Platinum implements MembershipStatus {
     @Override
     public double getFlightDiscount(double price) {
         return 0;

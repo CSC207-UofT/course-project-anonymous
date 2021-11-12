@@ -1,29 +1,32 @@
-// TODO:  maybe make this an interface and combine discountable and LoungeAccess to it
-// This is because if we set to to an abs.class then we have to implement interfaces to it, which feels redundant.
-public abstract class MembershipStatus implements discountable, LoungeAccess {
+public interface MembershipStatus {
+    // TODO delete discountable and loungeaccess since they're redundant
+    /**
+     * return the price of the flight after a discount
+     * is applied
+     *
+     * @param price the flight's price
+     *
+     * @return the flight's discounted price
+     **/
+    double getFlightDiscount(double price);
 
-    @Override
-    public double getFlightDiscount(double price) {
-        return 0;
-    }
+    /**
+     * return the price of the meal after a discount
+     * is applied
+     *
+     * @param price the meal's price
+     *
+     * @return the meal's discounted price
+     **/
+    double getMealDiscount(double price);
 
-    @Override
-    public double getMealDiscount(double price) {
-        return 0;
-    }
-
-    @Override
-    public double getExtraBaggageDiscount(double price) {
-        return 0;
-    }
-
-    @Override
-    public int calculateLoungeAccess(int points) {
-        return 0;
-    }
-
-    @Override
-    public int calculatePointsForLoungeHours(int hours) {
-        return 0;
-    }
+    /**
+     * return the price of extra baggage after a discount
+     * is applied
+     *
+     * @param price the extra baggage price
+     *
+     * @return the extra baggage discounted price
+     **/
+    double getExtraBaggageDiscount(double price);
 }

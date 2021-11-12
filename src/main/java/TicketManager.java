@@ -1,18 +1,40 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 
-public class TicketManager {
-    ArrayList<Ticket> tickets;
+import java.beans.PropertyChangeSupport;
+import java.beans.PropertyChangeListener;
+
+public class TicketManager implements Iterable<Ticket> {
+    private ArrayList<Ticket> tickets;
+    private final PropertyChangeSupport observable;
 
     public TicketManager() {
         this.tickets = new ArrayList<>();
+        this.observable = new PropertyChangeSupport(this);
+    }
+
+    public void addObserver(PropertyChangeListener observer) {
+        observable.addPropertyChangeListener("points added", observer);
     }
 
     public Ticket addTicket(Passenger passenger, Flight flight, Seat seat, Meal meal, ArrayList<Baggage> baggages) {
-        Ticket ticket = new Ticket(passenger, flight, seat, meal, baggages);
+        Ticket ticket = new Ticket(passenger, flight, seat);
+        ticket.setMeal(meal); ticket.setBaggages(baggages);
+
+        observable.firePropertyChange("points added", null, passenger);
         this.tickets.add(ticket);
-        // TODO: implement observable-observer design pattern to make the seat occupied and add points to passenger
         return ticket;
     }
 
-    // TODO: implement methods to decrease methods in Ticket
+    public void removeTicket(Ticket ticket) {
+        ticket.getSeat().setOccupied(false);
+        ticket.getPassenger().setPoints(Math.toIntExact(ticket.getPassenger().getPoints() - Math.round(ticket.getFlight().getMiles() / 100)));
+        observable.firePropertyChange("points added", null, ticket.getPassenger());
+        this.tickets.remove(ticket);
+    }
+
+    @Override
+    public Iterator<Ticket> iterator() {
+        return new GeneralIterator<Ticket>(this.tickets);
+    }
 }

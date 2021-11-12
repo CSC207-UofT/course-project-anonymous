@@ -1,6 +1,12 @@
 public class RescheduleManager {
-    static public void reschedule(Flight from, Flight to) {
-        // TODO: Implement reschedule method in RescheduleManager
-        // could use Memento design pattern to handle cancellations and reschedules
+    public void reschedule(Ticket ticket, Flight flight, TicketManager ticketManager) {
+
+        Seat oldSeat = ticket.getSeat();
+        int seatIndex = ticket.getFlight().getSeatNo(oldSeat);
+        Seat newSeat = flight.getSeatAtIndex(seatIndex);
+
+        ticketManager.addTicket(ticket.getPassenger(), flight, newSeat, ticket.getMeal(), ticket.getBaggages());
+
+        ticketManager.removeTicket(ticket);
     }
 }

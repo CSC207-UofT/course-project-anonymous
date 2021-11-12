@@ -1,5 +1,4 @@
 public interface MembershipStatus {
-    // TODO delete discountable and loungeaccess since they're redundant
     /**
      * return the price of the flight after a discount
      * is applied
@@ -29,4 +28,9 @@ public interface MembershipStatus {
      * @return the extra baggage discounted price
      **/
     double getExtraBaggageDiscount(double price);
+
+    /**
+     * @return the name of the membership
+     */
+    String getMembershipName();
 }

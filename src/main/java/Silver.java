@@ -4,12 +4,11 @@ public class Silver implements MembershipStatus {
      * is applied
      *
      * @param price the flight's price
-     *
      * @return the flight's discounted price
      **/
     @Override
     public double getFlightDiscount(double price) {
-        return price - (price * 0.20);
+        return (price * 0.20);
     }
 
     /**
@@ -17,12 +16,11 @@ public class Silver implements MembershipStatus {
      * is applied
      *
      * @param price the meal's price
-     *
      * @return the meal's discounted price
      **/
     @Override
     public double getMealDiscount(double price) {
-        return price - (price * 0.20);
+        return (price * 0.20);
     }
 
     /**
@@ -30,11 +28,13 @@ public class Silver implements MembershipStatus {
      * is applied
      *
      * @param price the extra baggage price
-     *
      * @return the extra baggage discounted price
      **/
     @Override
-    public double getExtraBaggageDiscount(double price) {
-        return price - (price * 0.20);
+    public double getExtraBaggageDiscount(double price) {return (price * 0.20);}
+
+    @Override
+    public String getMembershipName() {
+        return "Silver";
     }
 }

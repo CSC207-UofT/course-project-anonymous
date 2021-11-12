@@ -95,13 +95,5 @@ public abstract class Seat {
     /**
      * @return which class the Seat represents
      */
-    public String getSeatClass() {
-        if (this instanceof EconomySeat) {
-            return "Economy";
-        } else if (this instanceof BusinessClassSeat) {
-            return "Business";
-        } else {
-            return "First";
-        }
-    }
+    public abstract String getSeatClass();
 }

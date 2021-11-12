@@ -1,12 +1,10 @@
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
 
-public class Airline {
+public class Airline implements Iterable<Flight> {
     String name;
     private int currentFlightId;
 
-    //TODO: implement the iteration design pattern
     private ArrayList<Flight> flights;
 
     public Airline(String name) {
@@ -27,60 +25,32 @@ public class Airline {
     }
 
     public boolean removeFlight(int id) {
-        int index = -1;
+        int index = getIndex(id);
+        if (index == -1) {return false;}
+        this.flights.remove(index);
+        return true;
+    }
 
-        for (int i = 0; i < this.flights.size(); i++) {                  // -----|
-            if (this.flights.get(i).getId() == id) {                     //      |
-                index = i;                                               //      |-------|
-                break;                                                   //      |       |
-            }                                                            //      |       |
-        }                                                                //------|       |
-                                                                         //              |
-        if (index == -1) {                                               //              |
-            return false;                                                //              |
-        }                                                                //              |
-        this.flights.remove(index);                                      //              |---- TODO: Same code could be extracted
-        return true;                                                     //              |
-    }                                                                    //              |
-                                                                         //              |
-    public Flight getFlight(int id) {                                    //              |
-        int index = -1;                                                  //              |
-                                                                         //              |
-        for (int i = 0; i < this.flights.size(); i++) {                  // -----|       |
-            if (this.flights.get(i).getId() == id) {                     //      |       |
-                index = i;                                               //      |-------|
-                break;                                                   //      |
-            }                                                            //      |
-        }                                                                //------|
-
-        if (index == -1) {
-            return null;
-        }
-
+    public Flight getFlight(int id) {
+        int index = getIndex(id);
+        if (index == -1) {return null;}
         return this.flights.get(index);
     }
 
-    public ArrayList<Flight> getFlightByFilter(String from, String to, LocalDate date) {
-        /*
-        Return all the flights from a destination to a destination on a date of this airline.
-
-        TODO: this function should be in a use case file, as Airline is a entity class and should only store data.
-         */
-        ArrayList<Integer> indices = new ArrayList<>();
-        ArrayList<Flight> flightsOnDate = new ArrayList<>();
+    private int getIndex(int id) {
+        int index = -1;
 
         for (int i = 0; i < this.flights.size(); i++) {
-            if (this.flights.get(i).departureTime.toLocalDate().equals(date)) {
-                if (this.flights.get(i).from.equals(from) && this.flights.get(i).to.equals(to)) {
-                    indices.add(i);
-                }
+            if (this.flights.get(i).getId() == id) {
+                index = i;
+                break;
             }
         }
+        return index;
+    }
 
-        for (int index : indices) {
-            flightsOnDate.add(this.flights.get(index));
-        }
-
-        return flightsOnDate;
+    @Override
+    public Iterator<Flight> iterator() {
+        return new GeneralIterator<Flight>(this.flights);
     }
 }

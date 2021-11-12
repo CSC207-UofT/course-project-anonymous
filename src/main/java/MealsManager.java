@@ -1,8 +1,8 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 
-public class MealsManager {
-    // TODO: implement iterator design pattern
-    ArrayList<Meal> meals;
+public class MealsManager implements Iterable<Meal> {
+    private ArrayList<Meal> meals;
 
     public MealsManager() {
         this.meals = new ArrayList<>();
@@ -29,5 +29,10 @@ public class MealsManager {
 
     public void addMeal(String name, double calories, double price, boolean isVeg) {
         this.meals.add(new Meal(name, calories, price, isVeg));
+    }
+
+    @Override
+    public Iterator<Meal> iterator() {
+        return new GeneralIterator<Meal>(this.meals);
     }
 }

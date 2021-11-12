@@ -84,3 +84,4 @@ public class MembershipFactory {
         return (hours * 60) / 3;
     }
 }
+

@@ -49,7 +49,7 @@ public class Flight {
         - Next append <noOfBusinessSeats> number of Business class seats
         - Finally append <noOfFirstSeats> number of First class seats
 
-        The indexing is as follows:
+        The indexing is as follows
         - if 0 <= i < noOfEconomySeats, then the seat is Economy
         - if noOfEconomySeats <= i < noOfEconomySeats + noOfBusinessSeats, then the seat is of Business class
         - else if i < noOfEconomySeats + noOfBusinessSeats + noOfFirstSeats. then the seat is of First class

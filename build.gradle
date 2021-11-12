@@ -14,6 +14,7 @@ dependencies {
     implementation 'com.andyln:mixja:1.0.0'
     implementation 'org.magicwerk:brownies-collections:0.9.14'
     testImplementation('org.junit.jupiter:junit-jupiter:5.6.0')
+    implementation 'org.postgresql:postgresql:42.2.10'
 }
 
 test {

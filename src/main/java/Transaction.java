@@ -1,7 +1,7 @@
 import java.util.HashMap;
 
 public class Transaction {
-    private HashMap<String, Double> items;
+    HashMap<String, Double> items;
 
     public Transaction() {
         items = new HashMap<>();
@@ -18,27 +18,6 @@ public class Transaction {
              total += price;
          }
 
-         return total;
-    }
-
-
-    @Override
-    public String toString() {
-        /*
-        TODO: create a transaction presenter, this method should not be here
-         */
-        String header = "***********************Transaction***********************\n";
-
-        String billSoFar = "";
-
-        for (String key : this.items.keySet()) {
-            billSoFar += key + " : " + this.items.get(key) + "\n";
-        }
-
-        String totalBillBeforeAfter = "********************************************************* \n";
-        String totalBill = "Total : " + this.calculateTotal();
-
-        return header + " \n" + billSoFar
-                + totalBillBeforeAfter + totalBill + "\n" + totalBillBeforeAfter;
+         return Math.round(total * 100) / 100;
     }
 }

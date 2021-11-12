@@ -4,6 +4,7 @@ import java.util.*;
 
 public class PassengerManager implements Iterable<Passenger>, PropertyChangeListener {
     static int[] pointsThreshold = {0, 1000, 10000, 100000};
+
     private int currentIdCount = 0;
     ArrayList<Passenger> passengers;
 
@@ -16,6 +17,12 @@ public class PassengerManager implements Iterable<Passenger>, PropertyChangeList
         int idToReturn = this.currentIdCount;
         this.currentIdCount++;
         return idToReturn;
+    }
+
+    public void addPassenger(String name, String email, String number, int id) {
+        this.passengers.add(new Passenger(id, name, email, number));
+        int idToReturn = this.currentIdCount;
+        this.currentIdCount = id + 1;
     }
 
     public Passenger getPassengerWithId(int id) {

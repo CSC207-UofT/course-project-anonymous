@@ -1,4 +1,10 @@
+import java.util.ArrayList;
+
 public class SeatFactory {
+
+    static double firstClassSeatPrice = 200;
+    static double businessClassSeatPrice = 150;
+    static double economyClassSeatPrice = 100;
 
     /**
      * return the desired object of type Seat
@@ -22,5 +28,65 @@ public class SeatFactory {
             return new BusinessClassSeat(id, price);
         }
         return null;
+    }
+
+    /**
+     * Creates a seat list in order of economy, business, first by putting in
+     * Seat instances according to the numbers given as paramaters.
+     *
+     * @param noOfEconomySeats the number of economy class seats
+     * @param noOfBusinessSeats the number of business class seats
+     * @param noOfFirstSeats the number of first class seats
+     *
+     * @return array list of seats
+     *
+     * The function does te following:
+     * - First append <noOfEconomySeats> number of Economy seats
+     * - Next append <noOfBusinessSeats> number of Business class seats
+     * - Finally append <noOfFirstSeats> number of First class seats
+     *
+     * The indexing is as follows:
+     * - if 0 <= i < noOfEconomySeats, then the seat is Economy
+     * - if noOfEconomySeats <= i < noOfEconomySeats + noOfBusinessSeats, then the seat is of Business class
+     * - else if i < noOfEconomySeats + noOfBusinessSeats + noOfFirstSeats. then the seat is of First class
+     */
+    public ArrayList<Seat> createSeatMap(int noOfEconomySeats, int noOfBusinessSeats, int noOfFirstSeats) {
+        ArrayList<Seat> seats = new ArrayList<>();
+
+        for (int i = 0; i < noOfBusinessSeats + noOfEconomySeats + noOfFirstSeats; i++) {
+            if (i < noOfEconomySeats) {
+                seats.add(new EconomySeat(i, economyClassSeatPrice));
+            } else if (i < noOfEconomySeats + noOfBusinessSeats) {
+                seats.add(new BusinessClassSeat(i, businessClassSeatPrice));
+            } else {
+                seats.add(new FirstClassSeat(i, firstClassSeatPrice));
+            }
+        }
+
+        return seats;
+    }
+
+    /**
+     * Returns List of Seats according to their type
+     * where Economy represents the classNameIndex "1", Business represents "2"),
+     * and First represents "3".
+     * To see how the slices are selected for different type of seat,
+     * see this.createSeatMap function.
+     *
+     * @param seats how many days are left until the departure date
+     * @param classNameIndex the index corresponding to a certain type of seat
+     *
+     * @return the list of seats according to their type
+     */
+    public ArrayList<Seat> getSeatsOfClass(ArrayList<Seat> seats, String classNameIndex) {
+        if (classNameIndex.equals("1")) {
+            return new ArrayList<Seat>(seats.subList(0, Flight.economyClassSeats));
+        } else if (classNameIndex.equals("2")) {
+            return new ArrayList<Seat>(seats.subList(Flight.economyClassSeats,
+                    Flight.economyClassSeats + Flight.businessClassSeats));
+        } else {
+            return new ArrayList<Seat>(seats.subList(Flight.economyClassSeats + Flight.businessClassSeats,
+                    Flight.economyClassSeats + Flight.businessClassSeats + Flight.firstClassSeats));
+        }
     }
 }

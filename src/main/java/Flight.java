@@ -1,24 +1,21 @@
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Iterator;
 
-public class Flight {
-
-    // taking the number of seats in a typical plane
+public class Flight implements Iterable<Seat> {
     static int firstClassSeats = 18;
     static int businessClassSeats = 90;
     static int economyClassSeats = 252;
 
-    static int firstClassSeatPrice = 200;
-    static int businessClassSeatPrice = 150;
-    static int economyClassSeatPrice = 100;
-
     private int id;
     private double miles;
-    String to; String from;
-    LocalDateTime departureTime; LocalDateTime landingTime;
+    private String to; private String from;
+    private LocalDateTime departureTime; private LocalDateTime landingTime;
 
-    Airline airline;
-    ArrayList<Seat> seats;
+    private Airline airline;
+    private ArrayList<Seat> seats;
+
+    private SeatFactory seatFactory;
 
     public Flight(LocalDateTime departureTime,
                   LocalDateTime landingTime,
@@ -31,8 +28,8 @@ public class Flight {
         this.departureTime = departureTime; this.landingTime = landingTime;
 
         this.airline = flightAirline;
+        this.seatFactory = new SeatFactory();
 
-        // TODO: implement the iterator design pattern for seats arraylist.
         this.seats = new ArrayList<>();
 
         createSeatMap(Flight.economyClassSeats,
@@ -42,51 +39,20 @@ public class Flight {
 
     private void createSeatMap(int noOfEconomySeats, int noOfBusinessSeats, int noOfFirstSeats) {
         /*
-        Fills in the this.seats list by putting in Seat instances acc. to the numbers given as params.
-
-        The function does te following:
-        - First append <noOfEconomySeats> number of Economy seats
-        - Next append <noOfBusinessSeats> number of Business class seats
-        - Finally append <noOfFirstSeats> number of First class seats
-
-        The indexing is as follows
-        - if 0 <= i < noOfEconomySeats, then the seat is Economy
-        - if noOfEconomySeats <= i < noOfEconomySeats + noOfBusinessSeats, then the seat is of Business class
-        - else if i < noOfEconomySeats + noOfBusinessSeats + noOfFirstSeats. then the seat is of First class
-
-        TODO: decide if this function should remain here or not, because the only function of this class should be to store data.
+        Fills in the this.seats list by putting in Seat instances acc. to the numbers given as params
          */
-        for (int i = 0; i < noOfBusinessSeats + noOfEconomySeats + noOfFirstSeats; i++) {
-            if (i < noOfEconomySeats) {
-                this.seats.add(new EconomySeat(i, economyClassSeatPrice));
-            } else if (i < noOfEconomySeats + noOfBusinessSeats) {
-                this.seats.add(new BusinessClassSeat(i, businessClassSeatPrice));
-            } else {
-                this.seats.add(new FirstClassSeat(i, firstClassSeatPrice));
-            }
-        }
+        this.seats = this.seatFactory.createSeatMap(noOfEconomySeats, noOfBusinessSeats, noOfFirstSeats);
     }
 
     public ArrayList<Seat> getSeatsOfClass(String classNameIndex) {
         /*
         Returns List of Seats according to their type (Economy ("1"), Business ("2"), or First("3"))
         To see how the slices are selected for different type of seat, see this.createSeatMap function.
-
-        TODO: this function should not be in this class, this is an entity class and it should only store info.
          */
-        if (classNameIndex.equals("1")) {
-            return new ArrayList<Seat>(this.seats.subList(0, Flight.economyClassSeats));
-        } else if (classNameIndex.equals("2")) {
-            return new ArrayList<Seat>(this.seats.subList(Flight.economyClassSeats,
-                    Flight.economyClassSeats + Flight.businessClassSeats));
-        } else {
-            return new ArrayList<Seat>(this.seats.subList(Flight.economyClassSeats + Flight.businessClassSeats,
-                    Flight.economyClassSeats + Flight.businessClassSeats + Flight.firstClassSeats));
-        }
+        return this.seatFactory.getSeatsOfClass(this.seats, classNameIndex);
     }
 
     // GETTERS AND SETTERS:
-    // TODO: Add get set for departure date and all the other variables
 
     public int getId() {
         return id;
@@ -102,5 +68,42 @@ public class Flight {
 
     public void setMiles(double miles) {
         this.miles = miles;
+    }
+
+    public LocalDateTime getDepartureTime() {
+        return departureTime;
+    }
+
+    public void setDepartureTime(LocalDateTime departureTime) {
+        this.departureTime = departureTime;
+    }
+
+    public LocalDateTime getLandingTime() {
+        return landingTime;
+    }
+
+    public void setLandingTime(LocalDateTime landingTime) {
+        this.landingTime = landingTime;
+    }
+
+    public String getTo() {
+        return to;
+    }
+
+    public String getFrom() {
+        return from;
+    }
+
+    public Airline getAirline() {
+        return airline;
+    }
+
+    public int getSeatNo(Seat seat) {return this.seats.indexOf(seat);}
+
+    public Seat getSeatAtIndex(int index) {return this.seats.get(index);}
+
+    @Override
+    public Iterator<Seat> iterator() {
+        return new GeneralIterator<Seat>(this.seats);
     }
 }

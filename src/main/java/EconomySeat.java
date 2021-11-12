@@ -1,6 +1,4 @@
 public class EconomySeat extends Seat{
-    private double price;
-
     /**
      * Construct an EconomySeat, giving it the given
      * id and price.
@@ -10,22 +8,6 @@ public class EconomySeat extends Seat{
      */
     public EconomySeat(int id, double price) {
         super(id, price);
-    }
-
-    /**
-     * @return the price of this EconomySeat
-     */
-    public double getPrice() {
-        return price;
-    }
-
-    /**
-     * Set the price of this EconomySeat to the given price
-     *
-     * @param price     The EconomySeat's price
-     */
-    public void setPrice(double price) {
-        this.price = price;
     }
 
     /**
@@ -42,5 +24,13 @@ public class EconomySeat extends Seat{
     @Override
     public int numberOfCheckInBagsAllowed() {
         return 2;
+    }
+
+    /**
+    * @return string representation of class name
+    */
+    @Override
+    public String getSeatClass() {
+        return "Economy";
     }
 }

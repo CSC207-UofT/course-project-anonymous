@@ -1,8 +1,8 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Iterator;
 
-public class AirlinesManager {
-    // TODO: implement iterator design pattern
+public class AirlinesManager implements  Iterable<Airline>{
     ArrayList<Airline> airlines;
 
     public AirlinesManager() {
@@ -10,14 +10,7 @@ public class AirlinesManager {
     }
 
     public Airline getAirline(String name) {
-        int index = -1;
-
-        for (int i = 0; i < this.airlines.size(); i++) {
-            if (this.airlines.get(i).name.equals(name)) {
-                index = i;
-                break;
-            }
-        }
+        int index = getIndex(name);
 
         if (index == -1) {
             return null;
@@ -30,14 +23,7 @@ public class AirlinesManager {
     }
 
     public boolean removeAirline(String name) {
-        int index = -1;
-
-        for (int i = 0; i < this.airlines.size(); i++) {
-            if (this.airlines.get(i).name == name) {
-                index = i;
-                break;
-            }
-        }
+        int index = getIndex(name);
 
         if (index == -1) {
             return false;
@@ -46,23 +32,24 @@ public class AirlinesManager {
         return false;
     }
 
-    // TODO: Maybe airline managers work is not to get filtered flights, so maybe we can use/make another use case to filter and search flights
-    // ^ just an idea, maybe this is fine here, i am confused 😭.
+    private int getIndex(String name) {
+        int index = -1;
+
+        for (int i = 0; i < this.airlines.size(); i++) {
+            if (this.airlines.get(i).name.equals(name)) {
+                index = i;
+                break;
+            }
+        }
+        return index;
+    }
 
     public ArrayList<Flight> getFlightsByFilter(String from, String to, LocalDate date) {
         /*
         Collect flights with the specific parameters from all the airlines in the manager, and return a combined list.
-
-        - it uses Airline.getFlightByFilter function
-        - it uses addAll function of arraylist to combine all arraylists.
          */
-        ArrayList<Flight> flights = new ArrayList<>();
-
-        for (Airline a: this.airlines) {
-            flights.addAll(a.getFlightByFilter(from, to, date));
-        }
-
-        return flights;
+       FlightFilter flightFilter = new FlightFilter();
+       return flightFilter.getFlightsFromAllAirlines(this, from, to, date);
     }
 
     public Flight getFlightByName(String name) {
@@ -70,4 +57,8 @@ public class AirlinesManager {
         return this.getAirline(nameParts[0]).getFlight(Integer.parseInt(nameParts[1]));
     }
 
+    @Override
+    public Iterator<Airline> iterator() {
+        return new GeneralIterator<Airline>(this.airlines);
+    }
 }

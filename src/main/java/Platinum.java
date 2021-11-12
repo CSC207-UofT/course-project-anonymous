@@ -9,7 +9,7 @@ public class Platinum implements MembershipStatus {
      **/
     @Override
     public double getFlightDiscount(double price) {
-        return price - (price * 0.40);
+        return (price * 0.40);
     }
 
     /**
@@ -22,7 +22,7 @@ public class Platinum implements MembershipStatus {
      **/
     @Override
     public double getMealDiscount(double price) {
-        return price - (price * 0.40);
+        return (price * 0.40);
     }
 
     /**
@@ -35,6 +35,11 @@ public class Platinum implements MembershipStatus {
      **/
     @Override
     public double getExtraBaggageDiscount(double price) {
-        return price - (price * 0.40);
+        return (price * 0.40);
+    }
+
+    @Override
+    public String getMembershipName() {
+        return "Platinum";
     }
 }

@@ -1,31 +1,33 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 
-public class TransactionManager {
-    // TODO: iterator design pattern
-    ArrayList<Transaction> transactions;
+public class TransactionManager implements Iterable<Transaction> {
+    private ArrayList<Transaction> transactions;
+    private NewTicketTransactionCreator newTicketTransactionCreator;
+    private RescheduleTicketTransactionCreator rescheduleTicketTransactionCreator;
 
     public TransactionManager() {
         this.transactions = new ArrayList<>();
+        this.newTicketTransactionCreator = new NewTicketTransactionCreator();
+        this.rescheduleTicketTransactionCreator = new RescheduleTicketTransactionCreator();
     }
 
     public Transaction createTransactionForNewTicket(Passenger passenger,
                                                      Seat seat,
                                                      Meal meal,
                                                      ArrayList<Baggage> baggages) {
-        Transaction transaction = new Transaction();
-        // TODO: improve item addition in createTransactionForNewTicket
-        transaction.addItem("Seat Charge", seat.getPrice());
-        transaction.addItem("Meal Charge", meal.getPrice());
-        transaction.addItem("Baggage Charge", BaggageManager.calculateTotalPrice(seat, baggages));
-        transaction.addItem("Membership Flight Discount",
-                -passenger.getMembership().getFlightDiscount(seat.getPrice()));
-        transaction.addItem("Membership Meal Discount",
-                -passenger.getMembership().getMealDiscount(meal.getPrice()));
-        transaction.addItem("Membership Baggage Discount",
-                -passenger.getMembership().getExtraBaggageDiscount(BaggageManager.calculateTotalPrice(seat, baggages)));
-
-        this.transactions.add(transaction);
+        Transaction transaction = this.newTicketTransactionCreator.getTransaction(passenger, seat, meal, baggages);
+        this.addTransaction(transaction);
         return transaction;
+    }
+
+    public Transaction createTransactionRescheduleTicket(Ticket ticket, Flight flight) {
+        Transaction transaction = new RescheduleTicketTransactionCreator().getTransaction(ticket, flight);
+        return transaction;
+    }
+
+    public void addTransaction(Transaction transaction) {
+        this.transactions.add(transaction);
     }
 
     public void remove(Transaction transaction) {
@@ -36,9 +38,8 @@ public class TransactionManager {
         }
     }
 
-    public Transaction createTransactionRescheduleTicket() {
-        Transaction transaction = new Transaction();
-        // TODO: implement createTransactionRescheduleTicket in TransactionManager
-        return transaction;
+    @Override
+    public Iterator<Transaction> iterator() {
+        return new GeneralIterator<Transaction>(this.transactions);
     }
 }

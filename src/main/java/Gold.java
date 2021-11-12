@@ -9,7 +9,7 @@ public class Gold implements MembershipStatus {
      **/
     @Override
     public double getFlightDiscount(double price) {
-        return price - (price * 0.30);
+        return (price * 0.30);
     }
 
     /**
@@ -22,7 +22,7 @@ public class Gold implements MembershipStatus {
      **/
     @Override
     public double getMealDiscount(double price) {
-        return price - (price * 0.30);
+        return (price * 0.30);
     }
 
     /**
@@ -35,6 +35,11 @@ public class Gold implements MembershipStatus {
      **/
     @Override
     public double getExtraBaggageDiscount(double price) {
-        return price - (price * 0.30);
+        return (price * 0.30);
+    }
+
+    @Override
+    public String getMembershipName() {
+        return "Gold";
     }
 }

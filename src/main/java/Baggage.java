@@ -25,6 +25,8 @@ public abstract class Baggage {
         this.id = -1;
     }
 
+    public abstract boolean isOverweight();
+
     // GETTERS AND SETTERS:
 
     public double getWeight() {

@@ -1,8 +1,4 @@
-import MementoTicketStages.SeatOriginator;
-import MementoTicketStages.SeatPresenterMemento;
-
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -17,9 +13,6 @@ public class CmdUI {
     }
 
     public void start(Scanner scanner, boolean askingAgain) {
-        /*
-
-         */
         if (!askingAgain) {
             System.out.println("Hi Welcome to Anonymous Flight Reservation System \n ");
         }
@@ -30,7 +23,7 @@ public class CmdUI {
 
         if (userInp.equals("1")) {
             this.passengerSessionHandler = new PassengerSessionHandler();
-            this.signInUpPassenger(scanner, false); /* Takes the user to the passenger sign up page*/
+            this.signInUpPassenger(scanner, false);
         }
         else if (userInp.equals("2")) {
             this.agentSessionHandler = new AgentSessionHandler();
@@ -43,9 +36,6 @@ public class CmdUI {
     }
 
     public void signInUpPassenger(Scanner scanner, boolean askingAgain) {
-        /*
-        Asks the passenger for their personal details
-         */
         System.out.println("Hi there! are you new to our app? Sign up, If not Sign In. \n \n");
 
         System.out.println("1. Sing Up \n 2.Sign In \n \n Type 1 or 2 : ");
@@ -66,9 +56,6 @@ public class CmdUI {
 
 
     public void signUpPassenger(Scanner scanner, boolean askAgain) {
-        /*
-        Adds a new passenger to the PassengerManager class with the details they provided
-         */
         if (!askAgain) {
             System.out.print("Please fill out your personal details to create an account \n");
         }
@@ -101,10 +88,6 @@ public class CmdUI {
     }
 
     public void signInPassenger(Scanner scanner, boolean askAgain) {
-        /*
-        If the passenger has a pre-existing ID, it will allow the passenger to directly sign in.
-        The passenger will be retrieved from the array of passengers based on their unique ID
-         */
         if (!askAgain) {
             System.out.println("Please fill in your id to sign in \n");
         }
@@ -121,13 +104,10 @@ public class CmdUI {
     }
 
     public void menu(Scanner scanner) {
-        /*
-        Displays the possible options the passenger can choose to continue using the app.
-         */
         System.out.println("What would you like to do today "
                 + this.passengerSessionHandler.passenger.getName() +  "\n \n ");
 
-        System.out.println("1. Search & Book Flight \n 2. Booking History \n 3. End App Use \n \n Type 1, 2 or 3 : ");
+        System.out.println("1. Search & Book Flight \n2. Booking History \n3. My Info \n4. End App Use \n \n Type 1, 2, 3 or 4 : ");
 
         String userInp = scanner.nextLine();
 
@@ -135,10 +115,18 @@ public class CmdUI {
             this.flightSearchFilter(scanner, false);
         }
         else if (userInp.equals("2")) {
-            System.out.println("Sorry this feature has not been implemented :-( \n");
-            this.menu(scanner);
+            this.showBookings(scanner);
         }
         else if (userInp.equals("3")) {
+           Passenger passenger = this.passengerSessionHandler.passenger;
+
+           System.out.println("\n Name: " +passenger.getName() +
+                   "\nMembership: " + passenger.getMembership().getMembershipName() +
+                   "\nPoints: " + passenger.getPoints());
+
+           this.menu(scanner);
+        }
+        else if (userInp.equals("4")) {
             System.out.println("Thankyou for Using Anonymous Airplane Reservation System \n");
         }
         else {
@@ -147,11 +135,148 @@ public class CmdUI {
         }
     }
 
+    public void showBookings(Scanner scanner) {
+        TicketFilter ticketFilter = new TicketFilter();
+        FlightFilter flightFilter = new FlightFilter();
+        FlightsPresenter flightsPresenter = new FlightsPresenter();
+
+        ArrayList<Ticket> tickets = ticketFilter.
+                getTicketsForPassenger(this.passengerSessionHandler.bookingSystem.ticketManager,
+                        this.passengerSessionHandler.passenger);
+
+        if (tickets.size() == 0) {
+            System.out.println("You have no bookings");
+            this.menu(scanner);
+            return;
+        }
+
+        System.out.println("\nHere are your tickets:\n");
+        System.out.println(new TicketPresenter().presentTickets(tickets));
+
+
+        String userInp = this.showBookingsQuestion(scanner);
+
+        if (userInp.equals("1")) {
+            Ticket ticket = this.ask_get_ticket_question(scanner, tickets);
+            userInp = this.ask_what_to_do_with_ticket(scanner);
+
+            if (userInp.equals("1")) {
+                System.out.println("\nLets reschedule your flight. This are the alternatives \n");
+
+                System.out.println(flightsPresenter.presentFlights(flightFilter.getSimilarFlights(
+                        this.passengerSessionHandler.bookingSystem.airlinesManager, ticket.getFlight())));
+
+                userInp = this.wantToRescheduleOrNot(scanner);
+
+                if (userInp.equals("1")) {
+                    System.out.println("Type the name of the flight you want to reschedule to : ");
+                    String flightName = scanner.nextLine();
+
+                    Flight flight = this.passengerSessionHandler.bookingSystem.airlinesManager.getFlightByName(flightName);
+
+                    System.out.println("\nThis is the receipt for the reschedule: \n");
+
+                    Transaction rescheduleTransaction = this.passengerSessionHandler.bookingSystem.transactionManager.
+                            createTransactionRescheduleTicket(ticket, flight);
+
+                    System.out.println(new TransactionPresenter().presentTransaction(rescheduleTransaction));
+
+                    userInp = this.wantToProceedWithTheRefund(scanner);
+
+                    if (userInp.equals("1")) {
+                        this.passengerSessionHandler.bookingSystem.rescheduleManager.reschedule(ticket, flight,
+                                this.passengerSessionHandler.bookingSystem.ticketManager);
+
+                        System.out.println("Your ticket has been rescheduled successfully :-)\n");
+
+                        this.menu(scanner);
+
+                    } else {
+                        this.showBookings(scanner);
+                    }
+
+                } else {
+                    this.showBookings(scanner);
+                }
+
+            } else if (userInp.equals("2")) {
+
+            } else {
+                this.showBookings(scanner);
+            }
+           } else {
+               this.menu(scanner);
+           }
+    }
+
+    public String wantToProceedWithTheRefund(Scanner scanner) {
+        System.out.println("\n1. Do you want to continue with the rescheduling \n2. Back\n Type 1, or 2 : ");
+        String optionSelected = scanner.nextLine();
+
+        if (!optionSelected.equals("1") && !optionSelected.equals("2")) {
+            System.out.println("You can only choose from 1, 2. \n");
+            return this.ask_what_to_do_with_ticket(scanner);
+        } else {
+            return optionSelected;
+        }
+    }
+
+    public String wantToRescheduleOrNot(Scanner scanner) {
+        System.out.println("\n1. Choose one of the flight to reschedule\n2. Back\n Type 1, or 2 : ");
+        String optionSelected = scanner.nextLine();
+
+        if (!optionSelected.equals("1") && !optionSelected.equals("2")) {
+            System.out.println("You can only choose from 1, 2. \n");
+            return this.ask_what_to_do_with_ticket(scanner);
+        } else {
+            return optionSelected;
+        }
+    }
+
+    public String ask_what_to_do_with_ticket(Scanner scanner) {
+        System.out.println("\n1. Reschedule this ticket\n2. Refund this ticket\n3. Back\n Type 1,2 or 3 : ");
+        String optionSelected = scanner.nextLine();
+
+        if (!optionSelected.equals("1") && !optionSelected.equals("2") && !optionSelected.equals("3")) {
+            System.out.println("You can only choose from 1,2, or 3. \n");
+            return this.ask_what_to_do_with_ticket(scanner);
+        } else {
+            return optionSelected;
+        }
+
+    }
+
+    public Ticket ask_get_ticket_question(Scanner scanner, ArrayList<Ticket> tickets) {
+        System.out.println("\n Which ticket would you like to edit (type one of 1, 2, 3, 4, ...." + tickets.size() + " to edit the nth ticket):");
+        try {
+            int id = Integer.parseInt(scanner.nextLine());
+
+            if (id < 1 || id > tickets.size()) {
+                System.out.println("the number you typed is not between 1 and " + tickets.size() + " inclusive \n");
+                return this.ask_get_ticket_question(scanner, tickets);
+            }
+
+            return tickets.get(id - 1);
+
+        } catch (NumberFormatException numberFormatException) {
+            System.out.println("Your input is not a valid number");
+            return this.ask_get_ticket_question(scanner, tickets);
+        }
+    }
+
+    public String showBookingsQuestion(Scanner scanner) {
+        System.out.println("\n1. Edit a Ticket\n2.Exit\nType 1 or 2 : ");
+        String optionSelected = scanner.nextLine();
+
+        if (!optionSelected.equals("1") && !optionSelected.equals("2")) {
+            System.out.println("You can only choose from 1 or 2. \n");
+            return this.showBookingsQuestion(scanner);
+        } else {
+            return optionSelected;
+        }
+    }
+
     public void flightSearchFilter(Scanner scanner, boolean askAgain) {
-        /*
-        Takes in information regarding the To and From destinations along with the dates and uses it
-        to display available flights from the database
-         */
         System.out.println("Please fill in the filter form below : \n \n");
 
         System.out.println("From : ");
@@ -167,7 +292,7 @@ public class CmdUI {
                 airlinesManager.getFlightsByFilter(from, to, date);
 
         if (flights.size() > 0) {
-            System.out.println(FlightsPresenter.presentFlights(flights));
+            System.out.println(new FlightsPresenter().presentFlights(flights));
             this.whatToDoWithFlights(scanner, flights);
         } else {
             System.out.println("No flights were found for " + date + ", going from " + from + " to " + to + "\n");
@@ -198,21 +323,20 @@ public class CmdUI {
 
     public void startBookingProcessForFlight(Scanner scanner, Flight flight) {
         ArrayList<Seat> seats = flight.getSeatsOfClass(this.askSeatClassQuestion(scanner));
-        String seatsMap = FlightsPresenter.presentSeats(seats);
+        String seatsMap = new SeatMapPresenter().presentSeats(seats);
 
         System.out.println("Select a Seat: \n");
         System.out.println(seatsMap + "\n \n");
-        SeatOriginator seatmap = new SeatOriginator(seatsMap).setSeatmap(seatsMap);
-        SeatPresenterMemento seatmemento = seatmap.createMemento();
 
         Seat seat = this.selectSeatQuestion(scanner, seats);
+
         ArrayList<Baggage> baggages = this.addBaggageQuestion(scanner, new ArrayList<Baggage>());
         Meal meal = this.askMealQuestion(scanner);
 
         Transaction transaction = this.passengerSessionHandler.bookingSystem.transactionManager.
                 createTransactionForNewTicket(this.passengerSessionHandler.passenger, seat, meal, baggages);
 
-        System.out.println(transaction.toString() + "\n");
+        System.out.println(new TransactionPresenter().presentTransaction(transaction) + "\n");
 
         if (this.askTransactionQuestion(scanner).equals("1")) {
             Ticket ticket = this.passengerSessionHandler.bookingSystem.ticketManager
@@ -220,7 +344,7 @@ public class CmdUI {
 
             System.out.println("Your ticket has been booked. Congrats! \n");
 
-            System.out.println(ticket.toString());
+            System.out.println(new TicketPresenter().presentTicket(ticket));
 
             this.menu(scanner);
         } else {
@@ -244,7 +368,7 @@ public class CmdUI {
     public Meal askMealQuestion(Scanner scanner) {
         System.out.println("Choose a meal: \n");
 
-        for (Meal m: this.passengerSessionHandler.bookingSystem.mealsManager.meals) {
+        for (Meal m: this.passengerSessionHandler.bookingSystem.mealsManager) {
             System.out.println(m.getName());
         }
 

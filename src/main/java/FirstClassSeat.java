@@ -1,6 +1,4 @@
 public class FirstClassSeat extends Seat{
-    private double price;
-
     /**
      * Construct a FirstClassSeat, giving it the given
      * id and price.
@@ -10,22 +8,6 @@ public class FirstClassSeat extends Seat{
      */
     public FirstClassSeat(int id, double price) {
         super(id, price);
-    }
-
-    /**
-     * @return the price of this FirstClassSeat
-     */
-    public double getPrice() {
-        return price;
-    }
-
-    /**
-     * Set the price of this FirstClassSeat to the given price
-     *
-     * @param price     The FirstClassSeat's price
-     */
-    public void setPrice(double price) {
-        this.price = price;
     }
 
     /**
@@ -42,5 +24,13 @@ public class FirstClassSeat extends Seat{
     @Override
     public int numberOfCheckInBagsAllowed() {
         return 3;
+    }
+
+    /**
+     * @return string representation of class name
+     */
+    @Override
+    public String getSeatClass() {
+        return "First";
     }
 }

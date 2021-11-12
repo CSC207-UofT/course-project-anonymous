@@ -1,8 +1,7 @@
 import java.util.ArrayList;
 
 public class BaggageManager {
-    // TODO: make this function non static
-    static public double calculateTotalPrice(Seat seat, ArrayList<Baggage> baggages) {
+     public double calculateTotalPrice(Seat seat, ArrayList<Baggage> baggages) {
         /*
         Calculate the total price of list of baggages carried by a passenger. It takes in
         the list of baggages and add up the overweight cost, and the cost of extra bags
@@ -19,16 +18,14 @@ public class BaggageManager {
         double totalCost = 0;
 
         for (Baggage b : baggages) {
-            if (b instanceof CabinBaggage) {
-                totalCost += ((CabinBaggage) b).calcOverweightPrice();
+            totalCost += this.calcOverweightPrice(b);
 
+            if (b instanceof CabinBaggage) {
                 noOfCabinBags++;
                 if (noOfCabinBags > seat.numberOfCabinBagsAllowed()) {
                     totalCost += Baggage.extraCabinBagPrice;
                 }
-            } else if (b instanceof CheckInBaggage) {
-                totalCost += ((CheckInBaggage) b).calcOverweightPrice();
-
+            } else {
                 noOfCheckinBags++;
                 if (noOfCheckinBags > seat.numberOfCheckInBagsAllowed()) {
                     totalCost += Baggage.extraCheckInBagPrice;
@@ -39,5 +36,50 @@ public class BaggageManager {
         return totalCost;
     }
 
-    // TODO: maybe transfer function from ticket of add and remove baggage to here somehow
+    public int noOfCabinBags(ArrayList<Baggage> baggages) {
+        int count = 0;
+
+        for (Baggage b: baggages) {
+            if (b instanceof CabinBaggage) {
+                count++;
+            }
+        }
+        // |
+        return count;
+    }
+
+    public int noOfCheckInBags(ArrayList<Baggage> baggages) {
+        int count = 0;
+        // |
+        for (Baggage b: baggages) {
+            if (b instanceof CheckInBaggage) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    public double calcOverweightPrice(Baggage baggage) {
+        /*
+        Calculate the overweight by the formula:
+
+               overweight price per kg * round(bag weight - allowed weight)
+         */
+        if (baggage.isOverweight()) {
+            double allowed_weight = 0;
+            double per_kg_price = 0;
+
+            if (baggage instanceof CabinBaggage) {
+                allowed_weight = Baggage.cabinBagAllowance;
+                per_kg_price = Baggage.cabinBagCostOverweightPerKg;
+            } else {
+                allowed_weight = Baggage.checkInBagAllowance;
+                per_kg_price = Baggage.checkInBagCostOverweightPerKg;
+            }
+            return Math.max((Math.round(baggage.getWeight()) - allowed_weight)
+                    * per_kg_price, 0);
+        }
+        return 0.0;
+    }
 }

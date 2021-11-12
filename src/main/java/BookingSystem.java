@@ -1,7 +1,5 @@
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
 
 public class BookingSystem {
 
@@ -21,10 +19,10 @@ public class BookingSystem {
         this.rescheduleManager = new RescheduleManager();
         this.agentsManager = new AgentsManager();
         this.ticketManager = new TicketManager();
+
+        this.ticketManager.addObserver(this.passengerManager);
         this.addRandomData();
     }
-
-    // TODO: Add methods here to reduce dependence in the use case
 
     public void addRandomData() {
         this.airlinesManager.addAirline("Emirates");

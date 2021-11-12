@@ -1,6 +1,4 @@
 public class BusinessClassSeat extends Seat{
-    private double price;
-
     /**
      * Construct a BusinessClassSeat, giving it the given
      * id and price.
@@ -10,22 +8,6 @@ public class BusinessClassSeat extends Seat{
      */
     public BusinessClassSeat(int id, double price) {
         super(id, price);
-    }
-
-    /**
-     * @return the price of this BusinessClassSeat
-     */
-    public double getPrice() {
-        return price;
-    }
-
-    /**
-     * Set the price of this BusinessClassSeat to the given price
-     *
-     * @param price     The BusinessClassSeat's price
-     */
-    public void setPrice(double price) {
-        this.price = price;
     }
 
     /**
@@ -42,5 +24,13 @@ public class BusinessClassSeat extends Seat{
     @Override
     public int numberOfCheckInBagsAllowed() {
         return 2;
+    }
+
+    /**
+     * @return string representation of class name
+     */
+    @Override
+    public String getSeatClass() {
+        return "Business";
     }
 }

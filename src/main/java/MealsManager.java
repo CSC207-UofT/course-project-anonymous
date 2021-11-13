@@ -10,6 +10,10 @@ public class MealsManager implements Iterable<Meal> {
     }
 
     public Meal getMeal(String name) {
+        /*
+        Return a Meal object if the meal is present in this.meals
+
+         */
         for (Meal m : this.meals) {
             if (m.getName().equals(name)) {
                 return m;
@@ -19,6 +23,10 @@ public class MealsManager implements Iterable<Meal> {
     }
 
     public boolean checkForMeal(String mealName) {
+        /*
+        Return a boolean value representing whether a meal is available or not
+
+         */
         for (Meal m: this.meals) {
             if (m.getName().equals(mealName)) {
                 return true;
@@ -28,6 +36,10 @@ public class MealsManager implements Iterable<Meal> {
     }
 
     public void addMeal(String name, double calories, double price, boolean isVeg) {
+        /*
+        A function allowing us to add meals to our meal list which can then be ordered by the passengers
+
+         */
         this.meals.add(new Meal(name, calories, price, isVeg));
     }
 

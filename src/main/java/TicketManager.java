@@ -23,6 +23,8 @@ public class TicketManager implements Iterable<Ticket> {
 
         if (!loadingData) {
             observable.firePropertyChange("points added", ticket, passenger);
+        } else {
+            observable.firePropertyChange("points added", null, passenger);
         }
         this.tickets.add(ticket);
         return ticket;

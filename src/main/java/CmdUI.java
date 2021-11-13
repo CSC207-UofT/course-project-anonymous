@@ -187,6 +187,7 @@ public class CmdUI {
                         this.passengerSessionHandler.bookingSystem.rescheduleManager.reschedule(ticket, flight,
                                 this.passengerSessionHandler.bookingSystem.ticketManager);
 
+                        this.passengerSessionHandler.ticketDataHandler.removeTicket(ticket);
                         System.out.println("Your ticket has been rescheduled successfully :-)\n");
 
                         this.menu(scanner);
@@ -209,6 +210,7 @@ public class CmdUI {
 
                 if (userInp.equals("1")) {
                     this.passengerSessionHandler.bookingSystem.ticketManager.removeTicket(ticket);
+                    this.passengerSessionHandler.ticketDataHandler.removeTicket(ticket);
                     System.out.println("Your ticket has been refunded, you will receive your money in 10-15 business days");
 
                     this.showBookings(scanner);
@@ -366,7 +368,7 @@ public class CmdUI {
 
         if (this.askTransactionQuestion(scanner).equals("1")) {
             Ticket ticket = this.passengerSessionHandler.bookingSystem.ticketManager
-                    .addTicket(this.passengerSessionHandler.passenger, flight, seat, meal, baggages);
+                    .addTicket(this.passengerSessionHandler.passenger, flight, seat, meal, baggages, false);
 
             System.out.println("Your ticket has been booked. Congrats! \n");
 

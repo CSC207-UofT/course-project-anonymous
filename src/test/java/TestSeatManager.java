@@ -13,8 +13,6 @@ public class TestSeatManager {
 
     @Test
     public void testCalculateRefundByDaysLeft() {
-        seatManager.seat.setPrice(200);
-
         double full_refund = seatManager.calculateRefundByDaysLeft(7, 28);
         assertEquals(200, full_refund);
 
@@ -28,8 +26,6 @@ public class TestSeatManager {
 
     @Test
     public void testCalculateDateChangeChargeByDateLeft() {
-        seatManager.seat.setPrice(200);
-
         double no_charge = seatManager.calculateDateChangeChargeByDateLeft(7, 28);
         assertEquals(0, no_charge);
 

@@ -8,9 +8,11 @@ public class Ticket {
     private Meal meal;
     private ArrayList<Baggage> baggages;
 
-    public Ticket(Passenger passenger, Flight flight, Seat seat) {
+    public Ticket(Passenger passenger, Flight flight, Seat seat, boolean loadingData) {
         this.passenger = passenger; this.flight = flight; this.seat = seat;
-        this.passenger.setPoints(Math.toIntExact(this.passenger.getPoints() + Math.round(flight.getMiles() / 100)));
+        if (!loadingData) {
+            this.passenger.setPoints(Math.toIntExact(this.passenger.getPoints() + Math.round(flight.getMiles() / 100)));
+        }
         seat.setOccupied(true);
     }
 

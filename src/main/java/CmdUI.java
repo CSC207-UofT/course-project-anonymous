@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class CmdUI {
     private PassengerSessionHandler passengerSessionHandler;
-    private AgentSessionHandler agentSessionHandler;
 
     public static void main(String[] args) {
         CmdUI cmdUI = new CmdUI();
@@ -26,8 +25,8 @@ public class CmdUI {
             this.signInUpPassenger(scanner, false);
         }
         else if (userInp.equals("2")) {
-            this.agentSessionHandler = new AgentSessionHandler();
-            this.signInUpAgent(scanner, false);
+            System.out.println("Sorry this feature is not available right now please try again later");
+            this.start(scanner, true);
         }
         else {
             System.out.println("You can only choose from 1 or 2. \n ");
@@ -74,6 +73,7 @@ public class CmdUI {
 
         if (userInp.equals("1")) {
             int id = this.passengerSessionHandler.bookingSystem.passengerManager.addPassenger(name, email, number);
+            this.passengerSessionHandler.passengerDataHandler.addPassenger(name, email, number, id + "");
 
             System.out.println("Congrats! You are now a member, your ID is " + id + ". This would be used to SignIn. \n");
             this.signInPassenger(scanner, false);
@@ -187,6 +187,7 @@ public class CmdUI {
                         this.passengerSessionHandler.bookingSystem.rescheduleManager.reschedule(ticket, flight,
                                 this.passengerSessionHandler.bookingSystem.ticketManager);
 
+                        this.passengerSessionHandler.ticketDataHandler.removeTicket(ticket);
                         System.out.println("Your ticket has been rescheduled successfully :-)\n");
 
                         this.menu(scanner);
@@ -200,13 +201,40 @@ public class CmdUI {
                 }
 
             } else if (userInp.equals("2")) {
+                System.out.println("\nLets start your refund process. You will receive the following amount back:\n");
 
+                Transaction refundTransaction = this.passengerSessionHandler.bookingSystem.transactionManager.createTransactionRefundTicket(ticket);
+                System.out.println(new TransactionPresenter().presentTransaction(refundTransaction));
+
+                userInp = this.wantToRefund(scanner);
+
+                if (userInp.equals("1")) {
+                    this.passengerSessionHandler.bookingSystem.ticketManager.removeTicket(ticket);
+                    this.passengerSessionHandler.ticketDataHandler.removeTicket(ticket);
+                    System.out.println("Your ticket has been refunded, you will receive your money in 10-15 business days");
+
+                    this.showBookings(scanner);
+                } else {
+                    this.showBookings(scanner);
+                }
             } else {
                 this.showBookings(scanner);
             }
            } else {
                this.menu(scanner);
            }
+    }
+
+    public String wantToRefund(Scanner scanner) {
+        System.out.println("Do you want to continue with the refund : \n1. Yes refund this ticket\n2. No, go back to booking history \nType 1, or 2 :  ");
+        String optionSelected = scanner.nextLine();
+
+        if (!optionSelected.equals("1") && !optionSelected.equals("2")) {
+            System.out.println("You can only choose from 1, 2. \n");
+            return this.wantToRefund(scanner);
+        } else {
+            return optionSelected;
+        }
     }
 
     public String wantToProceedWithTheRefund(Scanner scanner) {
@@ -340,7 +368,7 @@ public class CmdUI {
 
         if (this.askTransactionQuestion(scanner).equals("1")) {
             Ticket ticket = this.passengerSessionHandler.bookingSystem.ticketManager
-                    .addTicket(this.passengerSessionHandler.passenger, flight, seat, meal, baggages);
+                    .addTicket(this.passengerSessionHandler.passenger, flight, seat, meal, baggages, false);
 
             System.out.println("Your ticket has been booked. Congrats! \n");
 

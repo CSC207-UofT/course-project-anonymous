@@ -17,11 +17,15 @@ public class TicketManager implements Iterable<Ticket> {
         observable.addPropertyChangeListener("points added", observer);
     }
 
-    public Ticket addTicket(Passenger passenger, Flight flight, Seat seat, Meal meal, ArrayList<Baggage> baggages) {
-        Ticket ticket = new Ticket(passenger, flight, seat);
+    public Ticket addTicket(Passenger passenger, Flight flight, Seat seat, Meal meal, ArrayList<Baggage> baggages, boolean loadingData) {
+        Ticket ticket = new Ticket(passenger, flight, seat, loadingData);
         ticket.setMeal(meal); ticket.setBaggages(baggages);
 
-        observable.firePropertyChange("points added", null, passenger);
+        if (!loadingData) {
+            observable.firePropertyChange("points added", ticket, passenger);
+        } else {
+            observable.firePropertyChange("points added", null, passenger);
+        }
         this.tickets.add(ticket);
         return ticket;
     }

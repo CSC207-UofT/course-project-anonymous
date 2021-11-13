@@ -8,11 +8,10 @@ public class RefundAndRescheduleSeatPriceCalculator {
      *
      * @param seat seat object for which we to calculate refund
      * @param daysLeft how many days are left until the departure date
-     * @param departureDate the departure date of the flight
      *
      * @return the refunded price of the Seat
      */
-    public double calculateRefundByDaysLeft(Seat seat, int daysLeft, int departureDate) {
+    public double calculateRefundByDaysLeft(Seat seat, int daysLeft) {
         // full refund if refund asked before 7 days of the flight
         if (daysLeft >= 7) {
             return seat.getPrice();
@@ -20,7 +19,7 @@ public class RefundAndRescheduleSeatPriceCalculator {
             // partial refund is provided if refund is asked before 1 day of the flight
             // and the refund decreases as you get closer to departure date
             return seat.getPrice() -
-                    (seat.getPrice() * (departureDate - daysLeft) * 0.01);
+                    (seat.getPrice() * (1 / daysLeft) * 0.01);
         } else {
             // no refund is provided if asked for refund the day of the flight
             return 0;

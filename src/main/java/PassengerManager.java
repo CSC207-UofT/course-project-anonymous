@@ -19,9 +19,11 @@ public class PassengerManager implements Iterable<Passenger>, PropertyChangeList
         return idToReturn;
     }
 
-    public void addPassenger(String name, String email, String number, int id) {
-        this.passengers.add(new Passenger(id, name, email, number));
-        int idToReturn = this.currentIdCount;
+    public void addPassenger(String name, String email, String number, int id, int points) {
+        Passenger passenger = new Passenger(id, name, email, number);
+        passenger.setPoints(points);
+        this.upgradeMembership(passenger, PassengerManager.pointsThreshold);
+        this.passengers.add(passenger);
         this.currentIdCount = id + 1;
     }
 

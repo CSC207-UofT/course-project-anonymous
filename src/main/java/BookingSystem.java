@@ -10,6 +10,9 @@ public class BookingSystem {
      RescheduleManager rescheduleManager;
      TicketManager ticketManager;
 
+     RandomFlightsGenerator randomFlightsGenerator;
+     RandomMealsGenerator randomMealsGenerator;
+
     public BookingSystem() {
         this.passengerManager = new PassengerManager();
         this.airlinesManager = new AirlinesManager();
@@ -20,37 +23,11 @@ public class BookingSystem {
         this.ticketManager = new TicketManager();
 
         this.ticketManager.addObserver(this.passengerManager);
-        this.addRandomData();
+
+        randomFlightsGenerator = new RandomFlightsGenerator(this.airlinesManager, "2021-11-13");
+        randomFlightsGenerator.init();
+
+        randomMealsGenerator = new RandomMealsGenerator(this.mealsManager);
+        randomMealsGenerator.init();
     }
-
-    public void addRandomData() {
-        this.airlinesManager.addAirline("Emirates");
-        this.airlinesManager.addAirline("Air India");
-        this.airlinesManager.addAirline("Air France");
-        this.airlinesManager.addAirline("Air Canada");
-        this.airlinesManager.addAirline("Qatar");
-
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-
-        this.airlinesManager.getAirline("Emirates").addFlight(LocalDateTime.parse("2021-08-22 08:22", formatter),
-                                                                    LocalDateTime.parse("2021-08-22 11:24", formatter),
-                                                                    "London", "Dubai", 2000);
-
-        this.airlinesManager.getAirline("Qatar").addFlight(LocalDateTime.parse("2021-08-22 01:23", formatter),
-                                                                 LocalDateTime.parse("2021-08-22 08:22", formatter),
-                                                                 "London", "Dubai", 2000);
-
-        this.airlinesManager.getAirline("Air India").addFlight(LocalDateTime.parse("2021-09-22 08:22", formatter),
-                LocalDateTime.parse("2021-09-22 11:24",formatter),
-                "Delhi", "Toronto", 3000);
-
-        this.airlinesManager.getAirline("Air Canada").addFlight(LocalDateTime.parse("2021-08-22 01:25", formatter),
-                LocalDateTime.parse("2021-08-22 08:22", formatter),
-                "Delhi", "Toronto", 3000);
-
-        this.mealsManager.addMeal("Sushi", 2.3, 3, false);
-        this.mealsManager.addMeal("Margarita", 5.2, 2, true);
-    }
-
-
 }

@@ -5,11 +5,13 @@ public class TransactionManager implements Iterable<Transaction> {
     private ArrayList<Transaction> transactions;
     private NewTicketTransactionCreator newTicketTransactionCreator;
     private RescheduleTicketTransactionCreator rescheduleTicketTransactionCreator;
+    private RefundTransactionCreator refundTransactionCreator;
 
     public TransactionManager() {
         this.transactions = new ArrayList<>();
         this.newTicketTransactionCreator = new NewTicketTransactionCreator();
         this.rescheduleTicketTransactionCreator = new RescheduleTicketTransactionCreator();
+        this.refundTransactionCreator = new RefundTransactionCreator();
     }
 
     public Transaction createTransactionForNewTicket(Passenger passenger,
@@ -23,6 +25,12 @@ public class TransactionManager implements Iterable<Transaction> {
 
     public Transaction createTransactionRescheduleTicket(Ticket ticket, Flight flight) {
         Transaction transaction = new RescheduleTicketTransactionCreator().getTransaction(ticket, flight);
+        return transaction;
+    }
+
+    public Transaction createTransactionRefundTicket(Ticket ticket) {
+        Transaction transaction = this.refundTransactionCreator.getTransaction(ticket);
+        this.transactions.add(transaction);
         return transaction;
     }
 

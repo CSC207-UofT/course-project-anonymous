@@ -200,13 +200,39 @@ public class CmdUI {
                 }
 
             } else if (userInp.equals("2")) {
+                System.out.println("\nLets start your refund process. You will receive the following amount back:\n");
 
+                Transaction refundTransaction = this.passengerSessionHandler.bookingSystem.transactionManager.createTransactionRefundTicket(ticket);
+                System.out.println(new TransactionPresenter().presentTransaction(refundTransaction));
+
+                userInp = this.wantToRefund(scanner);
+
+                if (userInp.equals("1")) {
+                    this.passengerSessionHandler.bookingSystem.ticketManager.removeTicket(ticket);
+                    System.out.println("Your ticket has been refunded, you will receive your money in 10-15 business days");
+
+                    this.showBookings(scanner);
+                } else {
+                    this.showBookings(scanner);
+                }
             } else {
                 this.showBookings(scanner);
             }
            } else {
                this.menu(scanner);
            }
+    }
+
+    public String wantToRefund(Scanner scanner) {
+        System.out.println("Do you want to continue with the refund : \n1. Yes refund this ticket\n2. No, go back to booking history \nType 1, or 2 :  ");
+        String optionSelected = scanner.nextLine();
+
+        if (!optionSelected.equals("1") && !optionSelected.equals("2")) {
+            System.out.println("You can only choose from 1, 2. \n");
+            return this.wantToRefund(scanner);
+        } else {
+            return optionSelected;
+        }
     }
 
     public String wantToProceedWithTheRefund(Scanner scanner) {

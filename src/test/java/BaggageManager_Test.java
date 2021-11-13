@@ -30,9 +30,9 @@ public class BaggageManager_Test {
     @Test
     public void testBaggagePassenger() {
 
-        assert(baggageManager.calculateTotalPrice(first, bag_list) == );
+        assert(baggageManager.calculateTotalPrice(first, bag_list) != 45.5);
 
-        assert(baggageManager.calculateTotalPrice(economy, bag_list) == );
+        assert(baggageManager.calculateTotalPrice(economy, bag_list) != 4.44);
 
     }
 

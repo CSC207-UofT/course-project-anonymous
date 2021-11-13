@@ -29,7 +29,7 @@ public class BaggageManager_Test {
 
     @Test
     public void testBaggagePassenger() {
-
+        // Checking that the total price after discounts and membership benefits are applied remains a positive number
         assert(baggageManager.calculateTotalPrice(first, bag_list) > 0.0);
 
         assert(baggageManager.calculateTotalPrice(economy, bag_list) > 0.0);

@@ -20,6 +20,9 @@ public class MealManager_test {
         public void testMeals() {
 
             assert(mealManager.checkForMeal("No Meal") == true);
+            mealManager.addMeal("Veg Sushi",10,11.11,true);
+            assert(mealManager.checkForMeal("Veg Sushi") == true);
+            assert(mealManager.checkForMeal("Pizza") == false);
 
         }
 

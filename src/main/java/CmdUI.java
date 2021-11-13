@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class CmdUI {
     private PassengerSessionHandler passengerSessionHandler;
-    private AgentSessionHandler agentSessionHandler;
+
 
     public static void main(String[] args) {
         CmdUI cmdUI = new CmdUI();
@@ -26,7 +26,7 @@ public class CmdUI {
             this.signInUpPassenger(scanner, false);
         }
         else if (userInp.equals("2")) {
-            this.agentSessionHandler = new AgentSessionHandler();
+
             this.signInUpAgent(scanner, false);
         }
         else {

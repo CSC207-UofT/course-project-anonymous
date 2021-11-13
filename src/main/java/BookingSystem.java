@@ -4,7 +4,6 @@ import java.time.format.DateTimeFormatter;
 public class BookingSystem {
 
      PassengerManager passengerManager;
-     AgentsManager agentsManager;
      AirlinesManager airlinesManager;
      TransactionManager transactionManager;
      MealsManager mealsManager;
@@ -17,7 +16,6 @@ public class BookingSystem {
         this.transactionManager = new TransactionManager();
         this.mealsManager = new MealsManager();
         this.rescheduleManager = new RescheduleManager();
-        this.agentsManager = new AgentsManager();
         this.ticketManager = new TicketManager();
 
         this.ticketManager.addObserver(this.passengerManager);

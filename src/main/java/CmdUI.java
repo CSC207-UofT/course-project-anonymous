@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class CmdUI {
     private PassengerSessionHandler passengerSessionHandler;
-    private AgentSessionHandler agentSessionHandler;
 
     public static void main(String[] args) {
         CmdUI cmdUI = new CmdUI();
@@ -26,8 +25,8 @@ public class CmdUI {
             this.signInUpPassenger(scanner, false);
         }
         else if (userInp.equals("2")) {
-            this.agentSessionHandler = new AgentSessionHandler();
-            this.signInUpAgent(scanner, false);
+            System.out.println("Sorry this feature is not available right now please try again later");
+            this.start(scanner, true);
         }
         else {
             System.out.println("You can only choose from 1 or 2. \n ");
@@ -74,6 +73,7 @@ public class CmdUI {
 
         if (userInp.equals("1")) {
             int id = this.passengerSessionHandler.bookingSystem.passengerManager.addPassenger(name, email, number);
+            this.passengerSessionHandler.passengerDataHandler.addPassenger(name, email, number, id + "");
 
             System.out.println("Congrats! You are now a member, your ID is " + id + ". This would be used to SignIn. \n");
             this.signInPassenger(scanner, false);

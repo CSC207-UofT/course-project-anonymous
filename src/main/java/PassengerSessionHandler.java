@@ -9,6 +9,7 @@ public class PassengerSessionHandler extends UserSessionHandler {
         databaseConnector = new DatabaseConnector();
         passengerDataHandler = new PassengerDataHandler(databaseConnector);
         passengerDataHandler.fetchPassengersIntoApp(this.bookingSystem.passengerManager);
+        this.bookingSystem.ticketManager.addObserver(passengerDataHandler);
     }
 
     @Override

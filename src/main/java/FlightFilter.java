@@ -3,8 +3,13 @@ import java.util.ArrayList;
 
 public class FlightFilter {
     public ArrayList<Flight> getFlightFromAirline(Airline airline, String from, String to, LocalDate date) {
-        /*
-        Return all the flights from a destination to a destination on a date of this airline.
+        /**
+         * Return all the flights of airline <airline> from <from> to <to> on <date>
+         * @param airline  only require flights from this airline
+         * @param from  departure location of flight
+         * @param to  destination of flight
+         * @param date  date on which flight is needed
+         * @retun   A list of flights
          */
         ArrayList<Flight> flightsOnDate = new ArrayList<>();
 
@@ -20,12 +25,12 @@ public class FlightFilter {
     }
 
     public ArrayList<Flight> getFlightsFromAllAirlines(AirlinesManager airlinesManager, String from, String to, LocalDate date) {
-        /*
+        /**
         Collect flights with the specific parameters from all the airlines in the manager, and return a combined list.
 
         - it uses Airline.getFlightByFilter function
         - it uses addAll function of arraylist to combine all arraylists.
-         */
+         **/
         ArrayList<Flight> flights = new ArrayList<>();
 
         for (Airline airline: airlinesManager) {
@@ -36,6 +41,10 @@ public class FlightFilter {
     }
 
     ArrayList<Flight> getSimilarFlightsInAirline(Airline airline, Flight flight) {
+        /**
+         *Returns all the flights in <airline> that are departing after <flight> but have the same
+         * takeoff and landing locations
+         */
         ArrayList<Flight> flight_so_far = new ArrayList<>();
 
         for (Flight f : airline) {
@@ -49,6 +58,10 @@ public class FlightFilter {
     }
 
     ArrayList<Flight> getSimilarFlights(AirlinesManager airlinesManager, Flight flight) {
+        /**
+         *Returns all the flights from all airlines in <airlineManager> that are departing
+         * after <flight> but have the same takeoff and landing locations.
+         */
         ArrayList<Flight> flight_so_far = new ArrayList<>();
 
         for (Airline airline : airlinesManager) {

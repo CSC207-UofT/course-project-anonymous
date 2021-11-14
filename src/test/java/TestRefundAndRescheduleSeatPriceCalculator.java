@@ -20,10 +20,17 @@ public class TestRefundAndRescheduleSeatPriceCalculator {
     public void testcalculateRefundByDaysLeft(){
         double actual = refundAndRescheduleSeatPriceCalculator.calculateRefundByDaysLeft(seat, 2);
         assert (actual == 50);
+        double actual1 = refundAndRescheduleSeatPriceCalculator.calculateRefundByDaysLeft(seat, 7);
+        assert (actual1 == 100);
+        double actual2 = refundAndRescheduleSeatPriceCalculator.calculateRefundByDaysLeft(seat, 0);
+        assert (actual2 == 0);
+
     }
     @Test
     public void testcalculateDateChangeChargeByDateLeft(){
         double actual = refundAndRescheduleSeatPriceCalculator.calculateDateChangeChargeByDateLeft(seat, 7, 10);
         assert (actual == 0);
+        double actual1 = refundAndRescheduleSeatPriceCalculator.calculateDateChangeChargeByDateLeft(seat, 5, 10);
+        assert (actual1 == 2);
     }
 }

@@ -1,3 +1,5 @@
+import Entites.*;
+import UseCases.factories.MembershipFactory;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -30,7 +32,7 @@ public class TestMembershipFactory {
         Passenger passenger = new Passenger(111, "Dinkar", "dv@gmail.com", "123-456-3434");
         int[] pointsThreshold = new int[]{0, 100, 200, 300};
 
-        // passenger has a Standard membership with 20 points
+        // passenger has a Entites.Standard membership with 20 points
         passenger.setPoints(20);
         passenger.setMembership(new Standard());
 

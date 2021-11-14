@@ -1,6 +1,0 @@
-public abstract class UserSessionHandler {
-    private BookingSystem bookingSystem;
-    private User user;
-
-    public abstract boolean setSessionUserWithId(int id);
-}

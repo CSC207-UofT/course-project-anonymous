@@ -19,6 +19,7 @@ public class BookingSystem {
         this.transactionManager = new TransactionManager();
         this.mealsManager = new MealsManager();
         this.rescheduleManager = new RescheduleManager();
+
         this.ticketManager = new TicketManager();
 
         this.ticketManager.addObserver(this.passengerManager);

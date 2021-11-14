@@ -10,7 +10,7 @@ public class BaggageManager {
         The number of allowed bags can be taken out of seat class, seat.numberOfCabinBagsAllowed()
                                                                or, seat.numberOfCheckInBagsAllowed()
 
-        TODO: there is repeated code for Cabin (line 22-28) and CheckIn (line 29-36) if block.
+
          */
         int noOfCabinBags = 0;
         int noOfCheckinBags = 0;
@@ -20,23 +20,32 @@ public class BaggageManager {
         for (Baggage b : baggages) {
             totalCost += this.calcOverweightPrice(b);
 
+            // Checking if baggage is an instance of CabinBaggage
             if (b instanceof CabinBaggage) {
                 noOfCabinBags++;
+
+                // Checking if the number of baggages carried by the user is greater than the allowed amount
                 if (noOfCabinBags > seat.numberOfCabinBagsAllowed()) {
                     totalCost += Baggage.extraCabinBagPrice;
                 }
             } else {
                 noOfCheckinBags++;
+                // Checking if the number of baggages carried by the user is greater than the allowed amount
                 if (noOfCheckinBags > seat.numberOfCheckInBagsAllowed()) {
                     totalCost += Baggage.extraCheckInBagPrice;
                 }
             }
         }
 
+        // Returning the total cost inclusive of any extra charges
         return totalCost;
     }
 
     public int noOfCabinBags(ArrayList<Baggage> baggages) {
+         /*
+         Return an integer value representing the number of cabin baggages
+
+          */
         int count = 0;
 
         for (Baggage b: baggages) {
@@ -49,8 +58,11 @@ public class BaggageManager {
     }
 
     public int noOfCheckInBags(ArrayList<Baggage> baggages) {
+         /*
+         Return an integer value representing the number of checked-in baggages
+
+          */
         int count = 0;
-        // |
         for (Baggage b: baggages) {
             if (b instanceof CheckInBaggage) {
                 count++;

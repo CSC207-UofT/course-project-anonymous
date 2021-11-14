@@ -24,12 +24,9 @@ public class CmdUI {
             this.passengerSessionHandler = new PassengerSessionHandler();
             this.signInUpPassenger(scanner, false);
         }
-        else if (userInp.equals("2")) {
-            System.out.println("Sorry this feature is not available right now please try again later");
-            this.start(scanner, true);
-        }
+        
         else {
-            System.out.println("You can only choose from 1 or 2. \n ");
+            System.out.println("You can only choose 1. \n ");
             this.start(scanner, true);
         }
     }

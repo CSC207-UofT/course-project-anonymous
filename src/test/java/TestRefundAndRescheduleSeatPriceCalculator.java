@@ -1,11 +1,6 @@
+import Entites.EconomySeat;
+import UseCases.helpers.RefundAndRescheduleSeatPriceCalculator;
 import org.junit.*;
-
-import static org.junit.Assert.*;
-
-import java.io.*;
-import java.time.LocalDateTime;
-import java.time.LocalDate;
-import java.util.ArrayList;
 
 public class TestRefundAndRescheduleSeatPriceCalculator {
     EconomySeat seat;

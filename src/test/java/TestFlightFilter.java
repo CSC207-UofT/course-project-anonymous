@@ -1,8 +1,8 @@
+import Entites.Airline;
+import Entites.Flight;
+import UseCases.helpers.FlightFilter;
 import org.junit.*;
 
-import static org.junit.Assert.*;
-
-import java.io.*;
 import java.time.LocalDateTime;
 import java.time.LocalDate;
 import java.util.ArrayList;

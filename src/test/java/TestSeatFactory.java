@@ -1,3 +1,8 @@
+import Entites.BusinessClassSeat;
+import Entites.EconomySeat;
+import Entites.FirstClassSeat;
+import Entites.Seat;
+import UseCases.factories.SeatFactory;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;

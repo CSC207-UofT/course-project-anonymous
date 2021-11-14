@@ -1,4 +1,4 @@
-package MementoTicketStages;
+package UseCases.MementoTicketStages;
 import java.util.ArrayList;
 
 public class Caretaker {

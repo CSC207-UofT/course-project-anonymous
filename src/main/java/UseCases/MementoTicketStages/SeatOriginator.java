@@ -1,4 +1,4 @@
-package MementoTicketStages;
+package UseCases.MementoTicketStages;
 
 public class SeatOriginator {
     private String seatmap;

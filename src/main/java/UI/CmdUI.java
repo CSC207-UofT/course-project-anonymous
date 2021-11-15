@@ -34,10 +34,11 @@ public class CmdUI {
         if (userInp.equals("1")) {
             this.passengerSessionHandler = new PassengerSessionHandler();
             this.signInUpPassenger(scanner, false);
-        }
-        
-        else {
-            System.out.println("You can only choose 1. \n ");
+        } else if (userInp.equals("2")) {
+            System.out.println("Sorry this feature has not been implemented yet. Come back later.\n");
+            this.start(scanner, false);
+        } else {
+            System.out.println("You can only choose 1 or 2. \n ");
             this.start(scanner, true);
         }
     }

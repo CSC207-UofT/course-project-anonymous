@@ -46,4 +46,6 @@ public class TicketManager implements Iterable<Ticket> {
     public Iterator<Ticket> iterator() {
         return new GeneralIterator<Ticket>(this.tickets);
     }
+
+    public ArrayList<Ticket> getTickets() {return this.tickets;}
 }

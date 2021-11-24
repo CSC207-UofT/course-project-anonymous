@@ -17,7 +17,7 @@ public class PassengerDataHandler extends DataHandler implements PropertyChangeL
     }
 
     public void fetchPassengersIntoApp(PassengerManager passengerManager) {
-        ArrayList<Map<String, String>> data = this.loadData();
+        ArrayList<Map<String, String>> data = this.loadData("ORDER BY \"password\"");
 
         for (Map<String, String> row : data) {
             passengerManager.addPassenger(row.get("name"), row.get("email"), row.get("number"), Integer.parseInt(row.get("password")), Integer.parseInt(row.get("points")));

@@ -1,3 +1,6 @@
+import Entites.EconomySeat;
+import Entites.Seat;
+import UseCases.managers.SeatManager;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;

@@ -72,24 +72,24 @@ public class SeatFactory {
 
     /**
      * Returns List of Seats according to their type
-     * where Economy represents the classNameIndex "1", Business represents "2"),
+     * where Economy represents the classNameIndex "1", Business represents "2",
      * and First represents "3".
      * To see how the slices are selected for different type of seat,
      * see this.createSeatMap function.
      *
-     * @param seats how many days are left until the departure date
+     * @param seats a list of seats
      * @param classNameIndex the index corresponding to a certain type of seat
      *
      * @return the list of seats according to their type
      */
     public ArrayList<Seat> getSeatsOfClass(ArrayList<Seat> seats, String classNameIndex) {
         if (classNameIndex.equals("1")) {
-            return new ArrayList<Seat>(seats.subList(0, Flight.economyClassSeats));
+            return new ArrayList<>(seats.subList(0, Flight.economyClassSeats));
         } else if (classNameIndex.equals("2")) {
-            return new ArrayList<Seat>(seats.subList(Flight.economyClassSeats,
+            return new ArrayList<>(seats.subList(Flight.economyClassSeats,
                     Flight.economyClassSeats + Flight.businessClassSeats));
         } else {
-            return new ArrayList<Seat>(seats.subList(Flight.economyClassSeats + Flight.businessClassSeats,
+            return new ArrayList<>(seats.subList(Flight.economyClassSeats + Flight.businessClassSeats,
                     Flight.economyClassSeats + Flight.businessClassSeats + Flight.firstClassSeats));
         }
     }

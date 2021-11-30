@@ -1,6 +1,5 @@
 import Entites.*;
 import UseCases.factories.MembershipFactory;
-import UseCases.managers.MembershipManager;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;

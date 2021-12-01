@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
-public class BaggageManager_Test {
+public class TestBaggageManager {
 
     BaggageManager baggageManager;
     Seat first;

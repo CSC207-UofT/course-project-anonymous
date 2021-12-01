@@ -3,7 +3,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 
-public class MealManager_test {
+public class TestMealManager {
 
         MealsManager mealManager;
 

@@ -19,6 +19,13 @@ public class PassengerManager implements Iterable<Passenger>, PropertyChangeList
     }
 
     public int addPassenger(String name, String email, String number) {
+        /**
+         * Add a passanger to the system without points.
+         * @param name input the name of the passanger
+         * @param email input the email of the passanger
+         * @param number input the phone number of the passanger
+         * @return the passanger ID
+         */
         this.passengers.add(new Passenger(this.currentIdCount, name, email, number));
         int idToReturn = this.currentIdCount;
         this.currentIdCount++;
@@ -26,6 +33,13 @@ public class PassengerManager implements Iterable<Passenger>, PropertyChangeList
     }
 
     public void addPassenger(String name, String email, String number, int id, int points) {
+        /**
+         * Add a passanger to the system with points.
+         * @param name input the name of the passanger
+         * @param email input the email of the passanger
+         * @param number input the phone number of the passanger
+         * @param points add the given number of points to the given passanger's account
+         */
         Passenger passenger = new Passenger(id, name, email, number);
         passenger.setPoints(points);
         this.upgradeMembership(passenger, PassengerManager.pointsThreshold);
@@ -34,6 +48,11 @@ public class PassengerManager implements Iterable<Passenger>, PropertyChangeList
     }
 
     public Passenger getPassengerWithId(int id) {
+        /**
+         * Retrieve the details of a passanger with a given id
+         * @param id input the id of a passanger
+         * @return the passanger details to the corresponding id
+         */
         int index = getIndex(id);
 
         if (index == -1) {
@@ -43,6 +62,11 @@ public class PassengerManager implements Iterable<Passenger>, PropertyChangeList
     }
 
     public boolean removePassengerWithId(int id) {
+        /**
+         * Remove the details of a passanger with the given id
+         * @param id input the id of a passanger
+         * @return if the corresponding passanger has been removed from the system
+         */
         int index = getIndex(id);
 
         if (index == -1) {
@@ -53,6 +77,11 @@ public class PassengerManager implements Iterable<Passenger>, PropertyChangeList
     }
 
     private int getIndex(int id) {
+        /**
+         * Get the index at which a particular passanger is stored
+         * @param id input the id of a passanger
+         * @return the index at which the passanger is present in the list
+         */
         int index = -1;
 
         for (int i = 0; i < this.passengers.size(); i++) {

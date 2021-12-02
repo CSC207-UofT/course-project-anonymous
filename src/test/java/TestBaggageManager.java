@@ -10,27 +10,44 @@ public class TestBaggageManager {
     BaggageManager baggageManager;
     Seat first;
     Seat economy;
-    Baggage cabin;
-    Baggage checked_in;
+    Baggage cabin1;
+    Baggage cabin2;
+    Baggage checked_in1;
+    Baggage checked_in2;
+    Baggage checked_in3;
     ArrayList<Baggage> bag_list = new ArrayList<Baggage>();
 
     @Before
     public void initializeManager() {
+        /**
+         * Creating a baggage list and adding checked-in and cabin baggage to it
+         */
         baggageManager = new BaggageManager();
         first = new FirstClassSeat(123,4893);
         economy = new EconomySeat(235,327);
-        cabin = new CabinBaggage(12.1,11.1,32.0);
-        checked_in = new CabinBaggage(13.4,5.3,15.8);
-        bag_list.add(cabin);
-        bag_list.add(checked_in);
+        cabin1 = new CabinBaggage(12.1,11.1,32.0);
+        cabin2 = new CabinBaggage(10.2,23.3,40.3);
+        checked_in1 = new CabinBaggage(13.4,5.3,15.8);
+        checked_in2 = new CabinBaggage(45.5,4.5,11.3);
+        checked_in3 = new CabinBaggage(47.4,6.3,10.9);
+        bag_list.add(cabin1);
+        bag_list.add(cabin2);
+        bag_list.add(checked_in1);
+        bag_list.add(checked_in2);
+        bag_list.add(checked_in3);
     }
 
     @Test
-    public void testBaggagePassenger() {
+    public void testBaggageManager() {
         // Checking that the total price after discounts and membership benefits are applied remains a positive number
         assert(baggageManager.calculateTotalPrice(first, bag_list) > 0.0);
-
         assert(baggageManager.calculateTotalPrice(economy, bag_list) > 0.0);
+
+        // Checking that the total number of Cabin baggages is correctly returned
+        assert(baggageManager.noOfCabinBags(bag_list) == 2);
+
+        // Checking that the total number of Checked-in baggages is correctly returned
+        assert(baggageManager.noOfCheckInBags(bag_list) == 3);
 
     }
 

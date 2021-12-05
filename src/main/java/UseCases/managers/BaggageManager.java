@@ -58,7 +58,7 @@ public class BaggageManager {
                 count++;
             }
         }
-        // |
+
         return count;
     }
 

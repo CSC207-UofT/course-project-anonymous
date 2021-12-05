@@ -4,26 +4,26 @@ import Entites.Ticket;
 import UseCases.managers.BaggageManager;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class TicketPresenter {
-    public String presentTicket(Ticket ticket) {
-        BaggageManager baggageManager = new BaggageManager();
+    public String presentTicket(Map<String, String> ticketInfo) {
 
         String header = "\n******************************************Ticket******************************************\n";
 
-        String passengerInfo = ticket.getPassenger().getName();
+        String passengerInfo = ticketInfo.get("passengerName");
 
-        String flightName = "Flight Name: " + ticket.getFlight().getAirline().name + "-" + ticket.getFlight().getId() + "\n";
-        String fromTo = "From: " + ticket.getFlight().getFrom() + "       To: " + ticket.getFlight().getTo() + "\n";
-        String departureLanding = "Departure Date & Time: " + ticket.getFlight().getDepartureTime().toString()
-                + "    Landing Date & Time: " + ticket.getFlight().getLandingTime().toString() + "\n";
+        String flightName = "Flight Name: " + ticketInfo.get("airlineName") + "-" + ticketInfo.get("flightId") + "\n";
+        String fromTo = "From: " + ticketInfo.get("flightFrom") + "       To: " + ticketInfo.get("flightTo") + "\n";
+        String departureLanding = "Departure Date & Time: " + ticketInfo.get("flightDepartureTime")
+                + "    Landing Date & Time: " + ticketInfo.get("flightLandingTime") + "\n";
 
-        String seatString = ticket.getSeat().getSeatClass() + " Seat     Seat No. " + ticket.getFlight().getSeatNo(ticket.getSeat());
+        String seatString = ticketInfo.get("seatClass") + " Seat     Seat No. " + ticketInfo.get("seatNo");
 
-        String bags = "No of Cabin Bags: " + baggageManager.noOfCabinBags(ticket.getBaggages()) +
-                "   no of CheckIn Bags: " + baggageManager.noOfCheckInBags(ticket.getBaggages());
+        String bags = "No of Cabin Bags: " + ticketInfo.get("noOfCabinBags") +
+                "   no of CheckIn Bags: " + ticketInfo.get("noOfCheckInBags");
 
-        String mealSelected = "Meal selected: " + ticket.getMeal().getName();
+        String mealSelected = "Meal selected: " + ticketInfo.get("mealName");
 
         String spacer = " \n";
 
@@ -32,10 +32,10 @@ public class TicketPresenter {
                 mealSelected + spacer + spacer + header;
     }
 
-    public String presentTickets(ArrayList<Ticket> tickets) {
+    public String presentTickets(ArrayList<Map<String, String>> ticketsInfo) {
         String string_so_far = "";
 
-        for (Ticket ticket : tickets) {
+        for (Map<String, String> ticket : ticketsInfo) {
             string_so_far += this.presentTicket(ticket);
         }
 

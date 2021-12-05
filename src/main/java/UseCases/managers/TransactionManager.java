@@ -4,6 +4,7 @@ import Entites.*;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Map;
 
 import UseCases.helpers.*;
 import UseCases.GeneralIterator;
@@ -30,7 +31,8 @@ public class TransactionManager implements Iterable<Transaction> {
         return transaction;
     }
 
-    public Transaction createTransactionRescheduleTicket(Ticket ticket, Flight flight) {
+    public Transaction createTransactionRescheduleTicket(Ticket ticket,Flight flight) {
+
         Transaction transaction = new RescheduleTicketTransactionCreator().getTransaction(ticket, flight);
         return transaction;
     }

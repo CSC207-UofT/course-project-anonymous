@@ -1,10 +1,10 @@
 package interfaceAdapter.gateway;
-
-import Entites.Passenger;
 import interfaceAdapter.controller.*;
+import java.util.Map;
 
 public class PassengerSessionHandler extends UserSessionHandler {
-    public Passenger passenger;
+    public int passengerId;
+    public Map<String, String> passengerInfo;
     public BookingSystem bookingSystem;
     public DatabaseConnector databaseConnector;
     public PassengerDataHandler passengerDataHandler;
@@ -25,7 +25,18 @@ public class PassengerSessionHandler extends UserSessionHandler {
 
     @Override
     public boolean setSessionUserWithId(int id) {
-        this.passenger = this.bookingSystem.passengerManager.getPassengerWithId(id);
-        return !this.passenger.equals(null);
+        this.passengerInfo = this.bookingSystem.passengerManager.getPassengerInfoById(id);
+        return !this.passengerInfo.equals(null);
+    }
+
+    public int sign_up(String name, String email, String number) {
+        int id = this.bookingSystem.passengerManager.addPassenger(name, email, number);
+        this.passengerDataHandler.addPassenger(name, email, number, id + "");
+        return id;
+    }
+
+    public void removeTicket(Map<String, String> ticketInfo) {
+        this.bookingSystem.ticketManager.removeTicket(this.bookingSystem.ticketManager.getTicketFromInfo(ticketInfo));
+        this.ticketDataHandler.removeTicket(this.bookingSystem.ticketManager.getTicketFromInfo(ticketInfo));
     }
 }

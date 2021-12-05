@@ -6,8 +6,11 @@ import Entites.Flight;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Map;
 
+import Entites.Seat;
 import UseCases.GeneralIterator;
+import UseCases.factories.FlightFactory;
 import UseCases.helpers.*;
 
 public class AirlinesManager implements  Iterable<Airline>{
@@ -70,7 +73,7 @@ public class AirlinesManager implements  Iterable<Airline>{
         return index;
     }
 
-    public ArrayList<Flight> getFlightsByFilter(String from, String to, LocalDate date) {
+    public ArrayList<Map<String, String>> getFlightsByFilter(String from, String to, LocalDate date) {
         /**
          * Filters the flights based on the given parameters to return a list of flights
          * that matches the users specification
@@ -80,12 +83,25 @@ public class AirlinesManager implements  Iterable<Airline>{
          * @return A list of Flight objects
          **/
        FlightFilter flightFilter = new FlightFilter();
-       return flightFilter.getFlightsFromAllAirlines(this, from, to, date);
+       FlightFactory flightFactory = new FlightFactory();
+
+       return flightFactory.getFlightsInfo(flightFilter.getFlightsFromAllAirlines(this, from, to, date));
     }
 
     public Flight getFlightByName(String name) {
         String[] nameParts = name.split("-");
         return this.getAirline(nameParts[0]).getFlight(Integer.parseInt(nameParts[1]));
+    }
+
+    public ArrayList<Seat> getSeatsOfClass(String flightName, String seatClass) {
+        Flight flight = this.getFlightByName(flightName);
+        return flight.getSeatsOfClass(seatClass);
+    }
+
+    public int getSeatIndexByLocalIndex(String flightName, String seatClass, int localIndex) {
+        Flight flight = this.getFlightByName(flightName);
+        Seat seat = flight.getSeatsOfClass(seatClass).get(localIndex);
+        return seat.getId();
     }
 
     @Override

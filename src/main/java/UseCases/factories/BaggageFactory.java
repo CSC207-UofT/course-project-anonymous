@@ -25,4 +25,18 @@ public class BaggageFactory {
 
         return baggages;
     }
+
+    public ArrayList<Baggage> createBaggagesForDataLoading(int noOfCabinBags, int noOfCheckInBags) {
+        ArrayList<Baggage> baggages = new ArrayList<>();
+
+        for (int i = 0; i < noOfCabinBags; i++) {
+            baggages.add(new CabinBaggage(6, 7, 7));
+        }
+
+        for (int i = 0; i < noOfCheckInBags; i++) {
+            baggages.add(new CheckInBaggage(20, 23, 23));
+        }
+
+        return baggages;
+    }
 }

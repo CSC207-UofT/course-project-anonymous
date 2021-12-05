@@ -1,5 +1,7 @@
 package UI;
 
+import DataConnectors.PassengerDataPullPusher;
+import DataConnectors.TicketDataPullPusher;
 import interfaceAdapter.gateway.PassengerSessionHandler;
 import interfaceAdapter.presenters.FlightsPresenter;
 import interfaceAdapter.presenters.SeatMapPresenter;
@@ -31,7 +33,11 @@ public class CmdUI {
         String userInp = scanner.nextLine();
 
         if (userInp.equals("1")) {
-            this.passengerSessionHandler = new PassengerSessionHandler();
+            PassengerDataPullPusher passengerDataPullPusher = new PassengerDataPullPusher();
+            TicketDataPullPusher ticketDataPullPusher = new TicketDataPullPusher();
+
+            this.passengerSessionHandler = new PassengerSessionHandler(passengerDataPullPusher, ticketDataPullPusher);
+
             this.signInUpPassenger(scanner, false);
         } else if (userInp.equals("2")) {
             System.out.println("Sorry this feature has not been implemented yet. Come back later.\n");
@@ -127,7 +133,7 @@ public class CmdUI {
         else if (userInp.equals("3")) {
 
            System.out.println("\n Name: " +this.passengerSessionHandler.passengerInfo.get("name") +
-                   "\nMembership: " + this.passengerSessionHandler.passengerInfo.get("member") +
+                   "\nMembership: " + this.passengerSessionHandler.passengerInfo.get("membership") +
                    "\nPoints: " + this.passengerSessionHandler.passengerInfo.get("points"));
 
            this.menu(scanner);

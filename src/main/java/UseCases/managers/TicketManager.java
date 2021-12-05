@@ -2,6 +2,7 @@ package UseCases.managers;
 
 import Entites.*;
 import UseCases.GeneralIterator;
+import UseCases.factories.PassengerFactory;
 import UseCases.factories.TicketFactory;
 import UseCases.helpers.TicketFilter;
 
@@ -27,23 +28,27 @@ public class TicketManager implements Iterable<Ticket> {
 
     public Map<String, String> addTicket(Passenger passenger, Flight flight, Seat seat, Meal meal, ArrayList<Baggage> baggages, boolean loadingData) {
         TicketFactory ticketFactory = new TicketFactory();
+        PassengerFactory passengerFactory = new PassengerFactory();
 
         Ticket ticket = new Ticket(passenger, flight, seat, loadingData);
         ticket.setMeal(meal); ticket.setBaggages(baggages);
 
         if (!loadingData) {
-            observable.firePropertyChange("points added", ticket, passenger);
+            observable.firePropertyChange("points added", ticketFactory.getTicketInfo(ticket), passengerFactory.getPassengerInfo(passenger));
         } else {
-            observable.firePropertyChange("points added", null, passenger);
+            observable.firePropertyChange("points added", null, passengerFactory.getPassengerInfo(passenger));
         }
         this.tickets.add(ticket);
         return ticketFactory.getTicketInfo(ticket);
     }
 
     public void removeTicket(Ticket ticket) {
+        PassengerFactory passengerFactory = new PassengerFactory();
+        Map<String, String> passengerInfo = passengerFactory.getPassengerInfo(ticket.getPassenger());
+
         ticket.getSeat().setOccupied(false);
         ticket.getPassenger().setPoints(Math.toIntExact(ticket.getPassenger().getPoints() - Math.round(ticket.getFlight().getMiles() / 100)));
-        observable.firePropertyChange("points added", null, ticket.getPassenger());
+        observable.firePropertyChange("points added", null, passengerInfo);
         this.tickets.remove(ticket);
     }
 

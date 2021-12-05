@@ -76,7 +76,8 @@ public class PassengerManager implements Iterable<Passenger>, PropertyChangeList
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        this.upgradeMembership(((Passenger) evt.getNewValue()), PassengerManager.pointsThreshold);
+        int id = Integer.parseInt(((Map<String, String>) evt.getNewValue()).get("id"));
+        this.upgradeMembership(this.getPassengerWithId(id), PassengerManager.pointsThreshold);
     }
 
     public Map<String, String> getPassengerInfoById(int id) {

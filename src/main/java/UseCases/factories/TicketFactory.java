@@ -14,6 +14,8 @@ public class TicketFactory {
         HashMap<String, String> ticketInfo = new HashMap<>();
 
         ticketInfo.put("passengerName", ticket.getPassenger().getName());
+        ticketInfo.put("passengerId", ticket.getPassenger().getId() + "");
+        ticketInfo.put("passengerMembership", ticket.getPassenger().getMembership().getMembershipName());
         ticketInfo.put("airlineName", ticket.getFlight().getAirline().name);
         ticketInfo.put("flightId", "" + ticket.getFlight().getId());
         ticketInfo.put("flightFrom", ticket.getFlight().getFrom());

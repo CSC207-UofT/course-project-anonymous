@@ -1,0 +1,48 @@
+import org.junit.*;
+
+import static org.junit.Assert.*;
+
+import java.io.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+
+public class TestTicketFIlter {
+    TicketFilter ticketFilter;
+    TicketManager ticketManager;
+    Passenger passenger;
+    Passenger passenger1;
+    Flight flight;
+    EconomySeat seat;
+    Meal meal;
+    Ticket ticket;
+    CabinBaggage cabinBaggage;
+    ArrayList<Baggage> bagages;
+    LocalDateTime date1 = LocalDateTime.of(2020, 05, 10, 19, 30);
+    LocalDateTime date2 = LocalDateTime.of(2020, 05, 10, 21, 30);
+    Airline airline;
+    @Before
+    public void initializeManager() {
+        ticketFilter = new TicketFilter();
+        ticketManager = new TicketManager();
+        passenger = new Passenger(1, "Dix", "dix4@gmail.com", "1234567");
+        passenger1 = new Passenger(2, "Dix2", "dix4@gmail.com", "1234567");
+        airline = new Airline("Air Indigo");
+        flight = new Flight(date1, date2, "Delhi", "Toronto", 10, airline);
+        seat = new EconomySeat(1, 100);
+        meal = new Meal("Sushi", 100, 5, false);
+        cabinBaggage = new CabinBaggage(1,1,1);
+        bagages = new ArrayList<>();
+        bagages.add(cabinBaggage);
+        ticket = new Ticket(passenger, flight, seat, true);
+        ticketManager.addTicket(passenger, flight, seat, meal, bagages, true);
+        ticketManager.addTicket(passenger1, flight, seat, meal, bagages, true);
+    }
+
+    @Test
+    public void testgetTicketsForPassenger(){
+    assertEquals(ticketFilter.getTicketsForPassenger(ticketManager, passenger).get(0).getPassenger().getName(), "Dix" );
+    assertEquals(ticketFilter.getTicketsForPassenger(ticketManager, passenger).size(), 1 );
+
+    }
+}

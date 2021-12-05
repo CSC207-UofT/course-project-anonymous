@@ -1,6 +1,14 @@
 import java.util.ArrayList;
 
 public class NewTicketTransactionCreator {
+    /**
+     * Creates the transaction for each new ticket purchased
+     * @param passenger a passenger object
+     * @param seat the seat the passenger chose to book
+     * @param meal the meal preference of the passenger
+     * @param baggages the baggage preference of the passenger
+     * @return returns a transaction object capturing all the necessary information
+     */
     public Transaction getTransaction(Passenger passenger,
                                       Seat seat,
                                       Meal meal,

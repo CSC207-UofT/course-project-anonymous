@@ -3,6 +3,12 @@ import java.time.LocalDate;
 
 
 public class RescheduleTicketTransactionCreator {
+    /**
+     * Creates a new transaction for recheduling a flight
+     * @param oldTicket Passengers current ticked which they would like changed
+     * @param newFlight The new flight to which they would like to change
+     * @return The new Transaction object
+     */
     public Transaction getTransaction(Ticket oldTicket, Flight newFlight) {
         Transaction transaction = new Transaction();
         RefundAndRescheduleSeatPriceCalculator refundAndRescheduleSeatPriceCalculator = new RefundAndRescheduleSeatPriceCalculator();
@@ -24,7 +30,12 @@ public class RescheduleTicketTransactionCreator {
 
         return transaction;
     }
-
+    /**
+     * gets the diference between 2 dates
+     * @param d1 date 1
+     * @param d2 date 2
+     * @return the difference in the number of days between the 2 dates
+     */
     long getDifferenceDays(LocalDate d1, LocalDate d2) {
         return Duration.between(d1.atStartOfDay(), d2.atStartOfDay()).toDays();
     }

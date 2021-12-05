@@ -27,9 +27,9 @@ public class TestBaggageManager {
         economy = new EconomySeat(235,327);
         cabin1 = new CabinBaggage(12.1,11.1,32.0);
         cabin2 = new CabinBaggage(10.2,3.3,4.3);
-        checked_in1 = new CabinBaggage(13.4,5.3,15.8);
-        checked_in2 = new CabinBaggage(5.5,4.5,11.3);
-        checked_in3 = new CabinBaggage(7.4,6.3,10.9);
+        checked_in1 = new CheckInBaggage(13.4,5.3,15.8);
+        checked_in2 = new CheckInBaggage(5.5,4.5,11.3);
+        checked_in3 = new CheckInBaggage(7.4,6.3,10.9);
         bag_list.add(cabin1);
         bag_list.add(cabin2);
         bag_list.add(checked_in1);

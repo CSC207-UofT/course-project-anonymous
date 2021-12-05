@@ -8,14 +8,15 @@ import Entites.Seat;
 import java.util.ArrayList;
 
 public class BaggageManager {
+    /**
+     * Calculate the total price of list of baggages carried by a passenger. It takes in
+     the list of baggages and add up the overweight cost, and the cost of extra bags
+     that are not included.
+     * @param seat type of seat selected by the user
+     * @return the total price based on the seat selection and baggage carried
+     */
      public double calculateTotalPrice(Seat seat, ArrayList<Baggage> baggages) {
-         /**
-          * Calculate the total price of list of baggages carried by a passenger. It takes in
-          the list of baggages and add up the overweight cost, and the cost of extra bags
-          that are not included.
-          * @param seat type of seat selected by the user
-          * @return the total price based on the seat selection and baggage carried
-          */
+
         int noOfCabinBags = 0;
         int noOfCheckinBags = 0;
 
@@ -45,12 +46,13 @@ public class BaggageManager {
         return totalCost;
     }
 
+    /**
+     * Return an integer value representing the number of cabin baggages
+     * @param baggages takes in a list of cabin and checked-in baggages
+     * @return the total number of cabin baggages
+     */
     public int noOfCabinBags(ArrayList<Baggage> baggages) {
-        /**
-         * Return an integer value representing the number of cabin baggages
-         * @param baggages takes in a list of cabin and checked-in baggages
-         * @return the total number of cabin baggages
-         */
+
         int count = 0;
 
         for (Baggage b: baggages) {
@@ -62,12 +64,13 @@ public class BaggageManager {
         return count;
     }
 
+    /**
+     * Return an integer value representing the number of checked-in baggages
+     * @param baggages takes in a list of cabin and checked-in baggages
+     * @return the total number of checked-in baggages
+     */
     public int noOfCheckInBags(ArrayList<Baggage> baggages) {
-        /**
-         * Return an integer value representing the number of checked-in baggages
-         * @param baggages takes in a list of cabin and checked-in baggages
-         * @return the total number of checked-in baggages
-         */
+
         int count = 0;
         for (Baggage b: baggages) {
             if (b instanceof CheckInBaggage) {
@@ -78,14 +81,15 @@ public class BaggageManager {
         return count;
     }
 
+    /**
+     * Calculate the overweight by the formula:
+     * overweight price per kg * round(bag weight - allowed weight)
+     *
+     * @param baggage a type of checked-in or cabin baggage
+     * @return how much is the baggage over-weight
+     */
     public double calcOverweightPrice(Baggage baggage) {
-        /**
-         * Calculate the overweight by the formula:
-         * overweight price per kg * round(bag weight - allowed weight)
-         *
-         * @param baggage a type of checked-in or cabin baggage
-         * @return how much is the baggage over-weight
-         */
+
         if (baggage.isOverweight()) {
             double allowed_weight = 0;
             double per_kg_price = 0;

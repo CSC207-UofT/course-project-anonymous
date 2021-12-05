@@ -190,6 +190,7 @@ public class CmdUI {
                         this.passengerSessionHandler.removeTicket(ticketInfo);
 
                         System.out.println("Your ticket has been rescheduled successfully :-)\n");
+                        this.passengerSessionHandler.updatePassengerInfo();
 
                         this.menu(scanner);
 
@@ -214,6 +215,8 @@ public class CmdUI {
                 if (userInp.equals("1")) {
                     this.passengerSessionHandler.removeTicket(ticketInfo);
                     System.out.println("Your ticket has been refunded, you will receive your money in 10-15 business days");
+                    this.passengerSessionHandler.updatePassengerInfo();
+
 
                     this.showBookings(scanner);
                 } else {
@@ -381,6 +384,7 @@ public class CmdUI {
 
 
             System.out.println("Your ticket has been booked. Congrats! \n");
+            this.passengerSessionHandler.updatePassengerInfo();
 
             System.out.println(ticketPresenter.presentTicket(ticketInfo));
 

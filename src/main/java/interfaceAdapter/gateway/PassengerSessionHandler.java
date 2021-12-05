@@ -25,8 +25,13 @@ public class PassengerSessionHandler extends UserSessionHandler {
 
     @Override
     public boolean setSessionUserWithId(int id) {
+        this.passengerId = id;
         this.passengerInfo = this.bookingSystem.passengerManager.getPassengerInfoById(id);
         return !this.passengerInfo.equals(null);
+    }
+
+    public void updatePassengerInfo() {
+        this.passengerInfo = this.bookingSystem.passengerManager.getPassengerInfoById(this.passengerId);
     }
 
     public int sign_up(String name, String email, String number) {
@@ -36,7 +41,7 @@ public class PassengerSessionHandler extends UserSessionHandler {
     }
 
     public void removeTicket(Map<String, String> ticketInfo) {
-        this.bookingSystem.ticketManager.removeTicket(this.bookingSystem.ticketManager.getTicketFromInfo(ticketInfo));
         this.ticketDataHandler.removeTicket(this.bookingSystem.ticketManager.getTicketFromInfo(ticketInfo));
+        this.bookingSystem.ticketManager.removeTicket(this.bookingSystem.ticketManager.getTicketFromInfo(ticketInfo));
     }
 }

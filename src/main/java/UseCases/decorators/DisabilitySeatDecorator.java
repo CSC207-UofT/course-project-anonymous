@@ -25,6 +25,7 @@ public class DisabilitySeatDecorator extends SeatDecorator{
     /**
      * @return the number of check in bags allowed for a disabled person
      */
+    @Override
     public int numberOfCheckInBagsAllowed(){
         return decoratedSeat.numberOfCheckInBagsAllowed() + disabilityBaggageAllowance;
     }

@@ -2,16 +2,16 @@ package UseCases.decorators;
 import Entites.*;
 
 public abstract class MembershipDecorator implements MembershipStatus {
-    protected MembershipStatus membershipStatus;
+    protected MembershipStatus decoratedMembership;
 
     /**
      * Construct a MembershipDecorator, giving it the given
      * MembershipStatus object.
      *
-     * @param membershipStatus A MembershipStatus object
+     * @param decoratedMembership A MembershipStatus object
      */
-    public MembershipDecorator(MembershipStatus membershipStatus){
-        this.membershipStatus = membershipStatus;
+    public MembershipDecorator(MembershipStatus decoratedMembership){
+        this.decoratedMembership = decoratedMembership;
     }
 
     /**
@@ -23,7 +23,7 @@ public abstract class MembershipDecorator implements MembershipStatus {
      * @return the flight's discounted price
      **/
     public double getFlightDiscount(double price) {
-        return membershipStatus.getFlightDiscount(price);
+        return decoratedMembership.getFlightDiscount(price);
     }
 
     /**
@@ -35,7 +35,7 @@ public abstract class MembershipDecorator implements MembershipStatus {
      * @return the meal's discounted price
      **/
     public double getMealDiscount(double price) {
-        return membershipStatus.getMealDiscount(price);
+        return decoratedMembership.getMealDiscount(price);
     }
 
     /**
@@ -47,13 +47,13 @@ public abstract class MembershipDecorator implements MembershipStatus {
      * @return the extra baggage discounted price
      **/
     public double getExtraBaggageDiscount(double price) {
-        return membershipStatus.getExtraBaggageDiscount(price);
+        return decoratedMembership.getExtraBaggageDiscount(price);
     }
 
     /**
      * @return the name of the membership
      */
     public String getMembershipName() {
-        return membershipStatus.getMembershipName();
+        return decoratedMembership.getMembershipName();
     }
 }

@@ -1,25 +1,11 @@
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.List;
-import static org.junit.Assert.*;
-
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
-import Entites.Airline;
 import Entites.Flight;
-import UseCases.helpers.FlightFilter;
-import org.junit.*;
-
-
-import java.util.ArrayList;
-
 import UseCases.managers.*;
-import UseCases.factories.*;
-import UseCases.helpers.*;
 import Entites.*;
-import java.time.LocalDateTime;
-import java.time.LocalDate;
+
 
 
 public class TestTransactionManager {

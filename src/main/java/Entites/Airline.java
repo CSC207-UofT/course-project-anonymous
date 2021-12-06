@@ -22,7 +22,7 @@ public class Airline implements Iterable<Flight> {
     }
 
     /**
-     *
+     * Adds a flight with the given parameters
      * @param departureTime the time of departure
      * @param landingTime the time of landing
      * @param from where the flight departs from
@@ -43,6 +43,7 @@ public class Airline implements Iterable<Flight> {
     }
 
     /**
+     * Removes a flight matching the input id
      * @param id the id of the flight
      * @return returns if the flight was removed
      */
@@ -56,8 +57,9 @@ public class Airline implements Iterable<Flight> {
     }
 
     /**
+     * returns the flight based on the index
      * @param id id of the flight
-     * @return returns the index of the wanted flight
+     * @return returns the flight matching the id
      */
 
     public Flight getFlight(int id) {
@@ -67,7 +69,7 @@ public class Airline implements Iterable<Flight> {
     }
 
     /**
-     *
+     * gets the index of the wanted flight id
      * @param id id of the flight
      * @return returns the index of the flight
      */
@@ -85,7 +87,7 @@ public class Airline implements Iterable<Flight> {
     }
 
     /**
-     *
+     * Get a flight iterator
      * @return returns a flight iterator
      */
     @Override

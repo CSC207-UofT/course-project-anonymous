@@ -1,32 +1,40 @@
 package interfaceAdapter.gateway;
-
-import Entites.Passenger;
+import DataConnectors.DataPullPusher;
 import interfaceAdapter.controller.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class PassengerSessionHandler extends UserSessionHandler {
+
     /**
      * A subclass of the abstract UserSessionHandler. This class
      * acts as a gateway between the UI and the presenters/controllers
      * relay the information
      */
-    public Passenger passenger;
+    public int passengerId;
+    public Map<String, String> passengerInfo;
+
     public BookingSystem bookingSystem;
-    public DatabaseConnector databaseConnector;
-    public PassengerDataHandler passengerDataHandler;
-    public TicketDataHandler ticketDataHandler;
 
 
-    public PassengerSessionHandler() {
+    DataPullPusher passengerDataPullPusher;
+    DataPullPusher ticketDataPullPusher;
+
+    DataLoader dataLoader;
+
+    public PassengerSessionHandler(DataPullPusher passengerDataPullPusher, DataPullPusher ticketDataPullPusher) {
+
         bookingSystem = new BookingSystem();
-        databaseConnector = new DatabaseConnector();
-        passengerDataHandler = new PassengerDataHandler(databaseConnector);
-        ticketDataHandler = new TicketDataHandler(databaseConnector);
 
-        passengerDataHandler.fetchPassengersIntoApp(this.bookingSystem.passengerManager);
-        ticketDataHandler.fetchTicketsIntoApp(this.bookingSystem);
+        this.passengerDataPullPusher = passengerDataPullPusher;
+        this.ticketDataPullPusher = ticketDataPullPusher;
 
-        this.bookingSystem.ticketManager.addObserver(passengerDataHandler);
-        this.bookingSystem.ticketManager.addObserver(ticketDataHandler);
+        dataLoader = new DataLoader(this.passengerDataPullPusher, this.ticketDataPullPusher);
+        dataLoader.loadData(bookingSystem);
+
+        this.bookingSystem.ticketManager.addObserver(this.passengerDataPullPusher);
+        this.bookingSystem.ticketManager.addObserver(this.ticketDataPullPusher);
     }
 
     /**
@@ -37,7 +45,29 @@ public class PassengerSessionHandler extends UserSessionHandler {
     @Override
     public boolean setSessionUserWithId(int id) {
 
-        this.passenger = this.bookingSystem.passengerManager.getPassengerWithId(id);
+        this.passengerId = id;
+        this.passengerInfo = this.bookingSystem.passengerManager.getPassengerInfoById(id);
         return true;
+    }
+
+    public void updatePassengerInfo() {
+        this.passengerInfo = this.bookingSystem.passengerManager.getPassengerInfoById(this.passengerId);
+    }
+
+    public int sign_up(String name, String email, String number) {
+        int id = this.bookingSystem.passengerManager.addPassenger(name, email, number);
+        Map<String, String> passengerData = new HashMap<>();
+        passengerData.put("name", name);
+        passengerData.put("email", email);
+        passengerData.put("number", number);
+        passengerData.put("id", id + "");
+
+        this.passengerDataPullPusher.addEntity(passengerData);
+        return id;
+    }
+
+    public void removeTicket(Map<String, String> ticketInfo) {
+        this.ticketDataPullPusher.removeEntity(ticketInfo);
+        this.bookingSystem.ticketManager.removeTicket(this.bookingSystem.ticketManager.getTicketFromInfo(ticketInfo));
     }
 }

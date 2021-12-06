@@ -7,6 +7,9 @@ import java.time.LocalDateTime;
 public class TestTicket {
     Ticket ticket;
 
+    /**
+     * Initializes the test environment, with objects
+     */
     @Before
     public void initializeManager(){
         Passenger passenger = new Passenger(1, "Kevin", "hello", "123");
@@ -18,6 +21,10 @@ public class TestTicket {
         Seat seat = new FirstClassSeat(1, 1500);
         ticket = new Ticket(passenger, flight, seat, false);
     }
+
+    /**
+     * Tests the getPassenger function based on a created ticket object
+     */
     @Test
     public void TestgetPassenger() {
         Passenger passenger = new Passenger(1, "Kevin", "hello", "123");
@@ -29,6 +36,10 @@ public class TestTicket {
         ticket = new Ticket(passenger, flight, seat, false);
         assertEquals(passenger, ticket.getPassenger());
     }
+
+    /**
+     * Tests the getflight function based on a created ticket object
+     */
     @Test
     public void Testgetflight() {
         Passenger passenger = new Passenger(1, "Kevin", "hello", "123");
@@ -40,6 +51,10 @@ public class TestTicket {
         ticket = new Ticket(passenger, flight, seat, false);
         assertEquals(flight, ticket.getFlight());
     }
+
+    /**
+     *  Tests the getseat function based on a created ticket object
+     */
     @Test
     public void Testgetseat() {
         Passenger passenger = new Passenger(1, "Kevin", "hello", "123");

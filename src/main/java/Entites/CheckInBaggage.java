@@ -12,6 +12,7 @@ public class CheckInBaggage extends Baggage {
     }
 
     /**
+     * Checks whether a bag is overweight or not
      *
      * @return returns true or false that the assignment is overweight
      */

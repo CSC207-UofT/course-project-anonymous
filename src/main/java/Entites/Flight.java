@@ -183,6 +183,10 @@ public class Flight implements Iterable<Seat> {
      */
     public Seat getSeatAtIndex(int index) {return this.seats.get(index);}
 
+    public String getName() {
+        return this.getAirline().name + "-" + this.getId();
+    }
+
     @Override
     public Iterator<Seat> iterator() {
         return new GeneralIterator<Seat>(this.seats);

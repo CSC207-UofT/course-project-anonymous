@@ -3,12 +3,20 @@ package interfaceAdapter;
 import UseCases.managers.MealsManager;
 
 public class RandomMealsGenerator {
+
     MealsManager mealsManager;
 
+    /**
+     *
+     * @param mealsManager meals manager returns a meal if it is present in the menu
+     */
     public RandomMealsGenerator(MealsManager mealsManager) {
         this.mealsManager = mealsManager;
     }
 
+    /**
+     * generateData adds pre-created meals into the mealsManager
+     */
     public void generateData() {
         this.mealsManager.addMeal("Pizza", 100, 11.30, true);
         this.mealsManager.addMeal("Pasta", 100, 9.30, true);

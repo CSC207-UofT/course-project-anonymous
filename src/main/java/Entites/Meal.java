@@ -19,6 +19,7 @@ public class Meal {
     }
 
     /**
+     * Gets the price of a meal
      *
      * @return returns the price of the meal
      */
@@ -27,6 +28,7 @@ public class Meal {
     }
 
     /**
+     * Gets the calories of a meal
      *
      * @return returns the calorie count of the meal
      */
@@ -35,6 +37,7 @@ public class Meal {
     }
 
     /**
+     * Gets the name of a meal
      *
      * @return returns the name of the meal
      */
@@ -43,6 +46,7 @@ public class Meal {
     }
 
     /**
+     * Determines whether a meal is vegetarian or not
      *
      * @return returns true if meal is vegetarian, returns false if not
      */

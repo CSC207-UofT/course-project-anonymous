@@ -4,6 +4,7 @@ import Entites.*;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Map;
 
 import UseCases.helpers.*;
 import UseCases.GeneralIterator;
@@ -38,6 +39,7 @@ public class TransactionManager implements Iterable<Transaction> {
         this.addTransaction(transaction);
         return transaction;
     }
+
 
     /**
      * Calculate the cost of rescheduling a ticket

@@ -24,6 +24,10 @@ public class BookingSystem {
      public RandomFlightsGenerator randomFlightsGenerator;
      public RandomMealsGenerator randomMealsGenerator;
 
+    /**
+     * Booking System collects all the components need to book a ticket and show transactions,
+     * and books a ticket and has some helper functions.
+     */
     public BookingSystem() {
         this.passengerManager = new PassengerManager();
         this.airlinesManager = new AirlinesManager();
@@ -42,6 +46,11 @@ public class BookingSystem {
         randomMealsGenerator.init();
     }
 
+    /**
+     * Returns all the flights which are going from and to the same flight as in the ticket given
+     * @param ticketInfo Map containing information of the ticket
+     * @return An arraylist of Map containing information about flights similar to the flight in the ticket
+     */
     public ArrayList<Map<String, String>> getSimilarFlight(Map<String, String> ticketInfo) {
         FlightFilter flightFilter = new FlightFilter();
         FlightFactory flightFactory = new FlightFactory();
@@ -51,6 +60,11 @@ public class BookingSystem {
                 this.airlinesManager.getFlightByName(flightName)));
     }
 
+    /**
+     * Get all the tickets booked b a passenger
+     * @param passengerInfo A map containing information of passenger
+     * @return A list of Map of information of tickets booked
+     */
     public ArrayList<Map<String, String>> getTicketsForPassenger(Map<String, String> passengerInfo) {
         TicketFilter ticketFilter = new TicketFilter();
         TicketFactory ticketFactory = new TicketFactory();
@@ -58,15 +72,35 @@ public class BookingSystem {
         return ticketFactory.getTicketsInfo(ticketFilter.getTicketsForPassenger(this.ticketManager, passengerInfo));
     }
 
+    /**
+     * Return Creates a rescheduled translation
+     * @param ticketInfo Ticket of the flight needed to be rescheduled
+     * @param flightName Name of the flight to reschedule to.
+     * @return A Map containing information of the transaction
+     */
     public Map<String, Double> getRescheduleTransactionInfo(Map<String, String> ticketInfo, String flightName) {
         return this.transactionManager.createTransactionRescheduleTicket(ticketManager.getTicketFromInfo(ticketInfo),
                 airlinesManager.getFlightByName(flightName)).getItems();
     }
 
+    /**
+     * Return Creates a refund translation
+     * @param ticketInfo Ticket of the flight needed to be refunded
+     * @return A Map containing information of the transaction
+     */
     public Map<String, Double> getRefundTransactionInfo(Map<String, String> ticketInfo) {
         return this.transactionManager.createTransactionRefundTicket(ticketManager.getTicketFromInfo(ticketInfo)).getItems();
     }
 
+    /**
+     * Create a new booking transaction
+     * @param passengerId Id of the passenger
+     * @param flightName name of the flight to book
+     * @param seatId id of the seat on the flight to book
+     * @param mealName meal selected
+     * @param baggages list of baggages
+     * @return A map containing information of the transaction
+     */
     public Map<String, Double> getNewTicketTransactionInfo(int passengerId, String flightName,
                                                            int seatId, String mealName, ArrayList<Map<String, Double>> baggages) {
         BaggageFactory baggageFactory = new BaggageFactory();
@@ -77,16 +111,35 @@ public class BookingSystem {
                 baggageFactory.createBaggageList(baggages)).getItems();
     }
 
+    /**
+     * Reschedules a flight
+     * @param ticketInfo Ticket of the flight needed to be rescheduled
+     * @param flightName Name of the flight to reschedule to.
+     */
     public void reschedule(Map<String, String> ticketInfo, String flightName) {
         this.rescheduleManager.reschedule(ticketManager.getTicketFromInfo(ticketInfo),
                 airlinesManager.getFlightByName(flightName), this.ticketManager);
     }
 
+    /**
+     * Returns the seat map of a flight
+     * @param flightName name of the flight
+     * @param seatClass class of the seat (Economy, Business or First)
+     */
     public ArrayList<Boolean> getSeatMap(String flightName, String seatClass) {
         SeatFactory seatFactory = new SeatFactory();
         return seatFactory.getSeatSymbols(this.airlinesManager.getSeatsOfClass(flightName, seatClass));
     }
 
+    /**
+     * Book a new ticket
+     * @param passengerId Id of the passenger
+     * @param flightName name of the flight to book
+     * @param seatId id of the seat on the flight to book
+     * @param mealName meal selected
+     * @param baggages list of baggages
+     * @return Map containing information of the ticket
+     */
     public Map<String, String> bookTicket(int passengerId, String flightName,
                       int seatId, String mealName, ArrayList<Map<String, Double>> baggages) {
         BaggageFactory baggageFactory = new BaggageFactory();

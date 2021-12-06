@@ -15,6 +15,9 @@ public class DatabaseConnector {
     Connection connection;
     Properties properties;
 
+    /**
+     * DatabaseConnector class connects to the database and lets us make queries and get the results
+     */
     public DatabaseConnector() {
         this.bitUser = "eeshannarula29"; this.bitApiKey = "M672_4Pm9xbyYsGnP7TDgfBJx3Pw";
         this.bitDB = "AirplaneResSys"; this.bitHost = "db.bit.io"; this.bitPort = "5432";

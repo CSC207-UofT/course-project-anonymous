@@ -13,16 +13,30 @@ public class DataLoader {
     DataPullPusher passengerDataPullPusher;
     DataPullPusher ticketDataPullPusher;
 
+    /**
+     * Initializes a new Dataloader class
+     *
+     * @param passengerDataPullPusher a DataPullPusher of type PassengerPullPusher for handling passenger data
+     * @param ticketDataPullPusher a DataPullPusher of type TicketPullPusher for handling ticket data
+     */
     DataLoader(DataPullPusher passengerDataPullPusher, DataPullPusher ticketDataPullPusher) {
         this.passengerDataPullPusher = passengerDataPullPusher;
         this.ticketDataPullPusher = ticketDataPullPusher;
     }
 
+    /**
+     * Load the data for both passengers and tickets by calling helper functions
+     * @param bookingSystem the booking system of the app
+     */
     public void loadData(BookingSystem bookingSystem) {
         this.loadPassengers(bookingSystem);
         this.loadTickets(bookingSystem);
     }
 
+    /**
+     * Use this.passengerDataPullPusher to pull all the data of passangers into the app
+     * @param bookingSystem the booking system of the app
+     */
     public void loadPassengers(BookingSystem bookingSystem) {
         ArrayList<Map<String, String>>data = this.passengerDataPullPusher.loadData();
 
@@ -32,6 +46,10 @@ public class DataLoader {
         }
     }
 
+    /**
+     * Use this.passengerDataPullPusher to pull all the data of tickets into the app
+     * @param bookingSystem the booking system of the app
+     */
     public void loadTickets(BookingSystem bookingSystem) {
         BaggageFactory baggageFactory = new BaggageFactory();
         ArrayList<Map<String, String>>data = this.ticketDataPullPusher.loadData();

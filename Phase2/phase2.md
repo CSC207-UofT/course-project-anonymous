@@ -18,7 +18,7 @@ We seek to create a program on the Domain of an Airline Ticket Reservation syste
 - The system would be able to accommodate two different types of users, passengers and agents. We have not implemented
   the agent feature, but we plan to implement it in the future.
 
-- The app would be able to Prissiest and load data using the DatabaseConnector, DataPullPusher, PassengerDataPullPusher, TicketDataPullPusher, and DataLoader classes.
+- The app would be able to Persist and load data using the DatabaseConnector, DataPullPusher, PassengerDataPullPusher, TicketDataPullPusher, and DataLoader classes.
 
 - While booking a ticket, they would be able to search for flights, choose a seat, choose a meal plan, and add baggages to their ticket. Further they would be able to see receipt of this booking and finally the ticket printed onto the UI. This booking happens with the help of BookingSystem, and the UseCase classes it uses.
 

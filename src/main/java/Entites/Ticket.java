@@ -25,6 +25,7 @@ public class Ticket {
     }
 
     /**
+     * Returns a passenger object from the ticket
      *
      * @return returns the passenger on the ticket
      */
@@ -33,48 +34,61 @@ public class Ticket {
     }
 
     /**
+     * Returns the flight object from the ticket
      *
      * @return returns the flight on the ticket
      */
     public Flight getFlight() {
         return flight;
     }
+
     /**
+     * Returns the seat object on the ticket
      *
      * @return returns the seat on the ticket
      */
     public Seat getSeat() {
         return seat;
     }
+
     /**
+     * Sets a seat object to the ticket
      *
      * @return void. Sets seat to the given seat object
      */
     public void setSeat(Seat seat) {
         this.seat = seat;
     }
+
     /**
+     * Gets the meal object on the ticket
      *
      * @return returns the meal on the ticket
      */
     public Meal getMeal() {
         return meal;
     }
+
     /**
+     * Sets a meal object to the ticket
      *
      * @return void. Sets meal to the given meal object
      */
     public void setMeal(Meal meal) {
         this.meal = meal;
     }
+
     /**
+     * Gets the baggage objects on the ticket
      *
      * @return returns the baggage on the ticket
      */
     public ArrayList<Baggage> getBaggages() {
         return baggages;
     }
+
     /**
+     * Sets baggage objects to the ticket
      *
      * @return void. Sets baggage to the given baggage object
      */

@@ -10,16 +10,25 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RandomFlightsGenerator {
+
     private AirlinesManager airlinesManager;
     private String starting_date;
     private DateTimeFormatter formatter;
 
+    /**
+     *
+     * @param airlinesManager airlinesManager takes the name of an airline and returns if it is in the arraylist
+     * @param starting_date the starting date for the random flights it wants
+     */
     public RandomFlightsGenerator(AirlinesManager airlinesManager, String starting_date) {
         this.airlinesManager = airlinesManager;
         this.formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         this.starting_date = starting_date;
     }
 
+    /**
+     * generates pre-created airlines to store in airlinesManager
+     */
     public void generateAirlines() {
 
         String[] airlines = {"Emirates", "Air India", "Air Canada", "Swiss", "United"};
@@ -29,6 +38,10 @@ public class RandomFlightsGenerator {
         }
     }
 
+    /**
+     *  generates a flight route based on input locations
+     * @return a flight path based on locations
+     */
     public ArrayList<Map<String, String>> generateRoutes() {
         String[] locations = {"London", "LA", "Toronto", "Delhi",
                 "Vancouver", "Chicago", "Wisconsin", "Britain", "Sidney"};
@@ -48,6 +61,10 @@ public class RandomFlightsGenerator {
         return routes;
     }
 
+    /**
+     * generates datetimes based on input starting_date
+     * @return an ArrayList of possible date times
+     */
     public ArrayList<LocalDateTime> generateDates() {
         String[] starting_dateTimes = {starting_date + " 08:30", starting_date + " 10:00"};
 
@@ -62,6 +79,9 @@ public class RandomFlightsGenerator {
         return dateTimes;
     }
 
+    /**
+     * generates data of miles based on routes and dates
+     */
     public void generateData() {
         ArrayList<Map<String, String>> routes = this.generateRoutes();
         ArrayList<LocalDateTime> dateTimes = this.generateDates();

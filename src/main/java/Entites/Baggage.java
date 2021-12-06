@@ -32,7 +32,7 @@ public abstract class Baggage {
     // GETTERS AND SETTERS:
 
     /**
-     *
+     * Gets the weight of a bag
      * @return returns the weight of the bag
      */
     public double getWeight() {
@@ -40,7 +40,7 @@ public abstract class Baggage {
     }
 
     /**
-     *
+     * Sets the weight of a bag
      * @param weight takes the weight value of the bag
      */
     public void setWeight(double weight) {
@@ -48,6 +48,7 @@ public abstract class Baggage {
     }
 
     /**
+     *  Gets the width of a bag
      *
      * @return returns width of the bag
      */
@@ -56,6 +57,7 @@ public abstract class Baggage {
     }
 
     /**
+     * Sets the width of a bag
      *
      * @param width takes the width of a bag
      */
@@ -64,6 +66,7 @@ public abstract class Baggage {
     }
 
     /**
+     * gets the height of a bag
      *
      * @return returns the height of the bag
      */
@@ -72,6 +75,7 @@ public abstract class Baggage {
     }
 
     /**
+     * Sets the height of a bag
      *
      * @param height takes the height of the bag
      */
@@ -80,6 +84,7 @@ public abstract class Baggage {
     }
 
     /**
+     * Gets the id of a bag
      *
      * @return returns the id of the bag
      */
@@ -88,6 +93,7 @@ public abstract class Baggage {
     }
 
     /**
+     * Sets the id of a bag
      *
      * @param id takes the id of the bag
      */

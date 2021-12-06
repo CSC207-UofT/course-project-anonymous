@@ -2,6 +2,9 @@ package Entites;
 import java.util.HashMap;
 
 public class Transaction {
+    /**
+     * Transaction that has calculates the price of the ticket
+     */
     HashMap<String, Double> items;
 
     public Transaction() {
@@ -12,7 +15,11 @@ public class Transaction {
         items.put(name, price);
     }
 
-
+    /**
+     * Calculates a total amount in dollars for the ticket cost
+     *
+     * @return returns a double containing the price of the ticket
+     */
     public double calculateTotal() {
          double total = 0;
 

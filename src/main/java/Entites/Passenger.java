@@ -9,6 +9,7 @@ public class Passenger extends User {
 
     /**
      *  Constructs a passenger with the given id, name, email, and phone number
+     *
      * @param id the id of the passenger
      * @param name name of the passenger
      * @param email email of the passenger
@@ -23,6 +24,7 @@ public class Passenger extends User {
     // GETTERS AND SETTERS:
 
     /**
+     * Gets a passengers membership
      *
      * @return returns a membership object
      */
@@ -31,6 +33,7 @@ public class Passenger extends User {
     }
 
     /**
+     * Sets a membership object to the passenger
      *
      * @param membership sets a passengers' membership status to a membership object
      */
@@ -39,6 +42,7 @@ public class Passenger extends User {
     }
 
     /**
+     * Gets the amount of points a passenger has
      *
      * @return returns the points assigned to the passenger
      */
@@ -47,6 +51,7 @@ public class Passenger extends User {
     }
 
     /**
+     * Sets an integer value of points to the passenger
      *
      * @param points set points to an integer value
      */

@@ -38,16 +38,10 @@ public class TestTicketManager {
         assert (ticketManager.getTickets().size() == 0);
 
         // Creating new tickets
-        Ticket newtest = ticketManager.addTicket(passenger, flight, seat, meal, baggages, false);
-        Ticket newtest2 = ticketManager.addTicket(passenger2, flight, seat, meal, baggages, false);
+        ticketManager.addTicket(passenger, flight, seat, meal, baggages, false);
+        ticketManager.addTicket(passenger2, flight, seat, meal, baggages, false);
 
-        // Checking if the ticket has been created
-        assertTrue(newtest instanceof Ticket);
-        assertTrue(newtest2 instanceof Ticket);
-
-        // Checking if a ticket has been successfully removed
-        ticketManager.removeTicket(newtest);
-        assert (ticketManager.getTickets().size() == 1);
+        assert (ticketManager.getTickets().size() == 2);
 
     }
 }

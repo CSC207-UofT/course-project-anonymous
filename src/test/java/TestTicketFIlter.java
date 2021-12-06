@@ -1,3 +1,4 @@
+import UseCases.factories.PassengerFactory;
 import org.junit.*;
 import UseCases.helpers.*;
 import UseCases.managers.*;
@@ -8,6 +9,7 @@ import java.io.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Map;
 
 public class TestTicketFIlter {
     /**
@@ -48,8 +50,11 @@ public class TestTicketFIlter {
 
     @Test
     public void testgetTicketsForPassenger(){
-    assertEquals(ticketFilter.getTicketsForPassenger(ticketManager, passenger).get(0).getPassenger().getName(), "Dix" );
-    assertEquals(ticketFilter.getTicketsForPassenger(ticketManager, passenger).size(), 1 );
+        PassengerFactory passengerFactory =  new PassengerFactory();
+        Map<String, String> passengerInfo = passengerFactory.getPassengerInfo(passenger);
+
+        assertEquals(ticketFilter.getTicketsForPassenger(ticketManager, passengerInfo).get(0).getPassenger().getName(), "Dix" );
+        assertEquals(ticketFilter.getTicketsForPassenger(ticketManager, passengerInfo).size(), 1 );
 
     }
 }

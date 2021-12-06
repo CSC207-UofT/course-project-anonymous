@@ -7,6 +7,12 @@ import UseCases.managers.*;
 import java.util.ArrayList;
 
 public class TicketFilter {
+    /**
+     * Filters the tickets for this passenger
+     * @param ticketManager a TicketManager object
+     * @param passenger a Passenger object
+     * @return a list of tickets booked by this passenger
+     */
     public ArrayList<Ticket> getTicketsForPassenger(TicketManager ticketManager, Passenger passenger) {
 
         // Creating an ArrayList to store the tickets

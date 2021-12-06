@@ -20,7 +20,7 @@ public class Transaction {
              total += price;
          }
 
-         return Math.round(total * 100) / 100;
+         return ((float)Math.round(total * 100) / 100);
     }
 
     public HashMap<String, Double> getItems() {

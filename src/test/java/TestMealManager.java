@@ -3,7 +3,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 
-public class MealManager_test {
+public class TestMealManager {
 
         MealsManager mealManager;
 
@@ -15,12 +15,17 @@ public class MealManager_test {
         @Test
         public void testMeals() {
             // Checking if no meals are available. This should always be vacously true
-            assert(mealManager.checkForMeal("No Entites.Meal") == true);
+            assert(mealManager.checkForMeal("No Meal") == true);
+
             // Testing that the system is correctly adding meals and storing it in the system
             mealManager.addMeal("Veg Sushi",10,11.11,true);
             assert(mealManager.checkForMeal("Veg Sushi") == true);
+            mealManager.addMeal("Pan Cake",110,12.51,false);
+            assert(mealManager.checkForMeal("Pan Cake") == true);
+
             // Testing that the system correctly identifies that certain meals are not present in the system
             assert(mealManager.checkForMeal("Pizza") == false);
+            assert(mealManager.checkForMeal("Vanilla Ice-cream") == false);
 
         }
 

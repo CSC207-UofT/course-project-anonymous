@@ -19,14 +19,17 @@ public abstract class User {
     // GETTERS AND SETTERS:
 
     /**
+     * Gets the id of the user object
      *
      * @return returns int id of the user
      */
+
     public int getId() {
         return this.id;
     }
 
     /**
+     * Sets the id of a user object
      *
      * @param id sets the id to given int id
      */
@@ -35,6 +38,7 @@ public abstract class User {
     }
 
     /**
+     * Gets the name of a user object
      *
      * @return returns string name of the user
      */
@@ -43,6 +47,7 @@ public abstract class User {
     }
 
     /**
+     * Sets the name of a user object
      *
      * @param name sets the name to the given string id
      */
@@ -51,6 +56,7 @@ public abstract class User {
     }
 
     /**
+     * Gets the email of a user object
      *
      * @return returns the string email of the user
      */
@@ -59,6 +65,7 @@ public abstract class User {
     }
 
     /**
+     * Sets the email of a user object
      *
      * @param email sets the email to the given string email
      */
@@ -67,6 +74,7 @@ public abstract class User {
     }
 
     /**
+     * Gets the phone number of a user object
      *
      * @return returns the string phone number of the user
      */
@@ -75,6 +83,7 @@ public abstract class User {
     }
 
     /**
+     * Sets a phone number to a user object
      * 
      * @param number sets the phone number to the given string phone number
      */

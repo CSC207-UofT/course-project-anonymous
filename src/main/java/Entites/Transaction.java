@@ -12,6 +12,17 @@ public class Transaction {
         items.put(name, price);
     }
 
+
+    public double calculateTotal() {
+         double total = 0;
+
+         for (Double price: this.items.values()) {
+             total += price;
+         }
+
+         return ((float)Math.round(total * 100) / 100);
+    }
+
     public HashMap<String, Double> getItems() {
         return this.items;
     }

@@ -8,7 +8,16 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class TicketFilter {
+
+    /**
+     * Filters the tickets for this passenger
+     * @param ticketManager a TicketManager object
+     * @param passenger a Passenger object
+     * @return a list of tickets booked by this passenger
+     */
+  
     public ArrayList<Ticket> getTicketsForPassenger(TicketManager ticketManager, Map<String, String> passengerInfo) {
+
 
         // Creating an ArrayList to store the tickets
         ArrayList<Ticket> tickets_so_far = new ArrayList<>();

@@ -280,9 +280,9 @@ So far as we have reviewed our code, at this point of time, we cannot seem to fi
 
 Yes! We believe that our code is organised in a meaningful way. We have used the Package-by-Layer packaging structure. This essentially means that we are packaging our code by each layer of Clean Architecture.
 
-In this packaging structure, all our Entities would be in a single package/folder, all our Use Cases would be in another package/folder, all our Controllers/Presenters/GateWays would in in another package/folder and our Devices/User Interface would be in a separate package/folder.
+In this packaging structure, all our Entities would be in a single package/folder, all our Use Cases would be in another package/folder, all our Controllers/Presenters/GateWays would in in another package/folder and our Devices & User Interface would be in a separate package/folder.
 
-This would make it a lot easier for someone to find the code to a particular function/class they need by just checking if the code they need to edit is in an entity, use case, presenter/gateway or in devices/user interface layer.
+This would make it a lot easier for someone to find the code to a particular function or class. This is because they would just need to check if the code they need to edit is present/located in an entity class, use case class, presenter/gateway class or in devices/user interface class.
 
 One look at our CRC model would explain how the Package-by-Layer packaging structure made the most sense. Our CRC model already shows our classes, interfaces and abstract classes divided up into layers of clean architecture. It would only make sense for us to leverage the work we already did (by dividing up our classes by layers of clean architecture) and implement it in our packaging structure.
 

@@ -1,14 +1,18 @@
 package interfaceAdapter.presenters;
 
-import Entites.Flight;
 import UseCases.factories.SeatFactory;
-
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Map;
 
 public class FlightsPresenter {
 
+    /**
+     * returns all the information about a flight given by the flightData
+     *
+     * @param flightData a map representing all the flight's data
+     *
+     * @return string representing the info of a single flight
+     **/
     public String presentFlight(Map<String, String> flightData) {
         /*
         Prints out info about a single flight, while search for flight
@@ -37,6 +41,13 @@ public class FlightsPresenter {
                 border + spacer;
     }
 
+    /**
+     * returns all the information about all flights in flightsData
+     *
+     * @param flightsData a list of mappings representing the data of multiple flights
+     *
+     * @return string representing the info of all given flights in flightsData
+     **/
     public String presentFlights(ArrayList<Map<String, String>> flightsData) {
         /*
         Uses presentFlight and prints out all the flights

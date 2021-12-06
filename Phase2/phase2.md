@@ -290,25 +290,25 @@ One look at our CRC model would explain how the Package-by-Layer packaging struc
 
  ### For each Principle of Universal Design, write 2-5 sentences or point form notes explaining which features your program adhere to that principle.
       
-####Principle 1: Equitable Use
+#### Principle 1: Equitable Use
       
 - Our design is useful and marketable to people no matter their diverse abilities. To better adhere to this principle, we could add a voice detection feature that could accommodate those who can’t type on a keyboard for example. We could also add a bigger text option for those who have difficulty reading the small text we currently have.
       
 
-####Principle 2: Flexibility in Use
+#### Principle 2: Flexibility in Use
       
 - Currently, there are a few ways we can improve our flexibility. For example, we could look into implementing different languages apart from just English to open it up for more users. We could also do something like a drop down menu for people to select in case the user’s typing accuracy gives them problems.
       
 
-####Principle 3: Simple and Intuitive Use
+#### Principle 3: Simple and Intuitive Use
       
 - Our current design is already very simple to understand and simple to use with our type inputs. However to improve in this area, we can display the data the user already input for them to see at all times. If people are not accustomed to typing in the console, we could implement a GUI with buttons to accommodate all user’s experience.
       
-####Principle 4: Perceptible Information
+#### Principle 4: Perceptible Information
       
 - Our current design communicates the essential information to the user which is good. However currently it is only in textual mode. We could expand this into more pictures, verbal, or tactile versions to present information to the user however they need it. We could also add colour to our text to help with contrast and legibility. We could also make the displayed seat chart more readable.
       
-####Principle 5: Tolerance for Error
+#### Principle 5: Tolerance for Error
 
 - In our design, the user must type the word spelt correctly or else our program would not accept it. This aspect could be fixed by adding an autocorrect or an autofill option. We could also implement warning messages that would show up to discourage potential errors in usage such as booking a flight to the same starting destination.
       

@@ -24,7 +24,7 @@ public class TransactionManager implements Iterable<Transaction> {
 
     /**
      * To create a new transaction to calculate cost of a ticket for the user
-     * @param passanger input the details of the passanger
+     * @param passenger input the details of the passanger
      * @param seat input the details of the seat chosen by the passanger
      * @param meal input the detalis of the meal preferences of the passanger
      * @param baggages input the number and type of baggages carried by the passanger

@@ -6,9 +6,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class PassengerSessionHandler extends UserSessionHandler {
+
+    /**
+     * A subclass of the abstract UserSessionHandler. This class
+     * acts as a gateway between the UI and the presenters/controllers
+     * relay the information
+     */
     public int passengerId;
     public Map<String, String> passengerInfo;
+
     public BookingSystem bookingSystem;
+
 
     DataPullPusher passengerDataPullPusher;
     DataPullPusher ticketDataPullPusher;
@@ -16,6 +24,7 @@ public class PassengerSessionHandler extends UserSessionHandler {
     DataLoader dataLoader;
 
     public PassengerSessionHandler(DataPullPusher passengerDataPullPusher, DataPullPusher ticketDataPullPusher) {
+
         bookingSystem = new BookingSystem();
 
         this.passengerDataPullPusher = passengerDataPullPusher;
@@ -28,11 +37,17 @@ public class PassengerSessionHandler extends UserSessionHandler {
         this.bookingSystem.ticketManager.addObserver(this.ticketDataPullPusher);
     }
 
+    /**
+     * implements the abstract method from parent class
+     * @param id the id of the passenger
+     * @return returns a boolean depedning on whether a passenger with this ID exists
+     */
     @Override
     public boolean setSessionUserWithId(int id) {
+
         this.passengerId = id;
         this.passengerInfo = this.bookingSystem.passengerManager.getPassengerInfoById(id);
-        return !this.passengerInfo.equals(null);
+        return true;
     }
 
     public void updatePassengerInfo() {

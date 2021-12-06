@@ -1,5 +1,4 @@
 package Entites;
-
 import java.util.HashMap;
 
 public class Transaction {
@@ -12,6 +11,7 @@ public class Transaction {
     public void addItem(String name, double price) {
         items.put(name, price);
     }
+
 
     public double calculateTotal() {
          double total = 0;

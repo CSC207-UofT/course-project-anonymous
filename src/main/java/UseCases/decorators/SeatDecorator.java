@@ -1,8 +1,8 @@
 package UseCases.decorators;
-import Entites.*;
-import Entites.Memberships.Seats.Seat;
+import Entites.Seats.Seat;
+import Entites.Seats.SeatBaggageAllowance;
 
-public abstract class SeatDecorator implements SeatBaggageAllowance{
+public abstract class SeatDecorator implements SeatBaggageAllowance {
     protected Seat decoratedSeat;
 
     /**

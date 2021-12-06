@@ -3,7 +3,7 @@ package UseCases.managers;
 import Entites.Baggages.Baggage;
 import Entites.Baggages.CabinBaggage;
 import Entites.Baggages.CheckInBaggage;
-import Entites.Memberships.Seats.Seat;
+import Entites.Seats.Seat;
 
 import java.util.ArrayList;
 

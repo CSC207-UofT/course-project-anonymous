@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import Entites.Baggages.Baggage;
-import Entites.Memberships.Seats.Seat;
+import Entites.Seats.Seat;
 import Entites.Users.Passenger;
 import UseCases.helpers.*;
 import UseCases.GeneralIterator;

@@ -1,9 +1,9 @@
 import Entites.Baggages.Baggage;
 import Entites.Baggages.CabinBaggage;
 import Entites.Baggages.CheckInBaggage;
-import Entites.Memberships.Seats.EconomySeat;
-import Entites.Memberships.Seats.FirstClassSeat;
-import Entites.Memberships.Seats.Seat;
+import Entites.Seats.EconomySeat;
+import Entites.Seats.FirstClassSeat;
+import Entites.Seats.Seat;
 import UseCases.managers.BaggageManager;
 import org.junit.Before;
 import org.junit.Test;

@@ -1,6 +1,6 @@
 import Entites.Baggages.Baggage;
 import Entites.Baggages.CabinBaggage;
-import Entites.Memberships.Seats.EconomySeat;
+import Entites.Seats.EconomySeat;
 import Entites.Users.Passenger;
 import UseCases.factories.PassengerFactory;
 import org.junit.*;

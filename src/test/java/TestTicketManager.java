@@ -3,8 +3,8 @@ import java.util.ArrayList;
 
 import Entites.Baggages.Baggage;
 import Entites.Baggages.CabinBaggage;
-import Entites.Memberships.Seats.FirstClassSeat;
-import Entites.Memberships.Seats.Seat;
+import Entites.Seats.FirstClassSeat;
+import Entites.Seats.Seat;
 import Entites.Users.Passenger;
 import org.junit.Before;
 import org.junit.Test;

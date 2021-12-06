@@ -1,7 +1,7 @@
 package UseCases.helpers;
 
 import Entites.Flight;
-import Entites.Memberships.Seats.Seat;
+import Entites.Seats.Seat;
 import Entites.Ticket;
 import Entites.Transaction;
 

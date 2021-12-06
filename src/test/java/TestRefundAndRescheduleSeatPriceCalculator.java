@@ -1,4 +1,4 @@
-import Entites.Memberships.Seats.EconomySeat;
+import Entites.Seats.EconomySeat;
 import UseCases.helpers.RefundAndRescheduleSeatPriceCalculator;
 import org.junit.*;
 

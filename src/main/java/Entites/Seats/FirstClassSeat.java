@@ -1,4 +1,4 @@
-package Entites.Memberships.Seats;
+package Entites.Seats;
 
 public class FirstClassSeat extends Seat {
     /**

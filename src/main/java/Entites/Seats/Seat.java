@@ -1,6 +1,4 @@
-package Entites.Memberships.Seats;
-
-import Entites.SeatBaggageAllowance;
+package Entites.Seats;
 
 public abstract class Seat implements SeatBaggageAllowance {
     private int id;

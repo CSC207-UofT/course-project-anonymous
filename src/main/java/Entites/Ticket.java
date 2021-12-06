@@ -1,7 +1,7 @@
 package Entites;
 
 import Entites.Baggages.Baggage;
-import Entites.Memberships.Seats.Seat;
+import Entites.Seats.Seat;
 import Entites.Users.Passenger;
 
 import java.util.ArrayList;

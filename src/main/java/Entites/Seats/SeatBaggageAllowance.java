@@ -1,4 +1,4 @@
-package Entites;
+package Entites.Seats;
 
 public interface SeatBaggageAllowance {
 

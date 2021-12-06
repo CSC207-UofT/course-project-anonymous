@@ -1,6 +1,6 @@
 import Entites.*;
-import Entites.Memberships.Seats.FirstClassSeat;
-import Entites.Memberships.Seats.Seat;
+import Entites.Seats.FirstClassSeat;
+import Entites.Seats.Seat;
 import Entites.Users.Passenger;
 import org.junit.Before;
 import org.junit.Test;

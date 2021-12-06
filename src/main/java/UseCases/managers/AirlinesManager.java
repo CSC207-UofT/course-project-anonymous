@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 
-import Entites.Seat;
+import Entites.Memberships.Seats.Seat;
 import UseCases.GeneralIterator;
 import UseCases.factories.FlightFactory;
 import UseCases.helpers.*;

@@ -1,6 +1,6 @@
 package UseCases.managers;
 
-import Entites.Passenger;
+import Entites.Users.Passenger;
 import UseCases.factories.MembershipFactory;
 import UseCases.GeneralIterator;
 import UseCases.factories.PassengerFactory;

@@ -1,6 +1,7 @@
 package UseCases.factories;
 
-import Entites.*;
+import Entites.Memberships.*;
+import Entites.Users.Passenger;
 
 public class MembershipFactory {
 

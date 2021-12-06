@@ -1,5 +1,8 @@
+import Entites.Memberships.Seats.BusinessClassSeat;
+import Entites.Memberships.Seats.EconomySeat;
+import Entites.Memberships.Seats.FirstClassSeat;
+import Entites.Memberships.Seats.Seat;
 import UseCases.decorators.*;
-import Entites.*;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;

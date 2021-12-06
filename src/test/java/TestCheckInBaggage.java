@@ -1,10 +1,10 @@
-import Entites.*;
+import Entites.Baggages.CheckInBaggage;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class TestCheckInBaggage {
-    CheckInBaggage CheckInBaggage;
+    Entites.Baggages.CheckInBaggage CheckInBaggage;
 
     /**
      * initializes a new CheckInBaggage object for testing

@@ -1,9 +1,9 @@
 package UseCases.managers;
 
-import Entites.Baggage;
-import Entites.CabinBaggage;
-import Entites.CheckInBaggage;
-import Entites.Seat;
+import Entites.Baggages.Baggage;
+import Entites.Baggages.CabinBaggage;
+import Entites.Baggages.CheckInBaggage;
+import Entites.Memberships.Seats.Seat;
 
 import java.util.ArrayList;
 

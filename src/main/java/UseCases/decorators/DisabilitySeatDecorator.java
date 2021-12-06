@@ -1,5 +1,5 @@
 package UseCases.decorators;
-import Entites.*;
+import Entites.Memberships.Seats.Seat;
 
 public class DisabilitySeatDecorator extends SeatDecorator{
     static int disabilityBaggageAllowance = 1;

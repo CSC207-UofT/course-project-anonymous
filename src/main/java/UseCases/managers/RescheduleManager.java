@@ -1,7 +1,7 @@
 package UseCases.managers;
 
 import Entites.Flight;
-import Entites.Seat;
+import Entites.Memberships.Seats.Seat;
 import Entites.Ticket;
 
 public class RescheduleManager {

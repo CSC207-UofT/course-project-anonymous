@@ -1,6 +1,6 @@
 package UseCases.helpers;
 
-import Entites.Seat;
+import Entites.Memberships.Seats.Seat;
 
 public class RefundAndRescheduleSeatPriceCalculator {
 

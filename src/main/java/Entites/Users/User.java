@@ -1,4 +1,4 @@
-package Entites;
+package Entites.Users;
 
 public abstract class User {
 

@@ -1,5 +1,6 @@
+import Entites.Memberships.Gold;
+import Entites.Memberships.MembershipStatus;
 import UseCases.decorators.*;
-import Entites.*;
 import org.junit.Before;
 import org.junit.Test;
 

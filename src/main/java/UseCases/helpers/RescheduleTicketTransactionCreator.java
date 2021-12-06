@@ -1,10 +1,9 @@
 package UseCases.helpers;
 
 import Entites.Flight;
-import Entites.Seat;
+import Entites.Memberships.Seats.Seat;
 import Entites.Ticket;
 import Entites.Transaction;
-import UseCases.helpers.RefundAndRescheduleSeatPriceCalculator;
 
 import java.time.Duration;
 import java.time.LocalDate;

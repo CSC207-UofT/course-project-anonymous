@@ -1,5 +1,6 @@
 package UseCases.decorators;
 import Entites.*;
+import Entites.Memberships.Seats.Seat;
 
 public abstract class SeatDecorator implements SeatBaggageAllowance{
     protected Seat decoratedSeat;

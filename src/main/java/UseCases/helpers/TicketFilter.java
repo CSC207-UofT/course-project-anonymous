@@ -1,6 +1,5 @@
 package UseCases.helpers;
 
-import Entites.Passenger;
 import Entites.Ticket;
 import UseCases.managers.*;
 

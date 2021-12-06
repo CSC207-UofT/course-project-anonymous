@@ -1,6 +1,7 @@
-package Entites;
+package Entites.Users;
 
-import java.util.*;
+import Entites.Memberships.MembershipStatus;
+import Entites.Memberships.Standard;
 
 public class Passenger extends User {
 

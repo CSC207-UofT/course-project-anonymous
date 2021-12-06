@@ -1,6 +1,8 @@
-package Entites;
+package Entites.Memberships.Seats;
 
-public abstract class Seat implements SeatBaggageAllowance{
+import Entites.SeatBaggageAllowance;
+
+public abstract class Seat implements SeatBaggageAllowance {
     private int id;
     private double price;
     private boolean isOccupied;

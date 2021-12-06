@@ -1,3 +1,7 @@
+import Entites.Baggages.Baggage;
+import Entites.Baggages.CabinBaggage;
+import Entites.Memberships.Seats.EconomySeat;
+import Entites.Users.Passenger;
 import UseCases.factories.PassengerFactory;
 import org.junit.*;
 import UseCases.helpers.*;
@@ -5,8 +9,6 @@ import UseCases.managers.*;
 import Entites.*;
 import static org.junit.Assert.*;
 
-import java.io.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Map;

@@ -2,6 +2,12 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
+import Entites.Baggages.Baggage;
+import Entites.Baggages.CabinBaggage;
+import Entites.Baggages.CheckInBaggage;
+import Entites.Memberships.Seats.EconomySeat;
+import Entites.Memberships.Seats.Seat;
+import Entites.Users.Passenger;
 import UseCases.helpers.RefundTransactionCreator;
 import org.junit.Before;
 import org.junit.Test;

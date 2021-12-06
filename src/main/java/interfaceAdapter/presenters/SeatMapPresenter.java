@@ -1,7 +1,5 @@
 package interfaceAdapter.presenters;
 
-import Entites.Seat;
-
 import java.util.ArrayList;
 
 public class SeatMapPresenter {

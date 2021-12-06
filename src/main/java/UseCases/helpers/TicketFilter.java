@@ -11,7 +11,7 @@ public class TicketFilter {
     /**
      * Filters the tickets for this passenger
      * @param ticketManager a TicketManager object
-     * @param passenger a Passenger object
+     * @param passengerInfo a Map containing passenger info
      * @return a list of tickets booked by this passenger
      */
   

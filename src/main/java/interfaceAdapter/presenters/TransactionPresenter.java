@@ -1,7 +1,4 @@
 package interfaceAdapter.presenters;
-
-import Entites.Transaction;
-
 import java.util.Map;
 
 public class TransactionPresenter {

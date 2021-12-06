@@ -1,6 +1,6 @@
 package Entites;
 
-public abstract class Seat {
+public abstract class Seat implements SeatBaggageAllowance{
     private int id;
     private double price;
     private boolean isOccupied;

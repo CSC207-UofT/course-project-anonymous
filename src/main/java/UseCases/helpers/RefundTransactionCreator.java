@@ -24,7 +24,7 @@ public class RefundTransactionCreator {
         return transaction;
     }
 
-    long getDifferenceDays(LocalDate d1, LocalDate d2) {
+    public long getDifferenceDays(LocalDate d1, LocalDate d2) {
         return Duration.between(d1.atStartOfDay(), d2.atStartOfDay()).toDays();
     }
 }

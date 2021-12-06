@@ -2,6 +2,8 @@ package Entites;
 
 public class Standard implements MembershipStatus {
 
+    static double discount = 0.10;
+
     /**
      * return the price of the flight after a 10% discount
      * is applied
@@ -11,7 +13,7 @@ public class Standard implements MembershipStatus {
      **/
     @Override
     public double getFlightDiscount(double price) {
-        return (price * 0.10);
+        return (price * discount);
     }
 
     /**
@@ -23,7 +25,7 @@ public class Standard implements MembershipStatus {
      **/
     @Override
     public double getMealDiscount(double price) {
-        return (price * 0.10);
+        return (price * discount);
     }
 
     /**
@@ -35,7 +37,7 @@ public class Standard implements MembershipStatus {
      **/
     @Override
     public double getExtraBaggageDiscount(double price) {
-        return (price * 0.10);
+        return (price * discount);
     }
 
     @Override

@@ -6,6 +6,11 @@ import java.util.*;
 import UseCases.GeneralIterator;
 
 public class Airline implements Iterable<Flight> {
+    /**
+     * Creates a new airline called string name
+     * @param name: the name of the airline
+     */
+
     public String name;
     private int currentFlightId;
 
@@ -15,6 +20,15 @@ public class Airline implements Iterable<Flight> {
         this.name = name;
         this.flights = new ArrayList<>();
     }
+
+    /**
+     *
+     * @param departureTime the time of departure
+     * @param landingTime the time of landing
+     * @param from where the flight departs from
+     * @param to where the flight is going
+     * @param miles the distance of the flight in miles
+     */
 
     public void addFlight(LocalDateTime departureTime,
                           LocalDateTime landingTime,
@@ -28,6 +42,12 @@ public class Airline implements Iterable<Flight> {
         this.flights.add(flight);
     }
 
+    /**
+     * @param id the id of the flight
+     * @return returns if the flight was removed
+     */
+
+
     public boolean removeFlight(int id) {
         int index = getIndex(id);
         if (index == -1) {return false;}
@@ -35,11 +55,22 @@ public class Airline implements Iterable<Flight> {
         return true;
     }
 
+    /**
+     * @param id id of the flight
+     * @return returns the index of the wanted flight
+     */
+
     public Flight getFlight(int id) {
         int index = getIndex(id);
         if (index == -1) {return null;}
         return this.flights.get(index);
     }
+
+    /**
+     *
+     * @param id id of the flight
+     * @return returns the index of the flight
+     */
 
     private int getIndex(int id) {
         int index = -1;
@@ -53,6 +84,10 @@ public class Airline implements Iterable<Flight> {
         return index;
     }
 
+    /**
+     *
+     * @return returns a flight iterator
+     */
     @Override
     public Iterator<Flight> iterator() {
         return new GeneralIterator<Flight>(this.flights);

@@ -1,6 +1,6 @@
 package UseCases.decorators;
 
-import Entites.MembershipStatus;
+import Entites.Memberships.MembershipStatus;
 
 public class DisabilityMembershipDecorator extends MembershipDecorator{
 

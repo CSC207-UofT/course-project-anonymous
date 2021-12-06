@@ -1,4 +1,4 @@
-import Entites.*;
+import Entites.Memberships.Seats.FirstClassSeat;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;

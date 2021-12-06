@@ -1,7 +1,7 @@
-import Entites.BusinessClassSeat;
-import Entites.EconomySeat;
-import Entites.FirstClassSeat;
-import Entites.Seat;
+import Entites.Memberships.Seats.BusinessClassSeat;
+import Entites.Memberships.Seats.EconomySeat;
+import Entites.Memberships.Seats.FirstClassSeat;
+import Entites.Memberships.Seats.Seat;
 import UseCases.factories.SeatFactory;
 import org.junit.Before;
 import org.junit.Test;

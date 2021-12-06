@@ -1,4 +1,4 @@
-package Entites;
+package Entites.Baggages;
 
 public abstract class Baggage {
 

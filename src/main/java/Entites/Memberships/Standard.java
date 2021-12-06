@@ -1,4 +1,4 @@
-package Entites;
+package Entites.Memberships;
 
 public class Standard implements MembershipStatus {
 

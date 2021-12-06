@@ -1,6 +1,10 @@
 package UseCases.factories;
 
 import Entites.*;
+import Entites.Memberships.Seats.BusinessClassSeat;
+import Entites.Memberships.Seats.EconomySeat;
+import Entites.Memberships.Seats.FirstClassSeat;
+import Entites.Memberships.Seats.Seat;
 
 import java.util.ArrayList;
 

@@ -1,6 +1,9 @@
 package UseCases.managers;
 
 import Entites.*;
+import Entites.Baggages.Baggage;
+import Entites.Memberships.Seats.Seat;
+import Entites.Users.Passenger;
 import UseCases.GeneralIterator;
 import UseCases.factories.PassengerFactory;
 import UseCases.factories.TicketFactory;

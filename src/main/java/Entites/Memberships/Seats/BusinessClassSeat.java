@@ -1,4 +1,4 @@
-package Entites;
+package Entites.Memberships.Seats;
 
 public class BusinessClassSeat extends Seat {
     /**

@@ -1,5 +1,9 @@
 package Entites;
 
+import Entites.Baggages.Baggage;
+import Entites.Memberships.Seats.Seat;
+import Entites.Users.Passenger;
+
 import java.util.ArrayList;
 
 public class Ticket {

@@ -1,6 +1,6 @@
 package UseCases.factories;
 
-import Entites.Passenger;
+import Entites.Users.Passenger;
 
 import java.util.HashMap;
 import java.util.Map;

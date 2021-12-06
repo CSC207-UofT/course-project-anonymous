@@ -1,11 +1,13 @@
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.List;
-import static org.junit.Assert.*;
 
+import Entites.Baggages.Baggage;
+import Entites.Baggages.CabinBaggage;
+import Entites.Memberships.Seats.FirstClassSeat;
+import Entites.Memberships.Seats.Seat;
+import Entites.Users.Passenger;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 import UseCases.managers.*;
 import Entites.*;

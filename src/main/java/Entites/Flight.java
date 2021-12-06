@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import Entites.Memberships.Seats.Seat;
 import UseCases.factories.*;
 import UseCases.GeneralIterator;
 

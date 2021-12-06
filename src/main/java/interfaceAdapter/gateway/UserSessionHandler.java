@@ -1,6 +1,6 @@
 package interfaceAdapter.gateway;
 
-import Entites.User;
+import Entites.Users.User;
 import interfaceAdapter.controller.BookingSystem;
 
 public abstract class UserSessionHandler {

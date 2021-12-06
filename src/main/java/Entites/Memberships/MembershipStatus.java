@@ -1,4 +1,4 @@
-package Entites;
+package Entites.Memberships;
 
 public interface MembershipStatus {
     /**

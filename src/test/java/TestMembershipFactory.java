@@ -1,4 +1,5 @@
-import Entites.*;
+import Entites.Memberships.*;
+import Entites.Users.Passenger;
 import UseCases.factories.MembershipFactory;
 import org.junit.Before;
 import org.junit.Test;

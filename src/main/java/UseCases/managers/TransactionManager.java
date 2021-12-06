@@ -4,8 +4,10 @@ import Entites.*;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Map;
 
+import Entites.Baggages.Baggage;
+import Entites.Memberships.Seats.Seat;
+import Entites.Users.Passenger;
 import UseCases.helpers.*;
 import UseCases.GeneralIterator;
 

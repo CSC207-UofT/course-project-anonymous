@@ -1,8 +1,8 @@
 package UseCases.factories;
 
-import Entites.Baggage;
-import Entites.CabinBaggage;
-import Entites.CheckInBaggage;
+import Entites.Baggages.Baggage;
+import Entites.Baggages.CabinBaggage;
+import Entites.Baggages.CheckInBaggage;
 
 import java.util.ArrayList;
 import java.util.Map;

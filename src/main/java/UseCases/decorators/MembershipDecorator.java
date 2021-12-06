@@ -1,5 +1,5 @@
 package UseCases.decorators;
-import Entites.*;
+import Entites.Memberships.MembershipStatus;
 
 public abstract class MembershipDecorator implements MembershipStatus {
     protected MembershipStatus decoratedMembership;

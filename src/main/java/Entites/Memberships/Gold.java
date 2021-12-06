@@ -1,14 +1,15 @@
-package Entites;
+package Entites.Memberships;
 
-public class Silver implements MembershipStatus {
+public class Gold implements MembershipStatus {
 
-    static double discount = 0.20;
+    static double discount = 0.30;
 
     /**
-     * return the price of the flight after a 20% discount
+     * return the price of the flight after a 30% discount
      * is applied
      *
      * @param price the flight's price
+     *
      * @return the flight's discounted price
      **/
     @Override
@@ -17,10 +18,11 @@ public class Silver implements MembershipStatus {
     }
 
     /**
-     * return the price of the meal after a 20% discount
+     * return the price of the meal after a 30% discount
      * is applied
      *
      * @param price the meal's price
+     *
      * @return the meal's discounted price
      **/
     @Override
@@ -29,10 +31,11 @@ public class Silver implements MembershipStatus {
     }
 
     /**
-     * return the price of extra baggage after a 20% discount
+     * return the price of extra baggage after a 30% discount
      * is applied
      *
      * @param price the extra baggage price
+     *
      * @return the extra baggage discounted price
      **/
     @Override
@@ -42,6 +45,6 @@ public class Silver implements MembershipStatus {
 
     @Override
     public String getMembershipName() {
-        return "Silver";
+        return "Gold";
     }
 }

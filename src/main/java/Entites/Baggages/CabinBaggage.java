@@ -1,4 +1,4 @@
-package Entites;
+package Entites.Baggages;
 
 public class CabinBaggage extends Baggage {
     /**

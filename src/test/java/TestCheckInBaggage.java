@@ -6,11 +6,17 @@ import static org.junit.Assert.*;
 public class TestCheckInBaggage {
     CheckInBaggage CheckInBaggage;
 
+    /**
+     * initializes a new CheckInBaggage object for testing
+     */
     @Before
     public void initializeManager(){
         CheckInBaggage = new CheckInBaggage(5.0, 5.0, 5.0);
     }
 
+    /**
+     * Verifies the function is returning the correct output if the bag is overweight
+     */
     @Test
     public void TestIsOverweight(){
         assertFalse(CheckInBaggage.isOverweight());

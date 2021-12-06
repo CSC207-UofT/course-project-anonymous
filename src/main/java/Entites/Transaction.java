@@ -1,5 +1,4 @@
 package Entites;
-
 import java.util.HashMap;
 
 public class Transaction {
@@ -13,6 +12,7 @@ public class Transaction {
         items.put(name, price);
     }
 
+
     public double calculateTotal() {
          double total = 0;
 
@@ -20,7 +20,7 @@ public class Transaction {
              total += price;
          }
 
-         return Math.round(total * 100) / 100;
+         return ((float)Math.round(total * 100) / 100);
     }
 
     public HashMap<String, Double> getItems() {

@@ -3,6 +3,7 @@ package UseCases.managers;
 import Entites.Passenger;
 import UseCases.factories.MembershipFactory;
 import UseCases.GeneralIterator;
+import UseCases.factories.PassengerFactory;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -109,7 +110,13 @@ public class PassengerManager implements Iterable<Passenger>, PropertyChangeList
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        this.upgradeMembership(((Passenger) evt.getNewValue()), PassengerManager.pointsThreshold);
+        int id = Integer.parseInt(((Map<String, String>) evt.getNewValue()).get("id"));
+        this.upgradeMembership(this.getPassengerWithId(id), PassengerManager.pointsThreshold);
+    }
+
+    public Map<String, String> getPassengerInfoById(int id) {
+        PassengerFactory passengerFactory = new PassengerFactory();
+        return passengerFactory.getPassengerInfo(this.getPassengerWithId(id));
     }
 
     public ArrayList<Passenger> getPassengers() {

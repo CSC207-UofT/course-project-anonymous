@@ -5,7 +5,7 @@ import Entites.Seat;
 import java.util.ArrayList;
 
 public class SeatMapPresenter {
-    public static String presentSeats(ArrayList<Seat> seats) {
+    public String presentSeats(ArrayList<Boolean> seats) {
         /*
         Prints out the seat map for the given seats array
          */
@@ -15,11 +15,15 @@ public class SeatMapPresenter {
         for (int i = 0; i < seats.size(); i+=9) {
             String seatsRowString = "";
             for (int j = i; j < i+9; j++) {
-                seatsRowString += seats.get(j).getOccupiedSymbol() + " ";
+                seatsRowString += this.getSymbol(seats.get(j)) + " ";
             }
             starting_string +=  (int) Math.floor(i/9) + " " + seatsRowString + "\n";
         }
 
         return starting_string;
+    }
+
+    String getSymbol(Boolean isOccupied) {
+        if (isOccupied) {return "x";} else {return "o";}
     }
 }

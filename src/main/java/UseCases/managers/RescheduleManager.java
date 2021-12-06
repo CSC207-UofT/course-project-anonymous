@@ -22,7 +22,5 @@ public class RescheduleManager {
         Seat newSeat = flight.getSeatAtIndex(seatIndex);
 
         ticketManager.addTicket(ticket.getPassenger(), flight, newSeat, ticket.getMeal(), ticket.getBaggages(), false);
-
-        ticketManager.removeTicket(ticket);
     }
 }

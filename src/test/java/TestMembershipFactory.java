@@ -10,6 +10,7 @@ public class TestMembershipFactory {
     @Before
     public void initializeManager() {
         membershipFactory = new MembershipFactory();
+
     }
 
     @Test
@@ -42,18 +43,5 @@ public class TestMembershipFactory {
         // since we increased passengers points to 199, their membership should change to silver
         membershipFactory.setMembership(passenger, pointsThreshold);
         assertTrue(passenger.getMembership() instanceof Silver);
-    }
-
-
-    @Test
-    public void testCalculateLoungeAccess() {
-        int time = membershipFactory.calculateLoungeAccess(200);
-        assertEquals((200 * 3) / 60, time);
-    }
-
-    @Test
-    public void testCalculatePointsForLoungeHours() {
-        int points = membershipFactory.calculatePointsForLoungeHours(3);
-        assertEquals((3 * 60) / 3, points);
     }
 }

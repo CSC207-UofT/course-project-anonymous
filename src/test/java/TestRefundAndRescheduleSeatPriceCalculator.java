@@ -19,6 +19,10 @@ public class TestRefundAndRescheduleSeatPriceCalculator {
         assert (actual1 == 100);
         double actual2 = refundAndRescheduleSeatPriceCalculator.calculateRefundByDaysLeft(seat, 0);
         assert (actual2 == 0);
+        double actual3 = refundAndRescheduleSeatPriceCalculator.calculateRefundByDaysLeft(seat, 30);
+        assert(actual3 == 100);
+        double actual4 = refundAndRescheduleSeatPriceCalculator.calculateRefundByDaysLeft(seat, 5);
+        assert(actual4 == 80);
 
     }
     @Test
@@ -27,5 +31,7 @@ public class TestRefundAndRescheduleSeatPriceCalculator {
         assert (actual == 0);
         double actual1 = refundAndRescheduleSeatPriceCalculator.calculateDateChangeChargeByDateLeft(seat, 5, 10);
         assert (actual1 == 2);
+        double actual2 = refundAndRescheduleSeatPriceCalculator.calculateDateChangeChargeByDateLeft(seat, 15, 10);
+        assert (actual2 == 0);
     }
 }

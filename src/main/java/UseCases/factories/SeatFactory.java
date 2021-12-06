@@ -93,4 +93,17 @@ public class SeatFactory {
                     Flight.economyClassSeats + Flight.businessClassSeats + Flight.firstClassSeats));
         }
     }
+
+    /**
+     * Maps list of seats to a boolean value indicating if they are occupied
+     *
+     * @param seats Arraylist of seats
+     *
+     * @return Arraylist of boolean values indicating if they are occupied
+     */
+    public ArrayList<Boolean> getSeatSymbols(ArrayList<Seat> seats) {
+        ArrayList<Boolean> symbols = new ArrayList<>();
+        for (Seat seat : seats) {symbols.add(seat.getOccupied());}
+        return symbols;
+    }
 }

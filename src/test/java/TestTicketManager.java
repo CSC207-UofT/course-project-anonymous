@@ -29,13 +29,25 @@ public class TestTicketManager {
         Meal meal = new Meal("Sushi", 800, 15, false);
         Baggage cbaggage = new CabinBaggage(12, 13, 14);
         Passenger passenger = new Passenger(12, "Kevin", "a@email", "1234");
+        Passenger passenger2 = new Passenger(11, "Avnish", "p@email", "7263");
 
         ArrayList<Baggage> baggages = new ArrayList<>();
         baggages.add(cbaggage);
 
+        // Checking that currently our system has 0 tickets
         assert (ticketManager.getTickets().size() == 0);
+
+        // Creating new tickets
         Ticket newtest = ticketManager.addTicket(passenger, flight, seat, meal, baggages, false);
+        Ticket newtest2 = ticketManager.addTicket(passenger2, flight, seat, meal, baggages, false);
+
+        // Checking if the ticket has been created
         assertTrue(newtest instanceof Ticket);
+        assertTrue(newtest2 instanceof Ticket);
+
+        // Checking if a ticket has been successfully removed
+        ticketManager.removeTicket(newtest);
+        assert (ticketManager.getTickets().size() == 1);
+
     }
-    // check if a ticket was created for proper functionality
 }

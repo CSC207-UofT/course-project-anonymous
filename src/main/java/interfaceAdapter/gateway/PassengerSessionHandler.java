@@ -38,6 +38,6 @@ public class PassengerSessionHandler extends UserSessionHandler {
     public boolean setSessionUserWithId(int id) {
 
         this.passenger = this.bookingSystem.passengerManager.getPassengerWithId(id);
-        return !this.passenger.equals(null);
+        return true;
     }
 }

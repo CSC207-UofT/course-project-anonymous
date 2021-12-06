@@ -16,8 +16,8 @@ public class TestRescheduleTicketTransactionCreator {
     Ticket ticket;
     Flight flight;
     Passenger passenger;
-    LocalDateTime date1 = LocalDateTime.of(2020, 05, 10, 19, 30);
-    LocalDateTime date2 = LocalDateTime.of(2020, 05, 10, 21, 30);
+    LocalDateTime date1 = LocalDateTime.of(2021, 12, 10, 19, 30);
+    LocalDateTime date2 = LocalDateTime.of(2021, 12, 13, 21, 30);
     Airline airline;
     Flight flight1;
     CabinBaggage cabinBaggage;
